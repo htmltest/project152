@@ -5,6 +5,8 @@
         <title>Агрегатор информации о грантовой поддержке исследователей</title>
 
         <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="js/slick/slick.css" />
+        <link rel="stylesheet" href="js/select2/select2.css" />
 
         <meta name="viewport" content="width=device-width" />
     </head>
@@ -107,6 +109,1457 @@
 
                             <!-- tabs content -->
                             <div class="tabs-content" data-title="Отчеты">
+                                <!-- opendata -->
+                                <div class="opendata">
+
+                                    <!-- opendata block -->
+                                    <div class="opendata-block open">
+                                        <div class="opendata-block-title"><img src="images/opendata-block-1.svg" alt="" />Исследователи</div>
+
+                                        <!-- opendata block container -->
+                                        <div class="opendata-block-container">
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group open">
+                                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по конкурсам выбранного фонда, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по всем фондам, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Состав стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Состав стипендиатов и грантополучателей по всем фондам, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Гражданство стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по всем фондам, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Состав стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Состав стипендиатов и грантополучателей по всем фондам, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Гражданство стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                        </div>
+                                        <!-- opendata block container END -->
+
+                                    </div>
+                                    <!-- opendata block END -->
+
+                                    <!-- opendata block -->
+                                    <div class="opendata-block">
+                                        <div class="opendata-block-title"><img src="images/opendata-block-2.svg" alt="" />Финансирование</div>
+
+                                        <!-- opendata block container -->
+                                        <div class="opendata-block-container">
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по конкурсам выбранного фонда, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                        </div>
+                                        <!-- opendata block container END -->
+
+                                    </div>
+                                    <!-- opendata block END -->
+
+                                    <!-- opendata block -->
+                                    <div class="opendata-block">
+                                        <div class="opendata-block-title"><img src="images/opendata-block-3.svg" alt="" />Организации</div>
+
+                                        <!-- opendata block container -->
+                                        <div class="opendata-block-container">
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по выбранному фонду, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Количество стипендиатов и грантополучателей по конкурсам выбранного фонда, чел.</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata.html?set=1" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Регион">
+                                                                        <option value=""></option>
+                                                                        <option value="77">Москва</option>
+                                                                        <option value="78">Санкт-Петербург</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">1.1. Совет по грантам президента Российской Федерации</option>
+                                                                        <option value="2">Фонд развития промышленности Челябинской области (Областное государственное автономное учреждение «Государственный фонд развития промышленности Челябинской области»)</option>
+                                                                        <option value="3">Фонд 3</option>
+                                                                        <option value="4">Фонд 4</option>
+                                                                        <option value="5">Фонд 5</option>
+                                                                        <option value="6">Фонд 6</option>
+                                                                        <option value="7">Фонд 7</option>
+                                                                        <option value="8">Фонд 8</option>
+                                                                        <option value="9">Фонд 9</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results">
+                                                        <div class="opendata-table">
+                                                            <div class="table-scroll">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>2014</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2015</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2016</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2017</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2018</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2019</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2020</td>
+                                                                            <td>1 223</td>
+                                                                            <td>4 213</td>
+                                                                            <td>4 213</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="doc-link">
+                                                            <a href="#">
+                                                                <img src="images/doc-icon-exc.svg" alt="" />
+                                                                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                                                                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                        </div>
+                                        <!-- opendata block container END -->
+
+                                    </div>
+                                    <!-- opendata block END -->
+
+                                </div>
+                                <!-- opendata END -->
                             </div>
                             <!-- tabs content END -->
 
@@ -157,12 +1610,20 @@
             </div>
         </footer>
 
+        <a href="#" class="up-link"></a>
+
         <script>
             var pathTemplate = './';
         </script>
         <script src="js/fonts.js"></script>
 
         <script src="js/jquery-3.5.0.min.js"></script>
+        <script src="js/slick/slick.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>
+        <script src="js/validation/jquery.validate.min.js"></script>
+        <script src="js/validation/messages_ru.js"></script>
+        <script src="js/select2/select2.min.js"></script>
+        <script src="js/select2/ru.js"></script>
         <script src="js/tools.js"></script>
 
     </body>
