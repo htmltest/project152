@@ -188,6 +188,60 @@ $(document).ready(function() {
         });
     });
 
+    $('body').on('click', '.navigator-filter-block-menu-item a', function(e) {
+        var curLi = $(this).parent();
+        if (!curLi.hasClass('active')) {
+            $('.navigator-filter-block-menu-item.active').removeClass('active');
+            curLi.addClass('active');
+            var curIndex = $('.navigator-filter-block-menu-item').index(curLi);
+            $('.navigator-filter-block-content.active').removeClass('active');
+            $('.navigator-filter-block-content .form-checkbox input').prop('checked', false);
+            $('.navigator-filter-block-content').eq(curIndex).addClass('active');
+            $('html, body').animate({'scrollTop': curLi.offset().top});
+        } else {
+            curLi.removeClass('active')
+            $('.navigator-filter-block-content.active').removeClass('active');
+            $('.navigator-filter-block-content .form-checkbox input').prop('checked', false);
+        }
+        e.preventDefault();
+    });
+
+    $('#navigator-district').change(function() {
+        var curValue = $('#navigator-district').val();
+        var newHTML = '<option value=""></option>';
+        newHTML += '<option value="' + $('#navigator-region').attr('data-allvalue') + '">' + $('#navigator-region').attr('data-alltitle') + '</option>';
+        if (curValue == '' || curValue == $('#navigator-district').attr('data-allvalue')) {
+            for (var i = 0; i < navigatorRegions.length; i++) {
+                newHTML += '<option value="' + navigatorRegions[i].id + '">' + navigatorRegions[i].title + '</option>';
+            }
+        } else {
+            for (var i = 0; i < navigatorRegions.length; i++) {
+                if (curValue == navigatorRegions[i].district) {
+                    newHTML += '<option value="' + navigatorRegions[i].id + '">' + navigatorRegions[i].title + '</option>';
+                }
+            }
+        }
+        $('#navigator-region').html(newHTML);
+        if ($('#navigator-region').attr('data-selected') != '') {
+            $('#navigator-region option[value="' + $('#navigator-region').attr('data-selected') + '"]').prop('selected', true);
+            $('#navigator-region').parent().find('.select2-container').addClass('select2-container--full');
+        }
+    });
+
+    $('#navigator-district').each(function() {
+        var newHTML = '<option value=""></option>';
+        newHTML += '<option value="' + $('#navigator-district').attr('data-allvalue') + '">' + $('#navigator-district').attr('data-alltitle') + '</option>';
+        for (var i = 0; i < navigatorDistricts.length; i++) {
+            newHTML += '<option value="' + navigatorDistricts[i].id + '">' + navigatorDistricts[i].title + '</option>';
+        }
+        $('#navigator-district').html(newHTML);
+        if ($('#navigator-district').attr('data-selected') != '') {
+            $('#navigator-district option[value="' + $('#navigator-district').attr('data-selected') + '"]').prop('selected', true);
+            $('#navigator-district').parent().find('.select2-container').addClass('select2-container--full');
+        }
+        $('#navigator-district').trigger('change');
+    });
+
 });
 
 function initForm(curForm) {
@@ -206,7 +260,7 @@ function initForm(curForm) {
     curForm.find('.form-select select').each(function() {
         var curSelect = $(this);
         var options = {
-            minimumResultsForSearch: 99,
+            minimumResultsForSearch: 20,
             dropdownAutoWidth: true
         }
 
@@ -217,16 +271,19 @@ function initForm(curForm) {
         curSelect.select2(options);
 
         curSelect.parent().find('.select2-container').attr('data-placeholder', curSelect.attr('data-placeholder'));
+        curSelect.parent().find('.select2-selection').attr('data-placeholder', curSelect.attr('data-placeholder'));
         curSelect.on('select2:select', function(e) {
             $(e.delegateTarget).parent().find('.select2-container').addClass('select2-container--full');
+            curSelect.parent().find('select.error').removeClass('error');
+            curSelect.parent().find('label.error').remove();
         });
 
-        curSelect.on('select2:selecting', function (e) {
-            if (curSelect.prop('multiple')) {
-                var $searchfield = $(this).parent().find('.select2-search__field');
-                $searchfield.val('').trigger('focus');
+        curSelect.on('select2:unselect', function(e) {
+            if (curSelect.find('option:selected').length == 0) {
+                curSelect.parent().find('.select2-container').removeClass('select2-container--full');
             }
         });
+
         if (curSelect.find('option:selected').legnth > 0 || curSelect.find('option').legnth == 1 || curSelect.find('option:first').html() != '') {
             curSelect.trigger({type: 'select2:select'})
         }
@@ -288,6 +345,41 @@ $(window).on('load resize', function() {
     });
 
     resizeResults();
+
+    $('.navigator-filter-block-menu').each(function() {
+        var curMenu = $(this);
+        if ($(window).width() > 1119) {
+            curMenu.mCustomScrollbar({
+                axis: 'x',
+                scrollButtons: {
+                    enable: true,
+                    scrollAmount: 60
+                },
+                callbacks: {
+                    onInit: function() {
+                        curMenu.find('.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft').addClass('disabled');
+                    },
+
+                    whileScrolling: function() {
+                        if (this.mcs.leftPct == 100) {
+                            curMenu.find('.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight').addClass('disabled');
+                        } else {
+                            curMenu.find('.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight').removeClass('disabled');
+                        }
+
+                        if (this.mcs.leftPct == 0) {
+                            curMenu.find('.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft').addClass('disabled');
+                        } else {
+                            curMenu.find('.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft').removeClass('disabled');
+
+                        }
+                    }
+                }
+            });
+        } else {
+            curMenu.mCustomScrollbar('destroy');
+        }
+    });
 
 });
 
