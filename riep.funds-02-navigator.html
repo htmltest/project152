@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/select2/select2.css" />
+        <link rel="stylesheet" href="js/mcustomscrollbar/jquery.mCustomScrollbar.css" />
 
         <meta name="viewport" content="width=device-width" />
     </head>
@@ -53,6 +54,1113 @@
                     <div class="breadcrumbs"><a href="#">Главная</a><span></span>Навигатор фондов</div>
 
                     <h1>Навигатор фондов</h1>
+
+                    <!-- navigator filter -->
+                    <div class="navigator-filter">
+                        <form action="#" method="post">
+                            <div class="navigator-filter-main">
+                                <h2>Формы поддержки фондом:</h2>
+
+                                <div class="navigator-filter-blocks">
+                                    <div class="navigator-filter-block">
+                                        <h3>По стадиям жизненного цикла проекта</h3>
+                                        <div class="navigator-filter-block-menu">
+                                            <div class="navigator-filter-block-menu-inner">
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>1</strong>Исследования</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>2</strong>Разработки</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>3</strong>Производство</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>4</strong>Рынок</span></a></div>
+                                            </div>
+                                        </div>
+                                        <div class="navigator-filter-block-container">
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="1" /><span>Доступ к научно-исследовательской инфраструктуре (ЦКП, УНУ, суперкомпьютерные центры)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="2" /><span>Доступ к ресурсным коллекциям, научному оборудованию для медицинских исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="3" /><span>Доступ к информационным библиотечным и архивным, музейным ресурсам, находящимся в закрытом доступе и предоставляющими платные услуги</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="4" /><span>Поддержка академической мобильности /адресная поддержка ученых</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="5" /><span>Поддержка проектов с участием студентов, аспирантов</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="6" /><span>Доведение до всеобщего сведения (публикации) научных трудов</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="7" /><span>Менторство над научными командами</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="8" /><span>Поддержка проведения фундаментальных и прикладных научно-исследовательских работ</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="9" /><span>Поддержка научных экспедиций</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="10" /><span>Поддержка фундаментальных научных проектов международного сотрудничества</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="11" /><span>Поддержка проведения фундаментальных региональных исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="12" /><span>Организация научно-популярных мероприятий</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="13" /><span>Премиальная поддержка за достижения в различных областях наук</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="14" /><span>Поддержка научных проектов молодых ученых, постдоков</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="15" /><span>Доступ к зарубежным патентным системам (патентное картирование, патентный ландшафт) / доступ к закрытым информационным базам данных в сфере науки и технологий</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="16" /><span>Доступ к отраслевым исследовательским и технологическим центрам, отраслевым лабораториям, опытно-промышленным площадкам, сервисным центрам, научным организациям, институтам, университетам в целях проведения опытных, опытно/промышленных испытаний</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="17" /><span>Поддержка программ обмена научными кадрами (ротация)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="18" /><span>Поддержка программ по повышению профессиональной подготовки кадров и проведение стажировок</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="19" /><span>Поддержка патентования, защиты авторских/смежных прав</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="20" /><span>Поддержка опытно - конструкторских разработок и поисковых исследований (гранты, софинансирование, субсидирование части затрат на проведение НИОКТР, клинических испытаний)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="21" /><span>Поддержка прикладных проектов международного сотрудничества</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="22" /><span>Поддержка проведения прикладных региональных исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="23" /><span>Поддержка трансляционных исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="24" /><span>Инжиниринг (работы по проектированию и разработке рабочей документации)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="25" /><span>Предоставление услуг по поиску технологий</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="26" /><span>Поддержка программ развития технологических платформ</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="27" /><span>Проведение научной экспертизы, оценка проекта</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="28" /><span>Поддержка центров молодежного инновационного творчества</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="29" /><span>Поддержка в области привлечения зарубежных специалистов в части пуска / наладки нового оборудования / технологии</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="30" /><span>Сертифицирование инновационной продукции</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="31" /><span>Поддержка проектов малых инновационных предприятий, старт-апов (грант, субсидирование, компенсация процентной ставки, инвестиционный займ)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="32" /><span>Поддержка развития комплексных отраслевых/межотраслевых проектов</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="33" /><span>Доступ к инфраструктуре индустриальных технопарков (организация новых производств, продвижение новых технологий)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="34" /><span>Доступ к технической информации при проведении патентных исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="35" /><span>Масштабирование научно-технического процесса (разработка задания на проектирование опытной установки или партии, проектирование, выпуск опытной партии)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="36" /><span>Поддержка программ развития технологических платформ</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="37" /><span>Поддержка программ по повышению профессиональной подготовки кадров и проведение стажировок</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="38" /><span>Поддержка внедрения научных, технических и инновационных достижений в образовательные программы</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="39" /><span>Предоставление софинансирования в рамках создания частно-государственного партнерства</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="40" /><span>Поддержка выпуска фильмов и мультимедийной продукции</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="41" /><span>Доступ к ИТ-инфраструктуре (доступ к вычислительным и телекоммуникационным ресурсам, услугам квалифицированных кадров, необходимых для вывода инновационного продукта)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="42" /><span>Поддержка программ по повышению квалификации персонала в области коммерциализации инновационного продукта</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="43" /><span>Консалтинговые услуги</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="44" /><span>Оказание услуг по вопросам защиты и лицензирования РИД</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="45" /><span>Поддержка коммерциализации инвестиционного проекта (венчурный займ)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="46" /><span>Привлечение потенциальных партнеров</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="47" /><span>Доступ к инфраструктуре центров трансфера технологий, университетских, сетевых технопарков в целях коммерциализации технологий</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="48" /><span>Поддержка участия в российских и зарубежных выставочных инновационно - промышленных мероприятиях</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="49" /><span>Инновационный ваучер</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="50" /><span>Доступ к информационным ресурсам, услугам специалистов в целях коммерциализации инновационного продукта</span></label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="navigator-filter-block">
+                                        <h3>По направлениям поддержки проекта</h3>
+                                        <div class="navigator-filter-block-menu">
+                                            <div class="navigator-filter-block-menu-inner">
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>1</strong>Инфраструктура</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>2</strong>Информационные<br /> ресурсы</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>3</strong>Кадры</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>4</strong>Управление<br /> результатами</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>5</strong>Реализация</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>6</strong>Кооперация</span></a></div>
+                                                <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>7</strong>Популяризация</span></a></div>
+                                            </div>
+                                        </div>
+                                        <div class="navigator-filter-block-container">
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="51" /><span>Доступ к научно-исследовательской инфраструктуре (ЦКП, УНУ, суперкомпьютерные центры)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="52" /><span>Доступ к ресурсным коллекциям, научному оборудованию для медицинских исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="53" /><span>Доступ к отраслевым исследовательским и технологическим центрам, отраслевым лабораториям, опытно-промышленным площадкам, сервисным центрам, научным организациям, институтам, университетам в целях проведения опытных, опытно/промышленных испытаний</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="54" /><span>Инжиниринг (работы по проектированию и разработке рабочей документации)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="55" /><span>Доступ к инфраструктуре индустриальных технопарков (организация новых производств, продвижение новых технологий)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="56" /><span>Доступ к ИТ-инфраструктуре (доступ к вычислительным и телекоммуникационным ресурсам, услугам квалифицированных кадров, необходимых для вывода инновационного продукта)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="57" /><span>Масштабирование научно-технического процесса (разработка задания на проектирование опытной установки или партии, проектирование, выпуск опытной партии)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="58" /><span>Доступ к инфраструктуре центров трансфера технологий, университетских, сетевых технопарков в целях коммерциализации технологий</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="59" /><span>Доступ к информационным библиотечным и архивным, музейным ресурсам, находящимся в закрытом доступе и предоставляющими платные услуги</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="60" /><span>Доступ к зарубежным патентным системам (патентное картирование, патентный ландшафт) / доступ к закрытым информационным базам данных в сфере науки и технологий</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="61" /><span>Поддержка программ развития технологических платформ</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="62" /><span>Доступ к технической информации при проведении патентных исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="63" /><span>Доступ к информационным ресурсам, услугам специалистов в целях коммерциализации инновационного продукта</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="64" /><span>Поддержка академической мобильности /адресная поддержка ученых</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="65" /><span>Поддержка проектов с участием студентов, аспирантов</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="66" /><span>Поддержка в области привлечения зарубежных специалистов в части пуска / наладки нового оборудования / технологии</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="67" /><span>Поддержка программ обмена научными кадрами (ротация)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="68" /><span>Поддержка программ по повышению профессиональной подготовки кадров и проведение стажировок</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="69" /><span>Поддержка программ по повышению квалификации персонала в области коммерциализации инновационного продукта</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="70" /><span>Консалтинговые услуги</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="71" /><span>Поддержка программ по повышению профессиональной подготовки кадров и проведение стажировок</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="72" /><span>Доведение до всеобщего сведения (публикации) научных трудов</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="73" /><span>Менторство над научными командами</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="74" /><span>Поддержка патентования, защиты авторских/смежных прав</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="75" /><span>Сертифицирование инновационной продукции</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="76" /><span>Оказание услуг по вопросам защиты и лицензирования РИД</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="77" /><span>Проведение научной экспертизы, оценка проекта</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="78" /><span>Поддержка проведения фундаментальных и прикладных научно-исследовательских работ</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="79" /><span>Поддержка научных экспедиций</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="80" /><span>Поддержка опытно - конструкторских разработок и поисковых исследований (гранты, софинансирование, субсидирование части затрат на проведение НИОКТР, клинических испытаний)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="81" /><span>Предоставление услуг по поиску технологий</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="82" /><span>Поддержка проектов малых инновационных предприятий, старт-апов (грант, субсидирование, компенсация процентной ставки, инвестиционный займ)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="83" /><span>Предоставление софинансирования в рамках создания частно-государственного партнерства</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="84" /><span>Поддержка коммерциализации инвестиционного проекта (венчурный займ)</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="85" /><span>Поддержка центров молодежного инновационного творчества</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="86" /><span>Инновационный ваучер</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="87" /><span>Поддержка фундаментальных научных проектов международного сотрудничества</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="88" /><span>Поддержка проведения фундаментальных региональных исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="89" /><span>Поддержка прикладных проектов международного сотрудничества</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="90" /><span>Поддержка проведения прикладных региональных исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="91" /><span>Поддержка развития комплексных отраслевых/межотраслевых проектов</span></label></div>
+                                            </div>
+
+                                            <div class="navigator-filter-block-content">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="92" /><span>Организация научно-популярных мероприятий</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="93" /><span>Премиальная поддержка за достижения в различных областях наук</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="94" /><span>Поддержка внедрения научных, технических и инновационных достижений в образовательные программы</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="95" /><span>Поддержка трансляционных исследований</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="96" /><span>Поддержка выпуска фильмов и мультимедийной продукции</span></label></div>
+                                                <div class="form-checkbox"><label><input type="checkbox" name="navigator_filter[]" value="97" /><span>Поддержка участия в российских и зарубежных выставочных инновационно - промышленных мероприятиях</span></label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="navigator-filter-other">
+                                <div class="navigator-filter-other-inner">
+                                    <h2>Поддержка проектов по отраслям науки:</h2>
+                                    <div class="form-select">
+                                        <select name="scientific" data-placeholder="Отрасли науки">
+                                            <option value=""></option>
+                                            <option value="1">Биологические науки</option>
+                                            <option value="2">Гуманитарные науки</option>
+                                            <option value="3">Естественные науки</option>
+                                            <option value="4">Искусствоведение</option>
+                                            <option value="5">Исторические науки и археология</option>
+                                            <option value="6">Культурология</option>
+                                            <option value="7">Медицинские науки</option>
+                                            <option value="8">Науки о земле</option>
+                                            <option value="9">Нейронауки</option>
+                                            <option value="10">Педагогические науки</option>
+                                            <option value="11">Политология</option>
+                                            <option value="12">Психологические науки</option>
+                                            <option value="13">Сельскохозяйственные науки</option>
+                                            <option value="14">Социологические науки</option>
+                                            <option value="15">Технические науки</option>
+                                            <option value="16">Физико-математические науки</option>
+                                            <option value="17">Филологические науки</option>
+                                            <option value="18">Философские науки</option>
+                                            <option value="19">Химические науки</option>
+                                            <option value="20">Экономические науки</option>
+                                            <option value="21">Юридические науки</option>
+                                        </select>
+                                    </div>
+
+                                    <h2>Тематика конкурсов фонда:</h2>
+                                    <div class="form-input"><span>Тематика конкурсов</span><input type="text" name="theme" value="" /></div>
+
+                                    <h2>Территориальная принадлежность фонда:</h2>
+                                    <script>
+                                        var navigatorDistricts = [
+                                                                    {
+                                                                        id      : '1',
+                                                                        title   : 'Центральный'
+                                                                    },
+
+                                                                    {
+                                                                        id      : '2',
+                                                                        title   : 'Северо-Западный'
+                                                                    },
+
+                                                                    {
+                                                                        id      : '3',
+                                                                        title   : 'Южный'
+                                                                    },
+
+                                                                    {
+                                                                        id      : '4',
+                                                                        title   : 'Северо-Кавказский'
+                                                                    },
+
+                                                                    {
+                                                                        id      : '5',
+                                                                        title   : 'Приволжский'
+                                                                    },
+
+                                                                    {
+                                                                        id      : '6',
+                                                                        title   : 'Уральский'
+                                                                    },
+
+                                                                    {
+                                                                        id      : '7',
+                                                                        title   : 'Сибирский'
+                                                                    },
+
+                                                                    {
+                                                                        id      : '8',
+                                                                        title   : 'Дальневосточный'
+                                                                    }
+                                        ];
+
+                                        var navigatorRegions = [
+                                                                    {
+                                                                        'id'        : '1',
+                                                                        'district'  : '3',
+                                                                        'title'     : 'Республика Адыгея'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '2',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Республика Башкортостан'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '3',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Республика Бурятия'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '4',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Республика Алтай'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '5',
+                                                                        'district'  : '4',
+                                                                        'title'     : 'Республика Дагестан'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '6',
+                                                                        'district'  : '4',
+                                                                        'title'     : 'Республика Ингушетия'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '7',
+                                                                        'district'  : '4',
+                                                                        'title'     : 'Кабардино-Балкарская Республика'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '8',
+                                                                        'district'  : '3',
+                                                                        'title'     : 'Республика Калмыкия'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '9',
+                                                                        'district'  : '4',
+                                                                        'title'     : 'Карачаево-Черкесская Республика'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '10',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Республика Карелия'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '11',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Республика Коми'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '12',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Республика Марий Эл'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '13',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Республика Мордовия'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '14',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Республика Саха (Якутия)'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '15',
+                                                                        'district'  : '4',
+                                                                        'title'     : 'Республика Северная Осетия — Алания'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '16',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Республика Татарстан'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '17',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Республика Тыва'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '18',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Удмуртская Республика'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '19',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Республика Хакасия'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '20',
+                                                                        'district'  : '4',
+                                                                        'title'     : 'Чеченская Республика'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '21',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Чувашская Республика'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '22',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Алтайский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '23',
+                                                                        'district'  : '3',
+                                                                        'title'     : 'Краснодарский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '24',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Красноярский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '25',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Приморский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '26',
+                                                                        'district'  : '4',
+                                                                        'title'     : 'Ставропольский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '27',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Хабаровский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '28',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Амурская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '29',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Архангельская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '30',
+                                                                        'district'  : '3',
+                                                                        'title'     : 'Астраханская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '31',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Белгородская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '32',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Брянская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '33',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Владимирская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '34',
+                                                                        'district'  : '3',
+                                                                        'title'     : 'Волгоградская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '35',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Вологодская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '36',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Воронежская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '37',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Ивановская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '38',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Иркутская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '39',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Калининградская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '40',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Калужская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '41',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Камчатский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '42',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Кемеровская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '43',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Кировская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '44',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Костромская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '45',
+                                                                        'district'  : '6',
+                                                                        'title'     : 'Курганская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '46',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Курская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '47',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Ленинградская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '48',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Липецкая область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '49',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Магаданская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '50',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Московская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '51',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Мурманская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '52',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Нижегородская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '53',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Новгородская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '54',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Новосибирская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '55',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Омская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '56',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Оренбургская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '57',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Орловская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '58',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Пензенская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '59',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Пермский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '60',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Псковская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '61',
+                                                                        'district'  : '3',
+                                                                        'title'     : 'Ростовская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '62',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Рязанская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '63',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Самарская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '64',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Саратовская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '65',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Сахалинская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '66',
+                                                                        'district'  : '6',
+                                                                        'title'     : 'Свердловская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '67',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Смоленская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '68',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Тамбовская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '69',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Тверская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '70',
+                                                                        'district'  : '7',
+                                                                        'title'     : 'Томская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '71',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Тульская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '72',
+                                                                        'district'  : '6',
+                                                                        'title'     : 'Тюменская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '73',
+                                                                        'district'  : '5',
+                                                                        'title'     : 'Ульяновская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '74',
+                                                                        'district'  : '6',
+                                                                        'title'     : 'Челябинская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '75',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Забайкальский край'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '76',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Ярославская область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '77',
+                                                                        'district'  : '1',
+                                                                        'title'     : 'Москва'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '78',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Санкт-Петербург'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '79',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Еврейская автономная область'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '83',
+                                                                        'district'  : '2',
+                                                                        'title'     : 'Ненецкий автономный округ'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '86',
+                                                                        'district'  : '6',
+                                                                        'title'     : 'Ханты-Мансийский автономный округ - Югра'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '87',
+                                                                        'district'  : '8',
+                                                                        'title'     : 'Чукотский автономный округ'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '89',
+                                                                        'district'  : '6',
+                                                                        'title'     : 'Ямало-Ненецкий автономный округ'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '91',
+                                                                        'district'  : '3',
+                                                                        'title'     : 'Республика Крым'
+                                                                    },
+
+                                                                    {
+                                                                        'id'        : '92',
+                                                                        'district'  : '3',
+                                                                        'title'     : 'Севастополь'
+                                                                    }
+                                                ];
+                                            </script>
+                                    <div class="form-select">
+                                        <select name="district" data-placeholder="Федеральный округ" id="navigator-district" data-alltitle="Все" data-allvalue="0" data-selected="">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-select">
+                                        <select name="region" data-placeholder="Регион" id="navigator-region" data-alltitle="Все" data-allvalue="0" data-selected="">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-select">
+                                        <select name="city" data-placeholder="Город">
+                                            <option value=""></option>
+                                            <option value="1">Абакан</option>
+                                            <option value="2">Азов</option>
+                                            <option value="3">Александров</option>
+                                            <option value="4">Алексин</option>
+                                            <option value="5">Альметьевск</option>
+                                            <option value="6">Анапа</option>
+                                            <option value="7">Ангарск</option>
+                                            <option value="8">Анжеро-Судженск</option>
+                                            <option value="9">Апатиты</option>
+                                            <option value="10">Арзамас</option>
+                                            <option value="11">Армавир</option>
+                                            <option value="12">Арсеньев</option>
+                                            <option value="13">Артем</option>
+                                            <option value="14">Архангельск</option>
+                                            <option value="15">Асбест</option>
+                                            <option value="16">Астрахань</option>
+                                            <option value="17">Ачинск</option>
+                                            <option value="18">Балаково</option>
+                                            <option value="19">Балахна</option>
+                                            <option value="20">Балашиха</option>
+                                            <option value="21">Балашов</option>
+                                            <option value="22">Барнаул</option>
+                                            <option value="23">Батайск</option>
+                                            <option value="24">Белгород</option>
+                                            <option value="25">Белебей</option>
+                                            <option value="26">Белово</option>
+                                            <option value="27">Белогорск (Амурская область)</option>
+                                            <option value="28">Белорецк</option>
+                                            <option value="29">Белореченск</option>
+                                            <option value="30">Бердск</option>
+                                            <option value="31">Березники</option>
+                                            <option value="32">Березовский (Свердловская область)</option>
+                                            <option value="33">Бийск</option>
+                                            <option value="34">Биробиджан</option>
+                                            <option value="35">Благовещенск (Амурская область)</option>
+                                            <option value="36">Бор</option>
+                                            <option value="37">Борисоглебск</option>
+                                            <option value="38">Боровичи</option>
+                                            <option value="39">Братск</option>
+                                            <option value="40">Брянск</option>
+                                            <option value="41">Бугульма</option>
+                                            <option value="42">Буденновск</option>
+                                            <option value="43">Бузулук</option>
+                                            <option value="44">Буйнакск</option>
+                                            <option value="45">Великие Луки</option>
+                                            <option value="46">Великий Новгород</option>
+                                            <option value="47">Верхняя Пышма</option>
+                                            <option value="48">Видное</option>
+                                            <option value="49">Владивосток</option>
+                                            <option value="50">Владикавказ</option>
+                                            <option value="51">Владимир</option>
+                                            <option value="52">Волгоград</option>
+                                            <option value="53">Волгодонск</option>
+                                            <option value="54">Волжск</option>
+                                            <option value="55">Волжский</option>
+                                            <option value="56">Вологда</option>
+                                            <option value="57">Вольск</option>
+                                            <option value="58">Воркута</option>
+                                            <option value="59">Воронеж</option>
+                                            <option value="60">Воскресенск</option>
+                                            <option value="61">Воткинск</option>
+                                            <option value="62">Всеволожск</option>
+                                            <option value="63">Выборг</option>
+                                            <option value="64">Выкса</option>
+                                            <option value="65">Вязьма</option>
+                                            <option value="66">Гатчина</option>
+                                            <option value="67">Геленджик</option>
+                                            <option value="68">Георгиевск</option>
+                                            <option value="69">Глазов</option>
+                                            <option value="70">Горно-Алтайск</option>
+                                            <option value="71">Грозный</option>
+                                            <option value="72">Губкин</option>
+                                            <option value="73">Гудермес</option>
+                                            <option value="74">Гуково</option>
+                                            <option value="75">Гусь-Хрустальный</option>
+                                            <option value="76">Дербент</option>
+                                            <option value="77">Дзержинск</option>
+                                            <option value="78">Димитровград</option>
+                                            <option value="79">Дмитров</option>
+                                            <option value="80">Долгопрудный</option>
+                                            <option value="81">Домодедово</option>
+                                            <option value="82">Донской</option>
+                                            <option value="83">Дубна</option>
+                                            <option value="84">Евпатория</option>
+                                            <option value="85">Егорьевск</option>
+                                            <option value="86">Ейск</option>
+                                            <option value="87">Екатеринбург</option>
+                                            <option value="88">Елабуга</option>
+                                            <option value="89">Елец</option>
+                                            <option value="90">Ессентуки</option>
+                                            <option value="91">Железногорск (Красноярский край)</option>
+                                            <option value="92">Железногорск (Курская область)</option>
+                                            <option value="93">Жигулевск</option>
+                                            <option value="94">Жуковский</option>
+                                            <option value="95">Заречный</option>
+                                            <option value="96">Зеленогорск</option>
+                                            <option value="97">Зеленодольск</option>
+                                            <option value="98">Златоуст</option>
+                                            <option value="99">Иваново</option>
+                                            <option value="100">Ивантеевка</option>
+                                            <option value="101">Ижевск</option>
+                                            <option value="102">Избербаш</option>
+                                            <option value="103">Иркутск</option>
+                                            <option value="104">Искитим</option>
+                                            <option value="105">Ишим</option>
+                                            <option value="106">Ишимбай</option>
+                                            <option value="107">Йошкар-Ола</option>
+                                            <option value="108">Казань</option>
+                                            <option value="109">Калининград</option>
+                                            <option value="110">Калуга</option>
+                                            <option value="111">Каменск-Уральский</option>
+                                            <option value="112">Каменск-Шахтинский</option>
+                                            <option value="113">Камышин</option>
+                                            <option value="114">Канск</option>
+                                            <option value="115">Каспийск</option>
+                                            <option value="116">Кемерово</option>
+                                            <option value="117">Керчь</option>
+                                            <option value="118">Кинешма</option>
+                                            <option value="119">Кириши</option>
+                                            <option value="120">Киров (Кировская область)</option>
+                                            <option value="121">Кирово-Чепецк</option>
+                                            <option value="122">Киселевск</option>
+                                            <option value="123">Кисловодск</option>
+                                            <option value="124">Клин</option>
+                                            <option value="125">Клинцы</option>
+                                            <option value="126">Ковров</option>
+                                            <option value="127">Когалым</option>
+                                            <option value="128">Коломна</option>
+                                            <option value="129">Комсомольск-на-Амуре</option>
+                                            <option value="130">Копейск</option>
+                                            <option value="131">Королев</option>
+                                            <option value="132">Кострома</option>
+                                            <option value="133">Котлас</option>
+                                            <option value="134">Красногорск</option>
+                                            <option value="135">Краснодар</option>
+                                            <option value="136">Краснокаменск</option>
+                                            <option value="137">Краснокамск</option>
+                                            <option value="138">Краснотурьинск</option>
+                                            <option value="139">Красноярск</option>
+                                            <option value="140">Кропоткин</option>
+                                            <option value="141">Крымск</option>
+                                            <option value="142">Кстово</option>
+                                            <option value="143">Кузнецк</option>
+                                            <option value="144">Кумертау</option>
+                                            <option value="145">Кунгур</option>
+                                            <option value="146">Курган</option>
+                                            <option value="147">Курск</option>
+                                            <option value="148">Кызыл</option>
+                                            <option value="149">Лабинск</option>
+                                            <option value="150">Лениногорск</option>
+                                            <option value="151">Ленинск-Кузнецкий</option>
+                                            <option value="152">Лесосибирск</option>
+                                            <option value="153">Липецк</option>
+                                            <option value="154">Лиски</option>
+                                            <option value="155">Лобня</option>
+                                            <option value="156">Лысьва</option>
+                                            <option value="157">Лыткарино</option>
+                                            <option value="158">Люберцы</option>
+                                            <option value="159">Магадан</option>
+                                            <option value="160">Магнитогорск</option>
+                                            <option value="161">Майкоп</option>
+                                            <option value="162">Махачкала</option>
+                                            <option value="163">Междуреченск</option>
+                                            <option value="164">Мелеуз</option>
+                                            <option value="165">Миасс</option>
+                                            <option value="166">Минеральные Воды</option>
+                                            <option value="167">Минусинск</option>
+                                            <option value="168">Михайловка</option>
+                                            <option value="169">Михайловск (Ставропольский край)</option>
+                                            <option value="170">Мичуринск</option>
+                                            <option value="171">Москва</option>
+                                            <option value="172">Мурманск</option>
+                                            <option value="173">Муром</option>
+                                            <option value="174">Мытищи</option>
+                                            <option value="175">Набережные Челны</option>
+                                            <option value="176">Назарово</option>
+                                            <option value="177">Назрань</option>
+                                            <option value="178">Нальчик</option>
+                                            <option value="179">Наро-Фоминск</option>
+                                            <option value="180">Находка</option>
+                                            <option value="181">Невинномысск</option>
+                                            <option value="182">Нерюнгри</option>
+                                            <option value="183">Нефтекамск</option>
+                                            <option value="184">Нефтеюганск</option>
+                                            <option value="185">Нижневартовск</option>
+                                            <option value="186">Нижнекамск</option>
+                                            <option value="187">Нижний Новгород</option>
+                                            <option value="188">Нижний Тагил</option>
+                                            <option value="189">Новоалтайск</option>
+                                            <option value="190">Новокузнецк</option>
+                                            <option value="191">Новокуйбышевск</option>
+                                            <option value="192">Новомосковск</option>
+                                            <option value="193">Новороссийск</option>
+                                            <option value="194">Новосибирск</option>
+                                            <option value="195">Новотроицк</option>
+                                            <option value="196">Новоуральск</option>
+                                            <option value="197">Новочебоксарск</option>
+                                            <option value="198">Новочеркасск</option>
+                                            <option value="199">Новошахтинск</option>
+                                            <option value="200">Новый Уренгой</option>
+                                            <option value="201">Ногинск</option>
+                                            <option value="202">Норильск</option>
+                                            <option value="203">Ноябрьск</option>
+                                            <option value="204">Нягань</option>
+                                            <option value="205">Обнинск</option>
+                                            <option value="206">Одинцово</option>
+                                            <option value="207">Озерск (Челябинская область)</option>
+                                            <option value="208">Октябрьский</option>
+                                            <option value="209">Омск</option>
+                                            <option value="210">Орел</option>
+                                            <option value="211">Оренбург</option>
+                                            <option value="212">Орехово-Зуево</option>
+                                            <option value="213">Орск</option>
+                                            <option value="214">Павлово</option>
+                                            <option value="215">Павловский Посад</option>
+                                            <option value="216">Пенза</option>
+                                            <option value="217">Первоуральск</option>
+                                            <option value="218">Пермь</option>
+                                            <option value="219">Петрозаводск</option>
+                                            <option value="220">Петропавловск-Камчатский</option>
+                                            <option value="221">Подольск</option>
+                                            <option value="222">Полевской</option>
+                                            <option value="223">Прокопьевск</option>
+                                            <option value="224">Прохладный</option>
+                                            <option value="225">Псков</option>
+                                            <option value="226">Пушкино</option>
+                                            <option value="227">Пятигорск</option>
+                                            <option value="228">Раменское</option>
+                                            <option value="229">Ревда</option>
+                                            <option value="230">Реутов</option>
+                                            <option value="231">Ржев</option>
+                                            <option value="232">Рославль</option>
+                                            <option value="233">Россошь</option>
+                                            <option value="234">Ростов-на-Дону</option>
+                                            <option value="235">Рубцовск</option>
+                                            <option value="236">Рыбинск</option>
+                                            <option value="237">Рязань</option>
+                                            <option value="238">Салават</option>
+                                            <option value="239">Сальск</option>
+                                            <option value="240">Самара</option>
+                                            <option value="241">Санкт-Петербург</option>
+                                            <option value="242">Саранск</option>
+                                            <option value="243">Сарапул</option>
+                                            <option value="244">Саратов</option>
+                                            <option value="245">Саров</option>
+                                            <option value="246">Свободный</option>
+                                            <option value="247">Севастополь</option>
+                                            <option value="248">Северодвинск</option>
+                                            <option value="249">Северск</option>
+                                            <option value="250">Сергиев Посад</option>
+                                            <option value="251">Серов</option>
+                                            <option value="252">Серпухов</option>
+                                            <option value="253">Сертолово</option>
+                                            <option value="254">Сибай</option>
+                                            <option value="255">Симферополь</option>
+                                            <option value="256">Славянск-на-Кубани</option>
+                                            <option value="257">Смоленск</option>
+                                            <option value="258">Соликамск</option>
+                                            <option value="259">Солнечногорск</option>
+                                            <option value="260">Сосновый Бор</option>
+                                            <option value="261">Сочи</option>
+                                            <option value="262">Ставрополь</option>
+                                            <option value="263">Старый Оскол</option>
+                                            <option value="264">Стерлитамак</option>
+                                            <option value="265">Ступино</option>
+                                            <option value="266">Сургут</option>
+                                            <option value="267">Сызрань</option>
+                                            <option value="268">Сыктывкар</option>
+                                            <option value="269">Таганрог</option>
+                                            <option value="270">Тамбов</option>
+                                            <option value="271">Тверь</option>
+                                            <option value="272">Тимашевск</option>
+                                            <option value="273">Тихвин</option>
+                                            <option value="274">Тихорецк</option>
+                                            <option value="275">Тобольск</option>
+                                            <option value="276">Тольятти</option>
+                                            <option value="277">Томск</option>
+                                            <option value="278">Троицк</option>
+                                            <option value="279">Туапсе</option>
+                                            <option value="280">Туймазы</option>
+                                            <option value="281">Тула</option>
+                                            <option value="282">Тюмень</option>
+                                            <option value="283">Узловая</option>
+                                            <option value="284">Улан-Удэ</option>
+                                            <option value="285">Ульяновск</option>
+                                            <option value="286">Урус-Мартан</option>
+                                            <option value="287">Усолье-Сибирское</option>
+                                            <option value="288">Уссурийск</option>
+                                            <option value="289">Усть-Илимск</option>
+                                            <option value="290">Уфа</option>
+                                            <option value="291">Ухта</option>
+                                            <option value="292">Феодосия</option>
+                                            <option value="293">Фрязино</option>
+                                            <option value="294">Хабаровск</option>
+                                            <option value="295">Ханты-Мансийск</option>
+                                            <option value="296">Хасавюрт</option>
+                                            <option value="297">Химки</option>
+                                            <option value="298">Чайковский</option>
+                                            <option value="299">Чапаевск</option>
+                                            <option value="300">Чебоксары</option>
+                                            <option value="301">Челябинск</option>
+                                            <option value="302">Черемхово</option>
+                                            <option value="303">Череповец</option>
+                                            <option value="304">Черкесск</option>
+                                            <option value="305">Черногорск</option>
+                                            <option value="306">Чехов</option>
+                                            <option value="307">Чистополь</option>
+                                            <option value="308">Чита</option>
+                                            <option value="309">Шадринск</option>
+                                            <option value="310">Шали</option>
+                                            <option value="311">Шахты</option>
+                                            <option value="312">Шуя</option>
+                                            <option value="313">Щекино</option>
+                                            <option value="314">Щелково</option>
+                                            <option value="315">Электросталь</option>
+                                            <option value="316">Элиста</option>
+                                            <option value="317">Энгельс</option>
+                                            <option value="318">Южно-Сахалинск</option>
+                                            <option value="319">Юрга</option>
+                                            <option value="320">Якутск</option>
+                                            <option value="321">Ялта</option>
+                                            <option value="322">Ярославль</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-ctrl">
+                                <div class="form-submit"><button type="submit" class="btn"><img src="images/btn-search.svg" alt="" />Найти фонды</button></div>
+                                <div class="form-reset"><button type="reset" class="reset">Сбросить</button></div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- navigator filter END -->
 
                     <!-- navigator results -->
                     <div class="navigator-results">
@@ -336,6 +1444,7 @@
         <script src="js/validation/messages_ru.js"></script>
         <script src="js/select2/select2.min.js"></script>
         <script src="js/select2/ru.js"></script>
+        <script src="js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/tools.js"></script>
 
     </body>

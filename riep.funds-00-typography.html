@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/select2/select2.css" />
+        <link rel="stylesheet" href="js/mcustomscrollbar/jquery.mCustomScrollbar.css" />
 
         <meta name="viewport" content="width=device-width" />
     </head>
@@ -303,6 +304,36 @@
 
                             <div class="form-input"><span>Сообщение</span><textarea name="message" cols="5" rows="3">Внешний вид документов о соответствии довольно часто интересует компании, которые выставляют наличие сертификата ГОСТ ISO 9001-2011 в качестве условия заключения контрактов с новыми поставщиками. На этот счет в известном журнале «Quality Digest» опубликована специальная статья Мириам Будро, президента консалтинговой компании</textarea></div>
 
+                            <div class="form-select">
+                                <select name="select1" data-placeholder="Регион" class="required">
+                                    <option value=""></option>
+                                    <option value="1">Вариант номер 1</option>
+                                    <option value="2">Вариант номер 2</option>
+                                    <option value="3">Вариант номер 3</option>
+                                    <option value="4">Вариант номер 4</option>
+                                </select>
+                            </div>
+
+                            <div class="form-select">
+                                <select name="select2" data-placeholder="Регион" multiple="multiple">
+                                    <option value=""></option>
+                                    <option value="1">Вариант номер 1</option>
+                                    <option value="2">Вариант номер 2</option>
+                                    <option value="3">Вариант номер 3</option>
+                                    <option value="4">Вариант номер 4</option>
+                                    <option value="5">Вариант номер 5</option>
+                                    <option value="6">Вариант номер 6</option>
+                                    <option value="7">Вариант номер 7</option>
+                                    <option value="8">Вариант номер 8</option>
+                                    <option value="9">Вариант номер 9</option>
+                                </select>
+                            </div>
+
+                            <div class="form-file">
+                                <div class="form-file-input"><input type="file" name="file" class="required" /><span>Загрузить файл</span></div>
+                                <div class="form-file-name"></div>
+                            </div>
+
                             <div class="form-label">Уведомления</div>
                             <div class="form-checkbox">
                                 <label><input type="checkbox" name="checkbox1" checked="checked" class="required" /><span>При изменении даты и времени встреч</span></label>
@@ -391,6 +422,7 @@
         <script src="js/validation/messages_ru.js"></script>
         <script src="js/select2/select2.min.js"></script>
         <script src="js/select2/ru.js"></script>
+        <script src="js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/tools.js"></script>
 
     </body>
