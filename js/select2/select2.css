@@ -28,6 +28,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap; }
+    @media screen and (max-width:1119px) {
+        .select2-container .select2-selection--single .select2-selection__rendered {
+          padding-left: 19px;
+          padding-right: 54px; }
+    }
     .select2-container .select2-selection--single .select2-selection__clear {
       position: relative; }
   .select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
@@ -40,6 +45,10 @@
     height: 48px;
     user-select: none;
     -webkit-user-select: none; }
+    @media screen and (max-width:1119px) {
+      .select2-container .select2-selection--multiple {
+      height: 70px; }
+    }
     .select2-container .select2-selection--multiple .select2-selection__rendered {
       display: inline-block;
       overflow: hidden;
@@ -70,6 +79,7 @@
   z-index: 1051; }
   @media screen and (max-width:1119px) {
     .select2-dropdown {
+      max-width: none;
       border-color: #b9b9b9; }
   }
 
@@ -90,7 +100,8 @@
   -webkit-user-select: none; }
   @media screen and (max-width:1119px) {
     .select2-results__option {
-      border-color: #b8b8b8}
+      padding: 17px 54px 21px 19px;
+      border-color: #b9b9b9; }
   }
   .select2-results__option:first-child {
     border-top: none; }
@@ -189,6 +200,14 @@
   font-size: 13px;
   line-height: 19px;
   pointer-events: none; }
+  @media screen and (max-width:1119px) {
+    .select2-container--full::after {
+      font-size: 16px;
+      line-height: 24px;
+      top: -13px;
+      padding:0 7px;
+      left: 13px; }
+  }
   .form-select select.error+.select2-container--default,
   .form-select select.error+label.error+.select2-container--default {
     margin-bottom: 24px; }
@@ -239,10 +258,10 @@
       top: 50%; }
       @media screen and (max-width:1119px) {
         .select2-container--default .select2-selection--single .select2-selection__arrow b {
-            width: 21px;
-            height: 12px;
-            margin-left: -10.5px;
-            margin-top: -6px;
+            width: 23px;
+            height: 14px;
+            margin-left: -11.5px;
+            margin-top: -7px;
             background: url(arrow-mobile.svg) no-repeat; }
       }
 
@@ -260,6 +279,7 @@
     display: none; }
 
 .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  transform: rotate(-180deg);
  }
 
 .select2-container--default .select2-selection--multiple {
@@ -270,6 +290,10 @@
   line-height: 0;
   letter-spacing: -1px;
   cursor: pointer; }
+  @media screen and (max-width:1119px) {
+    .select2-container--default .select2-selection--multiple {
+      border-color: #b9b9b9; }
+  }
   .select2-container--default .select2-selection--multiple::before {
     position: absolute;
     left: 14px;
@@ -282,6 +306,14 @@
     z-index: 1;
     pointer-events: none;
     content: attr(data-placeholder); }
+    @media screen and (max-width:1119px) {
+      .select2-container--default .select2-selection--multiple::before {
+        left: 20px;
+        top: 18px;
+        font-size: 20px;
+        line-height: 30px;
+        color: #666; }
+    }
     .select2-container--full .select2-selection--multiple::before {
       display: none; }
   .select2-container--default .select2-selection--multiple::after {
@@ -293,6 +325,16 @@
     position: absolute;
     background: url(arrow.svg) no-repeat;
     top: 50%; }
+    @media screen and (max-width:1119px) {
+      .select2-container--default .select2-selection--multiple::after {
+        width: 23px;
+        height: 14px;
+        right: 20px;
+        margin-top: -7px;
+        background: url(arrow-mobile.svg) no-repeat; }
+      .select2-container--default.select2-container--open .select2-selection--multiple::after {
+        transform: rotate(-180deg); }
+    }
   .select2-container--default .select2-selection--multiple .select2-selection__rendered {
     box-sizing: border-box;
     list-style: none;
@@ -303,6 +345,10 @@
     position: relative;
     overflow: hidden;
     width: 100%; }
+    @media screen and (max-width:1119px) {
+      .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+        padding: 10px 54px 0 9px; }
+    }
     .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
       display: inline-block;
       margin: 0 0 0 10px;
@@ -312,6 +358,13 @@
       line-height: 24px;
       letter-spacing: 0;
       list-style: none; }
+      @media screen and (max-width:1119px) {
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+          font-size: 20px;
+          font-weight: normal;
+          line-height: 46px;
+          padding: 0 52px 0 14px; }
+      }
       .select2-container--default .select2-selection--multiple .select2-selection__rendered li::before {
         display: none; }
       .select2-container--default .select2-selection--multiple .select2-selection__rendered li.select2-search--inline {
@@ -332,6 +385,13 @@
     height: 26px;
     position: relative;
     padding: 0 27px 0 9px; }
+    @media screen and (max-width:1119px) {
+      .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        border-color: #2c6573;
+        border-radius: none;
+        height: 48px;
+        padding: 0 52px 0 14px; }
+    }
   .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
     position: absolute;
     right: 5px;
@@ -346,6 +406,14 @@
     background: url(remove.svg) no-repeat center;
     transition: all 0.2s;
     display: block; }
+    @media screen and (max-width:1119px) {
+      .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+        right: 13px;
+        top: 7px;
+        width: 31px;
+        height: 31px;
+        background: #fff url(remove-mobile.svg) no-repeat center; }
+    }
     .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
       background-color: #fff; }
 
@@ -429,7 +497,7 @@
   background-color: #f5f5f5; }
   @media screen and (max-width:1119px) {
     .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #fefae6; }
+    background-color: #e6edee; }
   }
 
 .select2-container--default .select2-results__group {

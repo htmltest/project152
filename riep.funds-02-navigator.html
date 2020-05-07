@@ -26,9 +26,41 @@
                                 <li><a href="#">Обратная связь</a></li>
                             </ul>
                         </div>
+                        <a href="#" class="mobile-menu-link"></a>
                         <div class="top-user"><a href="#">Личный кабинет</a></div>
                     </div>
                 </div>
+
+                <!-- mobile menu -->
+                <div class="mobile-menu">
+                    <div class="mobile-menu-bg"></div>
+                    <div class="mobile-menu-container">
+                        <a href="#" class="mobile-menu-close"></a>
+
+                        <div class="mobile-menu-content">
+                            <div class="mobile-menu-list">
+                                <div class="mobile-menu-main">
+                                    <ul>
+                                        <li class="active"><a href="#">Навигатор фондов</a></li>
+                                        <li><a href="#">Открытые данные</a></li>
+                                        <li><a href="#">Карта фондов</a></li>
+                                        <li><a href="#">RSI</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mobile-menu-add">
+                                    <ul>
+                                        <li><a href="#">Инструкция пользователя</a></li>
+                                        <li><a href="#">Обратная связь</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mobile-menu-user">
+                                <a href="#" class="btn">Личный кабинет</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- mobile menu END -->
 
                 <header>
                     <div class="container">
@@ -52,6 +84,7 @@
                 <div class="container">
 
                     <div class="breadcrumbs"><a href="#">Главная</a><span></span>Навигатор фондов</div>
+                    <div class="back-mobile"><a href="#">Главная</a></div>
 
                     <h1>Навигатор фондов</h1>
 
@@ -65,6 +98,7 @@
                                     <div class="navigator-filter-block">
                                         <h3>По стадиям жизненного цикла проекта</h3>
                                         <div class="navigator-filter-block-menu">
+                                            <div class="navigator-filter-block-menu-current" data-placeholder="Выберете стадию"></div>
                                             <div class="navigator-filter-block-menu-inner">
                                                 <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>1</strong>Исследования</span></a></div>
                                                 <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>2</strong>Разработки</span></a></div>
@@ -140,6 +174,7 @@
                                     <div class="navigator-filter-block">
                                         <h3>По направлениям поддержки проекта</h3>
                                         <div class="navigator-filter-block-menu">
+                                            <div class="navigator-filter-block-menu-current" data-placeholder="Выберете направление"></div>
                                             <div class="navigator-filter-block-menu-inner">
                                                 <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>1</strong>Инфраструктура</span></a></div>
                                                 <div class="navigator-filter-block-menu-item"><a href="#"><span><strong>2</strong>Информационные<br /> ресурсы</span></a></div>
@@ -1366,9 +1401,7 @@
                             <a href="#" class="pager-prev"></a>
                             <a href="#" class="active">1</a>
                             <a href="#">2</a>
-                            <a href="#">3</a>
                             <span>...</span>
-                            <a href="#">12</a>
                             <a href="#">13</a>
                             <a href="#">14</a>
                             <a href="#" class="pager-next"></a>
@@ -1408,7 +1441,7 @@
                         </ul>
                     </div>
 
-                    <div class="footer-policy"><a href="#">политика конфиденциальности</a></div>
+                    <div class="footer-policy"><a href="#">Политика конфиденциальности</a></div>
 
                     <div class="footer-copyrights">
                         <p>Реестр разработан при поддержке Минобрнауки России.</p>
@@ -1425,7 +1458,7 @@
         </script>
         <script src="js/fonts.js"></script>
 
-        <script src="js/jquery-3.5.0.min.js"></script>
+        <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/slick/slick.min.js"></script>
         <script src="js/jquery.mask.min.js"></script>
         <script src="js/validation/jquery.validate.min.js"></script>
