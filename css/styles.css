@@ -131,13 +131,15 @@ blockquote {margin:34px 0 40px 0; background:rgba(44, 101, 115, 0.07); border-le
 .form-input span em {color:#f00; font-style:normal}
 .form-input.focus span,
 .form-input.full span {font-size:13px; line-height:19px; top:-10px; padding:0 5px; left:8px}
+.form-textarea.focus span,
+.form-textarea.full span {top:10px; padding:0; left:13px}
 .form-input.focus span::before,
 .form-input.full span::before {content:""; display:block; position:absolute; left:0; bottom:0; right:0; background:#fff; height:9px; z-index:-1}
 .form-input input,
 .form-input textarea {position:relative; border:1px solid #d9d9d9; font:16px/24px Arial, sans-serif; color:#000; vertical-align:top; margin:0; padding:12px 13px 10px 13px; width:100%; height:48px; box-sizing:border-box; outline:none; border-radius:1px; background:#fff; -webkit-appearance:none; transition:border-color 0.2s}
 .fonts-loaded .form-input input,
 .fonts-loaded .form-input textarea {font-family:Lato, sans-serif}
-.form-input textarea {min-height:48px; height:auto; resize:none; overflow:auto; font-weight:300}
+.form-input textarea {min-height:96px; height:auto; resize:none; overflow:auto; font-weight:300; padding-top:32px}
 .form-input input.error,
 .form-input textarea.error {border-color:#df0e0e}
 label.error {display:block; font-size:13px; line-height:19px; color:#df0e0e; margin:4px 0 0 0; font-weight:normal}
@@ -150,12 +152,15 @@ label.error {display:block; font-size:13px; line-height:19px; color:#df0e0e; mar
     .form-input span em {color:#ff143e}
     .form-input.focus span,
     .form-input.full span {font-size:16px; line-height:24px; top:-13px; padding:0 7px; left:13px}
+    .form-textarea.focus span,
+    .form-textarea.full span {top:10px; padding:0; left:20px}
     .form-input.focus span::before,
     .form-input.full span::before {height:11px}
     .form-input input,
     .form-input textarea {border-color:#b9b9b9; font-size:20px; line-height:30px; padding:17px 19px 21px 19px; height:70px}
     .form-input input.error,
     .form-input textarea.error {border-color:#ff143e}
+    .form-input textarea {padding-top:37px}
     label.error {font-size:16px; line-height:24px; color:#f00; margin:3px 0 0 0}
 }
 
@@ -389,12 +394,12 @@ label.error {display:block; font-size:13px; line-height:19px; color:#df0e0e; mar
 .top-user a:hover::before {opacity:1}
 
 @media screen and (max-width:1119px) {
-    .top {height:75px}
+    .top {height:66px}
     .top-menu {display:none}
-    .mobile-menu-link {display:block; float:right; width:50px; height:50px; margin:12px 0 0 0; border-radius:50%; background:#19414d url(../images/mobile-menu-link.svg) no-repeat center}
-    .top-user {margin:12px 20px 0 0}
-    .top-user a {padding:50px 0 0 50px; width:50px; height:50px; background:#19414d; font-size:0; line-height:0; letter-spacing:-1px; overflow:hidden; border-radius:50%}
-    .top-user a::before {width:24px; height:27px; opacity:1; background-size:100%; left:50%; margin-left:-12px; margin-top:-13.5px}
+    .mobile-menu-link {display:block; float:right; width:27px; height:20px; margin:22px 0 0 0; background:url(../images/mobile-menu-link.svg) no-repeat}
+    .top-user {margin:19px 46px 0 0}
+    .top-user a {padding:0 0 0 0; width:24px; height:27px; font-size:0; line-height:0; letter-spacing:-1px; overflow:hidden}
+    .top-user a::before {width:24px; height:27px; opacity:1; background-size:100%; left:0; top:0; margin-left:0; margin-top:0}
 
     .mobile-menu-open,
     .mobile-menu-open body {overflow:hidden; position:fixed; left:0; top:0; right:0; bottom:0}
@@ -667,20 +672,21 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .navigator-filter-block-menu {margin:26px 0 0 0; width:100%; position:relative; overflow:hidden; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
 .navigator-filter-block-menu-current {display:none}
 .navigator-filter-block-menu-inner {display:inline-block; vertical-align:top}
+.navigator-filter-block-menu-all {display:none}
 .navigator-filter-block-menu-item {display:inline-block; vertical-align:top; margin:0 0 0 -10px; padding:0 22px 0 0}
-.navigator-filter-block-menu-item:first-child {margin:0}
+.navigator-filter-block-menu-all+.navigator-filter-block-menu-item {margin:0}
 .navigator-filter-block-menu-item a {display:table; text-decoration:none; background:#e6ecee; color:#000}
 .navigator-filter-block-menu-item a:hover {background:#c0d1d5}
 .navigator-filter-block-menu-item.active a {background:#2c6573; color:#fff}
 .navigator-filter-block-menu-item a span {display:table-cell; position:relative; padding:0 30px 0 78px; vertical-align:middle; height:58px; font-weight:normal; font-size:14px; line-height:15px; letter-spacing:0}
 .navigator-filter-block-menu-item a span::before {content:""; display:block; position:absolute; left:0; top:0; width:0; height:0; border-left:22px solid #fff; border-top:29px solid transparent; border-bottom:29px solid transparent; transition:all 0.2s}
-.navigator-filter-block-menu-item:first-child a span::before {display:none}
+.navigator-filter-block-menu-all+.navigator-filter-block-menu-item a span::before {display:none}
 .navigator-filter-block-menu-item a span::after {content:""; display:block; z-index:1; position:absolute; right:-22px; top:0; width:0; height:0; border-left:22px solid #e6ecee; border-top:29px solid transparent; border-bottom:29px solid transparent; transition:all 0.2s}
 .navigator-filter-block-menu-item a:hover span::after {border-left-color:#c0d1d5}
 .navigator-filter-block-menu-item.active a span::after {border-left-color:#2c6573}
-.navigator-filter-block-menu-item:first-child a span {padding-left:54px}
+.navigator-filter-block-menu-all+.navigator-filter-block-menu-item a span {padding-left:54px}
 .navigator-filter-block-menu-item a strong {display:block; position:absolute; left:40px; top:50%; width:24px; height:24px; margin-top:-12px; background:#fff; border-radius:50%; text-align:center; font-weight:normal; font-size:16px; line-height:24px; color:#000}
-.navigator-filter-block-menu-item:first-child a strong {left:20px}
+.navigator-filter-block-menu-all+.navigator-filter-block-menu-item a strong {left:20px}
 
 @media screen and (max-width:1119px) {
     .navigator-filter-block {margin:30px 0 0 0; border-top:1px solid #b5c8cd; padding:30px 0 0 0}
@@ -689,16 +695,18 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
     .navigator-filter-block-menu-current {display:block; cursor:pointer; height:70px; background:#2c6573; color:#fff; position:relative; font-size:20px; line-height:70px; font-weight:normal; letter-spacing:0; font-weight:normal; padding:0 0 0 20px}
     .navigator-filter-block-menu-current::after {content:""; display:block; position:absolute; right:19px; top:50%; margin-top:-6.5px; width:20px; height:13px; background:url(../images/navigator-filter-block-menu-current.svg) no-repeat}
     .navigator-filter-block-menu-current strong {display:inline-block; vertical-align:middle; margin:-2px 13px 0 0; width:28px; height:28px; background:#fff; border-radius:50%; text-align:center; font-weight:normal; font-size:17px; line-height:28px; color:#171717}
-    .navigator-filter-block-menu-inner {display:none; position:absolute; left:0; top:100%; right:0; background:#fff; border:1px solid #b9b9b9; border-top:none}
+    .navigator-filter-block-menu-inner {display:none; position:absolute; left:0; top:100%; right:0; background:#fff; border:1px solid #b9b9b9; border-top:none; max-height:300px; overflow:auto}
     .navigator-filter-block-menu-inner::before {content:attr(data-placeholder); display:block; padding:0 0 0 20px; height:68px; font-size:20px; font-weight:normal; line-height:68px; color:#666; letter-spacing:0}
     .navigator-filter-block-menu.open .navigator-filter-block-menu-inner {display:block}
+    .navigator-filter-block-menu-all {display:block; margin:0; padding:0; border-top:1px solid #b9b9b9}
+    .navigator-filter-block-menu-all a {display:block; color:#666; padding:0 0 0 60px; height:68px; font-size:20px; line-height:68px; font-weight:normal; letter-spacing:0; text-decoration:none}
     .navigator-filter-block-menu-item {display:block; margin:0; padding:0; border-top:1px solid #b9b9b9}
     .navigator-filter-block-menu-item a {display:block; color:#666; background:none; position:relative}
     .navigator-filter-block-menu-item.active a::after {content:""; display:block; width:24px; height:24px; background:url(../images/navigator-filter-block-menu-mobile.svg) no-repeat; position:absolute; right:20px; top:50%; margin-top:-12px}
     .navigator-filter-block-menu-item a:hover {background:none}
     .navigator-filter-block-menu-item.active a {background:#e6edee; color:#000}
     .navigator-filter-block-menu-item a span {display:block; padding:0 0 0 60px; height:68px; font-size:20px; line-height:68px}
-    .navigator-filter-block-menu-item:first-child a span {padding-left:60px}
+    .navigator-filter-block-menu-all+.navigator-filter-block-menu-item a span {padding-left:60px}
     .navigator-filter-block-menu-item a span::before {display:none}
     .navigator-filter-block-menu-item a span::after {display:none}
     .navigator-filter-block-menu-item a strong {left:20px; width:28px; height:28px; margin-top:-14px; background:#2c6573; font-size:17px; color:#fff; line-height:28px}
@@ -884,6 +892,7 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 
 .opendata-group-container {position:absolute; left:-9999px; top:-9999px; opacity:0; transition:opacity 0.2s; padding:0 0 55px 0; width:100%}
 .opendata-group.open .opendata-group-container {position:relative; left:auto; top:auto; opacity:1}
+.opendata-group-container.loading {min-height:200px; background:url(../images/loading.gif) no-repeat center}
 
 @media screen and (max-width:1119px) {
     .opendata-group-container {padding:35px 0 33px 0}

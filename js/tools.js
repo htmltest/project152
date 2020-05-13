@@ -165,7 +165,24 @@ $(document).ready(function() {
     });
 
     $('.opendata-group-title').click(function() {
-        $(this).parent().toggleClass('open');
+        var curGroup = $(this).parent();
+        curGroup.toggleClass('open');
+        if (curGroup.hasClass('open')) {
+            var curContainer = curGroup.find('.opendata-group-container');
+            if (curContainer.attr('data-link')) {
+                curContainer.addClass('loading');
+                $.ajax({
+                    type: 'GET',
+                    url: curContainer.attr('data-link'),
+                    dataType: 'html',
+                    cache: false
+                }).done(function(html) {
+                    curContainer.html(html);
+                    curContainer.removeClass('loading');
+                });
+                curContainer.removeAttr('data-link');
+            }
+        }
     });
 
     $('.opendata-filter-item select').change(function() {
@@ -207,6 +224,21 @@ $(document).ready(function() {
             curLi.removeClass('active')
             $('.navigator-filter-block-content.active').removeClass('active');
             $('.navigator-filter-block-content .form-checkbox input').prop('checked', false);
+            curMenu.find('.navigator-filter-block-menu-current').html(curMenu.find('.navigator-filter-block-menu-current').attr('data-placeholder'));
+        }
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.navigator-filter-block-menu-all a', function(e) {
+        var curLi = $(this).parent();
+        curMenu = curLi.parent().parent();
+        curMenu.removeClass('open');
+        var curActive = curMenu.find('.navigator-filter-block-menu-item.active');
+        curMenu.find('.navigator-filter-block-menu-item.active').removeClass('active');
+        if (curActive.length == 1) {
+            var curIndex = $('.navigator-filter-block-menu-item').index(curActive);
+            $('.navigator-filter-block-content').eq(curIndex).removeClass('active');
+            $('.navigator-filter-block-content').eq(curIndex).find('.form-checkbox input').prop('checked', false);
             curMenu.find('.navigator-filter-block-menu-current').html(curMenu.find('.navigator-filter-block-menu-current').attr('data-placeholder'));
         }
         e.preventDefault();
@@ -329,7 +361,7 @@ function initForm(curForm) {
             minimumResultsForSearch: 20
         }
 
-        if ($(window).width > 1119) {
+        if ($(window).width() > 1119) {
             options['dropdownAutoWidth'] = true;
         }
 
