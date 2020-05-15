@@ -82,6 +82,7 @@ $(document).ready(function() {
         curTabsContainer.find('> .tabs-content').eq(0).addClass('active');
         curTabsMenu.html(newHTML);
         curTabsMenu.find('.tabs-menu-item').eq(0).addClass('active');
+        $(window).trigger('load');
     });
 
     $('body').on('click', '.tabs-menu-item a', function(e) {
@@ -160,11 +161,11 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.opendata-block-title').click(function() {
+    $('body').on('click', '.opendata-block-title', function() {
         $(this).parent().toggleClass('open');
     });
 
-    $('.opendata-group-title').click(function() {
+    $('body').on('click', '.opendata-group-title', function() {
         var curGroup = $(this).parent();
         curGroup.toggleClass('open');
         if (curGroup.hasClass('open')) {
@@ -561,4 +562,33 @@ $(window).on('load resize scroll', function() {
         $('.up-link').css({'margin-bottom': 0});
     }
     $('#body-test-height').remove();
+});
+
+$(window).on('load', function() {
+    if (window.location.hash != '') {
+        var curContainer = $(window.location.hash);
+        if (curContainer.length == 1 && $('.tabs-menu-item').length > 0) {
+            var tabsTransition = $('.tabs-content').eq(0).css('transition');
+            $('.tabs-content').css('transition', 'none');
+            $('.tabs-menu-item').eq(0).removeClass('active');
+            $('.tabs-menu-item').eq(1).addClass('active');
+            $('.tabs-content').eq(0).removeClass('active');
+            $('.tabs-content').eq(1).addClass('active');
+            $('.tabs-content').css('transition', tabsTransition);
+
+            var curGroup = curContainer.parent();
+            var curBlock = curGroup.parent().parent();
+            var blockTransition = curBlock.find('.opendata-block-container').eq(0).css('transition');
+            var groupTransition = curBlock.find('.opendata-group-container').eq(0).css('transition');
+            curBlock.find('.opendata-block-container').css('transition', 'none');
+            curGroup.find('.opendata-group-container').css('transition', 'none');
+            curGroup.removeClass('open');
+            curGroup.find('.opendata-group-title').trigger('click');
+            curBlock.removeClass('open');
+            curBlock.find('.opendata-block-title').trigger('click');
+            $('html, body').animate({'scrollTop': curGroup.offset().top});
+            curBlock.find('.opendata-block-container').css('transition', blockTransition);
+            curGroup.find('.opendata-group-container').css('transition', groupTransition);
+        }
+    }
 });
