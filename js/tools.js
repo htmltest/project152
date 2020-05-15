@@ -189,20 +189,28 @@ $(document).ready(function() {
         var curSelect = $(this);
 
         var curResults = curSelect.parents().filter('.opendata-group-container');
-        curResults.find('.opendata-results').addClass('loading');
         var curForm = curResults.find('.opendata-filter form');
-        var formData = curForm.serialize();
 
-        $.ajax({
-            type: 'GET',
-            url: curForm.attr('action'),
-            dataType: 'html',
-            data: formData,
-            cache: false
-        }).done(function(html) {
-            curResults.find('.opendata-results').html(html);
-            curResults.find('.opendata-results').removeClass('loading');
+        var allSelected = true;
+        curForm.find('.opendata-filter-item').each(function() {
+            if ($(this).find('select').val() == '') {
+                allSelected = false;
+            }
         });
+        if (allSelected) {
+            var formData = curForm.serialize();
+            curResults.find('.opendata-results').addClass('loading');
+            $.ajax({
+                type: 'GET',
+                url: curForm.attr('action'),
+                dataType: 'html',
+                data: formData,
+                cache: false
+            }).done(function(html) {
+                curResults.find('.opendata-results').html(html);
+                curResults.find('.opendata-results').removeClass('loading');
+            });
+        }
     });
 
     $('body').on('click', '.navigator-filter-block-menu-item a', function(e) {
