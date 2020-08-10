@@ -986,3 +986,135 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 @media screen and (max-width:1119px) {
     .up-link {width:54px; height:54px; right:20px; margin-right:0; background-image:url(../images/up-link-mobile.svg); background-position:center}
 }
+
+.opendata-chart-menu {margin:45px 0 0 0; font-size:20px; line-height:30px; position:relative; font-weight:normal; border-bottom:2px solid #dadada; max-width:620px}
+.opendata-group-container > .opendata-chart > .opendata-chart-menu:first-child {margin:0}
+.opendata-chart-menu::after {content:""; display:block; clear:both}
+.opendata-chart-menu-item {float:left; margin:0 0 0 40px; padding:0; position:relative}
+.opendata-chart-menu-item:first-child {margin:0}
+.opendata-chart-menu-item a {text-decoration:none; display:block; padding:0 0 4px 0; position:relative; color:#999}
+.opendata-chart-menu-item a::after {content:""; display:block; position:absolute; left:0; right:0; height:4px; bottom:-2px; background:#2c6573; transition:all 0.2s; transform:scale(0, 1); transform-origin:left center}
+.opendata-chart-menu-item a:hover {color:#000}
+.opendata-chart-menu-item.active a {color:#000}
+.opendata-chart-menu-item.active a::after {transform:scale(1, 1)}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-menu {margin:40px 0 0 0; font-size:22px; line-height:33px}
+    .opendata-group-container > .opendata-chart > .opendata-chart-menu:first-child {margin:0}
+    .opendata-chart-menu-item {margin:0 0 0 36px}
+    .opendata-chart-menu-item:first-child {margin:0}
+    .opendata-chart-menu-item a {padding:0 0 10px 0}
+}
+
+.opendata-chart-download {margin:30px 0 0 0}
+.opendata-chart-container {margin:30px 0 0 0}
+
+.opendata-chart-content::after {content:""; display:block; clear:both}
+
+.opendata-chart-graph {float:left; width:620px; position:relative; overflow:auto}
+.opendata-chart-graph-container {display:inline-block; vertical-align:top; position:relative; height:420px; overflow:hidden; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
+.opendata-chart-graph-scale {display:inline-block; vertical-align:top; margin:10px 0 0 0; height:370px; position:relative; text-align:right; padding:0 10px 0 0; font-size:14px; line-height:21px; letter-spacing:0; white-space:nowrap}
+.opendata-chart-graph-scale-sizer {opacity:0}
+.opendata-chart-graph-scale-tick {position:absolute; left:100%; height:1px; background:#8c8c8c; opacity:0.3; width:9999px}
+.opendata-chart-graph-scale-tick.bottom {height:2px; background:#1e4854; opacity:1}
+.opendata-chart-graph-scale-tick.step {background:#171717}
+.opendata-chart-graph-scale-title {position:absolute; right:10px; margin-bottom:-9px}
+.opendata-chart-graph-scale-title.bottom {font-weight:normal}
+.opendata-chart-graph-item {display:inline-block; vertical-align:top; margin:10px 0 0 0; height:370px; width:80px; position:relative}
+.opendata-chart-graph-item.line::before {content:""; display:block; position:absolute; left:50%; top:0; bottom:0; width:1px; background:#8c8c8c; opacity:0.3}
+.opendata-chart-graph-item-year {position:absolute; left:50%; bottom:-39px; font-size:14px; line-height:21px; letter-spacing:0; transform:translateX(-50%)}
+.opendata-chart-graph-item-bar {position:absolute; left:50%; bottom:0; width:26px; margin:0 0 0 -13px}
+.opendata-chart-graph-item-bar-item {position:absolute; left:0; right:0}
+.opendata-chart-graph-item-point-line {position:absolute; height:3px; border-top-width:3px; border-top-style:solid; transform-origin:left center; margin-top:-1.5px}
+.opendata-chart-graph-item-point {position:absolute; left:50%; width:11px; height:11px; background:#fff; border-width:2px; border-style:solid; border-radius:50%; margin:0 0 -5.5px -5.5px}
+.opendata-chart-map-inner g {cursor:pointer}
+.opendata-chart-map-inner g:hover {stroke:#fff; stroke-width:2px}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-graph {float:none; width:auto}
+    .opendata-chart-graph-scale {font-size:15px; line-height:23px}
+    .opendata-chart-graph-item {width:56px}
+    .opendata-chart-graph-line .opendata-chart-graph-item {width:90px}
+    .opendata-chart-graph-item-year {font-size:15px; line-height:23px}
+    .opendata-chart-graph-item-point {width:20px; height:20px; margin:0 0 -10px -10px; cursor:pointer}
+    .opendata-chart-graph-item-bar-item {cursor:pointer}
+}
+
+.opendata-chart-legend {float:right; width:370px; padding:10px 0 0 0}
+.opendata-chart-legend-item {margin:18px 0 0 30px; position:relative; cursor:default}
+.opendata-chart-legend-item:hover {z-index:1}
+.opendata-chart-legend-item:first-child {margin-top:0}
+.opendata-chart-legend-item-color {position:absolute; left:-30px; top:3px; width:20px; height:20px}
+.opendata-chart-legend-item-title {position:relative}
+.opendata-chart-legend-item-title-short {max-height:48px; position:relative; overflow:hidden}
+.opendata-chart-legend-item-title-full {display:none; position:absolute; left:-30px; padding-left:30px; top:0; right:0; background:#fff}
+.opendata-chart-legend-item:hover .opendata-chart-legend-item-title-full {display:block}
+.opendata-chart-legend-item-title-full::after {content:""; display:block; position:absolute; left:-30px; bottom:-121px; right:0; height:121px; background:linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%)}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-legend {float:none; width:auto; padding:34px 0 0 0}
+    .opendata-chart-legend-item {margin:14px 0 0 30px}
+    .opendata-chart-legend-item:first-child {margin-top:0}
+    .opendata-chart-legend-item-title-short {max-height:none}
+    .opendata-chart-legend-item-title-full {display:none}
+    .opendata-chart-legend-item:hover .opendata-chart-legend-item-title-full {display:none}
+}
+
+.opendata-chart-map-year {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; overflow:auto; width:100%; margin:40px 0 0 0}
+.opendata-chart-map-year-inner {display:inline-block; vertical-align:top}
+.opendata-chart-map-year-item {display:inline-block; vertical-align:top; margin:0 0 0 20px}
+.opendata-chart-map-year-item:first-child {margin:0}
+.opendata-chart-map-year-item a {display:block; padding:0 0 10px 0; position:relative; text-decoration:none; font-size:16px; line-height:24px; letter-spacing:0; color:#999; font-weight:normal}
+.opendata-chart-map-year-item a:hover {color:#000}
+.opendata-chart-map-year-item.active a {color:#000}
+.opendata-chart-map-year-item.active a::after {content:""; display:block; position:absolute; left:0; bottom:0; right:0; height:4px; background:#2c6573}
+
+.opendata-chart-map-zoom-inc {display:none}
+.opendata-chart-map-zoom-dec {display:none}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-map-year {margin:30px 0 0 0}
+    .opendata-chart-map-year-item a {font-size:18px; line-height:27px}
+
+    .opendata-chart-map-wrapper {position:relative}
+    .opendata-chart-map-zoom-inc {display:block; width:42px; height:42px; position:absolute; z-index:2; left:0; bottom:146px; background:url(../images/opendata-chart-map-zoom-inc.svg) no-repeat}
+    .opendata-chart-map-zoom-dec {display:block; width:42px; height:42px; position:absolute; z-index:2; left:0; bottom:96px; background:url(../images/opendata-chart-map-zoom-dec.svg) no-repeat}
+    .opendata-chart-map-inner {position:relative; overflow:auto}
+    .opendata-chart-map-inner svg {width:660px; height:375px}
+    .opendata-chart-map-zoom-1 .opendata-chart-map-inner svg {width:990px; height:563px}
+    .opendata-chart-map-zoom-2 .opendata-chart-map-inner svg {width:1320px; height:750px}
+    .opendata-chart-map-zoom-3 .opendata-chart-map-inner svg {width:1650px; height:938px}
+}
+
+.opendata-chart-map-legend-title {font-weight:normal}
+.opendata-chart-map-legend-list {margin:14px 0 0 0; position:relative; padding:0 0 24px 0}
+.opendata-chart-map-legend-list::after {content:""; display:block; clear:both}
+.opendata-chart-map-legend-list em {font-style:normal; position:absolute; left:0; bottom:0; font-size:12px; line-height:18px; font-weight:normal; transform:translateX(-50%)}
+.opendata-chart-map-legend-item {float:left; width:46px; height:21px; margin:0 0 0 3px; position:relative}
+.opendata-chart-map-legend-item:first-child {margin:0}
+.opendata-chart-map-legend-item span {position:absolute; left:100%; bottom:-24px; font-size:12px; line-height:18px; font-weight:normal; transform:translateX(-50%)}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-map-legend-title {font-size:18px; line-height:27px; margin:40px 0 0 0}
+    .opendata-chart-map-legend-list {margin:11px 0 0 0; padding:0 0 30px 0}
+    .opendata-chart-map-legend-list em {font-size:14px; line-height:21px}
+    .opendata-chart-map-legend-item span {bottom:-30px; font-size:14px; line-height:21px}
+}
+
+.opendata-chart-map-region-hint {position:absolute; margin:11px 0 0 -34px; pointer-events:none}
+.opendata-chart-map-region-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative; max-width:440px}
+.opendata-chart-map-region-hint-container::before {content:""; display:block; position:absolute; left:21px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.opendata-chart-map-region-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+.opendata-chart-map-region-hint-value {margin:7px 0 0 0; font-size:14px; line-height:21px; color:#000}
+.opendata-chart-map-region-hint-value:first-child {margin:0}
+.opendata-chart-map-region-hint-value span {font-weight:bold; color:#217084}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-map-region-hint {position:fixed; left:0; top:0; right:0; bottom:0; z-index:999; margin:0; pointer-events:auto; white-space:normal}
+    .opendata-chart-map-region-hint-bg {position:absolute; left:0; top:0; right:0; bottom:0; cursor:pointer; background:rgba(49, 49, 49, 0.5)}
+    .opendata-chart-map-region-hint-container {position:absolute; left:50%; top:50%; width:440px; margin:0 0 0 -220px; padding:49px 40px 44px 40px; box-shadow:none; transform:translateY(-50%)}
+    .opendata-chart-map-region-hint-container::before {display:none}
+    .opendata-chart-map-region-hint-title {font-size:24px; line-height:30px}
+    .opendata-chart-map-region-hint-value {font-size:20px; line-height:30px}
+    .opendata-chart-map-region-hint-close {display:block; position:absolute; right:10px; top:10px; width:38px; height:38px; background:url(../images/opendata-chart-map-region-hint-close.svg) no-repeat}
+}

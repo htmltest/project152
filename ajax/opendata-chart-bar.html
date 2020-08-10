@@ -1,0 +1,75 @@
+<div class="opendata-chart">
+    <div class="opendata-chart-menu">
+        <div class="opendata-chart-menu-item active"><a href="#" data-type="chart">Графики</a></div>
+        <div class="opendata-chart-menu-item"><a href="#" data-type="table">Табличный формат</a></div>
+    </div>
+
+    <div class="opendata-chart-download">
+        <div class="doc-link">
+            <a href="#">
+                <img src="images/doc-icon-exc.svg" alt="" />
+                <div class="doc-link-title">Отчет. Количество стипендиатов и грантополучателей за 2020 год</div>
+                <div class="doc-link-info">№ 1233-00 &nbsp;<span>|</span>&nbsp; 15 апреля 2020 &nbsp;<span>|</span>&nbsp; 2.4 Мб</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="opendata-chart-container" data-id="uniqID-1">
+    </div>
+    <script>
+        createChartBar('uniqID-1', {
+            'titleTable' : 'Количество студентов',
+            'legend' : [
+                {
+                    'color' : '#509fb2',
+                    'title' : 'До 39 лет включительно'
+                },
+
+                {
+                    'color' : '#2b7081',
+                    'title' : 'Старше 39 лет'
+                }
+            ],
+            'scaleStep' : 1000,
+            'scaleStepTicks' : 5,
+            'data' : [
+                {
+                    'year'      : '2014',
+                    'values'    : [500, 0]
+                },
+                {
+                    'year'      : '2015',
+                    'values'    : [1145, 68]
+                },
+                {
+                    'year'      : '2016',
+                    'values'    : [1850, 110]
+                },
+                {
+                    'year'      : '2017',
+                    'values'    : [1850, 110]
+                },
+                {
+                    'year'      : '2018',
+                    'values'    : [1750, 104]
+                },
+                {
+                    'year'      : '2019',
+                    'values'    : [950, 52]
+                },
+                {
+                    'year'      : '2020',
+                    'values'    : [500, 0]
+                },
+                {
+                    'year'      : '2021',
+                    'values'    : [500, 0]
+                },
+                {
+                    'year'      : '2022',
+                    'values'    : [500, 0]
+                }
+            ]
+        });
+    </script>
+</div>

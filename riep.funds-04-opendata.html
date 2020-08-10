@@ -88,6 +88,8 @@
 
                     <h1>Открытые данные</h1>
 
+                    <script src="js/regions.js"></script>
+                    
                     <!-- tabs -->
                     <div class="tabs">
 
@@ -145,6 +147,85 @@
                             <div class="tabs-content" data-title="Отчеты">
                                 <!-- opendata -->
                                 <div class="opendata">
+
+                                    <!-- opendata block -->
+                                    <div class="opendata-block">
+                                        <div class="opendata-block-title"><img src="images/opendata-block-1.svg" alt="" />Графики</div>
+
+                                        <!-- opendata block container -->
+                                        <div class="opendata-block-container">
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Столбцы</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container" data-link="ajax/opendata-chart-bar.html">
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Линии</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata-chart-line.html" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Выбрать фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">Количество стипендиатов и грантополучателей по выбранному фонду</option>
+                                                                        <option value="2">Количество стипендиатов и грантополучателей по выбранному фонду 2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results"></div>
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                            <!-- opendata group -->
+                                            <div class="opendata-group">
+                                                <div class="opendata-group-title">Карта</div>
+
+                                                <!-- opendata group container -->
+                                                <div class="opendata-group-container">
+                                                    <div class="opendata-filter">
+                                                        <form action="ajax/opendata-chart-map.html" method="post">
+                                                            <div class="opendata-filter-item">
+                                                                <div class="form-select">
+                                                                    <select name="region" data-placeholder="Выбрать фонд">
+                                                                        <option value=""></option>
+                                                                        <option value="1">Гражданство стипендиатов и грантополучателей по выбранному фонду, чел.</option>
+                                                                        <option value="2">Гражданство стипендиатов и грантополучателей по выбранному фонду, чел. 2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="opendata-results"></div>
+                                                </div>
+                                                <!-- opendata group container END -->
+
+                                            </div>
+                                            <!-- opendata group END -->
+
+                                        </div>
+                                        <!-- opendata block container END -->
+
+                                    </div>
+                                    <!-- opendata block END -->
 
                                     <!-- opendata block -->
                                     <div class="opendata-block">
@@ -213,50 +294,210 @@
                                                                             <th>Всего</th>
                                                                             <th>До 39 лет включительно</th>
                                                                             <th>Старше 39 лет</th>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
+                                                                            <th>Год</th>
+                                                                            <th>Всего</th>
+                                                                            <th>До 39 лет включительно</th>
+                                                                            <th>Старше 39 лет</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr>
                                                                             <td>2014</td>
-                                                                            <td>1 223</td>
-                                                                            <td>4 213</td>
-                                                                            <td>4 213</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2014</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2014</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2014</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2014</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2014</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>2015</td>
-                                                                            <td>1 223</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2015</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2015</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2015</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2015</td>
+                                                                            <td>1&nbsp;223</td>
                                                                             <td>4 213</td>
-                                                                            <td>4 213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2015</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>2016</td>
-                                                                            <td>1 223</td>
-                                                                            <td>4 213</td>
-                                                                            <td>4 213</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2016</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2016</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2016</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2016</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2016</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>2017</td>
-                                                                            <td>1 223</td>
-                                                                            <td>4 213</td>
-                                                                            <td>4 213</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2017</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2017</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2017</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2017</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2017</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>2018</td>
-                                                                            <td>1 223</td>
-                                                                            <td>4 213</td>
-                                                                            <td>4 213</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2018</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2018</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2018</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2018</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2018</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>2019</td>
-                                                                            <td>1 223</td>
-                                                                            <td>4 213</td>
-                                                                            <td>4 213</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2019</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2019</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2019</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2019</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2019</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>2020</td>
-                                                                            <td>1 223</td>
-                                                                            <td>4 213</td>
-                                                                            <td>4 213</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2020</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2020</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2020</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2020</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>2020</td>
+                                                                            <td>1&nbsp;223</td>
+                                                                            <td>4&nbsp;213</td>
+                                                                            <td>4&nbsp;213</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
