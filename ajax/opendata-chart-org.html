@@ -14,70 +14,81 @@
         </div>
     </div>
 
-    <div class="opendata-chart-container" data-id="uniqID-1">
+    <div class="opendata-chart-container" data-id="uniqID-6">
     </div>
     <script>
-        createChartBar('uniqID-1', {
-            'titleTable' : 'Количество студентов',
+        createChartOrg('uniqID-6', {
+            'titleTable' : 'Финансирование, млн',
             'legend' : [
                 {
-                    'color' : '#f7b7d3',
-                    'title' : 'До 39 лет включительно'
-                },
-
-                {
+                    'type'  : 'left',
                     'color' : '#9fcff3',
-                    'title' : 'Старше 39 лет'
+                    'title' : 'Количество проектов'
                 },
 
                 {
-                    'color' : '#dfadeb',
-                    'title' : 'До 39 лет включительно'
+                    'type'  : 'left',
+                    'color' : '#f7b7d3',
+                    'title' : 'Количество завершенных проектов'
                 },
 
                 {
-                    'color' : '#b7f7c5',
-                    'title' : 'Старше 39 лет'
+                    'type'  : 'right',
+                    'color' : '#de54ff',
+                    'title' : 'Общие финансирование, млн'
+                },
+
+                {
+                    'type'  : 'right',
+                    'color' : '#297c90',
+                    'title' : 'Финансирование в среднем, млн'
                 }
             ],
-            'scaleStep' : 1000,
-            'scaleStepTicks' : 5,
+            'scaleLeftStep' : 4000,
+            'scaleRightStep' : 400,
+            'scaleXTitle' : 'Год',
+            'scaleLeftTitle' : 'Финансирование, млн',
+            'scaleRightTitle' : 'Количество проектов',
             'data' : [
                 {
+                    'year'      : '2015',
+                    'values'    : [13000, 5000, 200, 1300]
+                },
+                {
                     'year'      : '2014',
-                    'values'    : [500, 0, 250, 300]
+                    'values'    : [9000, 4500, 450, 1500]
                 },
                 {
                     'year'      : '2015',
-                    'values'    : [1145, 68, 400, 600]
+                    'values'    : [16000, 5500, 450, 1500]
                 },
                 {
                     'year'      : '2016',
-                    'values'    : [1850, 110, 50, 143]
+                    'values'    : [8500, 5500, 600, 1650]
                 },
                 {
                     'year'      : '2017',
-                    'values'    : [1850, 110, 250, 300]
+                    'values'    : [16000, 4000, 900, 2100]
                 },
                 {
                     'year'      : '2018',
-                    'values'    : [1750, 104, 400, 600]
+                    'values'    : [9500, 5500, 600, 1650]
                 },
                 {
                     'year'      : '2019',
-                    'values'    : [950, 52, 50, 143]
+                    'values'    : [9000, 3000, 550, 1550]
                 },
                 {
                     'year'      : '2020',
-                    'values'    : [500, 0, 250, 300]
+                    'values'    : [14000, 4000, 800, 1900]
                 },
                 {
                     'year'      : '2021',
-                    'values'    : [500, 0, 400, 600]
+                    'values'    : [14000, 4000, 800, 1900]
                 },
                 {
                     'year'      : '2022',
-                    'values'    : [500, 0, 50, 143]
+                    'values'    : [14000, 4000, 800, 1900]
                 }
             ]
         });

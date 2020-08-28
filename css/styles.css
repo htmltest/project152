@@ -901,7 +901,7 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .opendata-filter {margin:0 0 26px 0}
 .wrapper .opendata-filter form {margin:0; padding:0}
 .opendata-filter form::after {content:""; display:block; clear:both}
-.opendata-filter-item {float:left; margin:0 0 0 10px; width:208px}
+.opendata-filter-item {float:left; margin:0 0 0 10px; min-width:200px}
 .opendata-filter-item:first-child {margin:0}
 .opendata-filter-item .form-select {margin:0}
 
@@ -1023,7 +1023,7 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-graph-item {display:inline-block; vertical-align:top; margin:10px 0 0 0; height:370px; width:80px; position:relative}
 .opendata-chart-graph-item.line::before {content:""; display:block; position:absolute; left:50%; top:0; bottom:0; width:1px; background:#8c8c8c; opacity:0.3}
 .opendata-chart-graph-item-year {position:absolute; left:50%; bottom:-39px; font-size:14px; line-height:21px; letter-spacing:0; transform:translateX(-50%); cursor:default}
-.opendata-chart-graph-item-bar {position:absolute; left:50%; bottom:0; width:26px; margin:0 0 0 -13px}
+.opendata-chart-graph-item-bar {position:absolute; left:50%; bottom:0; width:42px; margin:0 0 0 -21px}
 .opendata-chart-graph-item-bar-item {position:absolute; left:0; right:0}
 .opendata-chart-graph-item-point-line {position:absolute; height:3px; border-top-width:3px; border-top-style:solid; transform-origin:left center; margin-top:-1.5px}
 .opendata-chart-graph-item-point {position:absolute; left:50%; width:11px; height:11px; background:#fff; border-width:2px; border-style:solid; border-radius:50%; margin:0 0 -5.5px -5.5px}
@@ -1090,7 +1090,7 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-map-legend-list {margin:14px 0 0 0; position:relative; padding:0 0 24px 0}
 .opendata-chart-map-legend-list::after {content:""; display:block; clear:both}
 .opendata-chart-map-legend-list em {font-style:normal; position:absolute; left:0; bottom:0; font-size:12px; line-height:18px; font-weight:normal; transform:translateX(-50%)}
-.opendata-chart-map-legend-item {float:left; width:46px; height:21px; margin:0 0 0 3px; position:relative}
+.opendata-chart-map-legend-item {float:left; width:94px; height:21px; margin:0 0 0 3px; position:relative}
 .opendata-chart-map-legend-item:first-child {margin:0}
 .opendata-chart-map-legend-item span {position:absolute; left:100%; bottom:-24px; font-size:12px; line-height:18px; font-weight:normal; transform:translateX(-50%)}
 
@@ -1105,20 +1105,115 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-map-region-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative; max-width:440px}
 .opendata-chart-map-region-hint-container::before {content:""; display:block; position:absolute; left:21px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
 .opendata-chart-map-region-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+.opendata-chart-map-region-hint-values-title {margin:10px 0 0 0}
 .opendata-chart-map-region-hint-values {display:table; font-size:14px; line-height:21px; color:#000}
 .opendata-chart-map-region-hint-value {display:table-row}
 .opendata-chart-map-region-hint-value-legend {display:table-cell; vertical-align:top; width:20px; padding:7px 0 0 0}
 .opendata-chart-map-region-hint-value-legend-inner {width:20px; height:20px}
 .opendata-chart-map-region-hint-value-title {display:table-cell; vertical-align:top; padding:7px 0 0 20px}
+.opendata-chart-map-region-hint-value-title:first-child {padding-left:0}
 .opendata-chart-map-region-hint-value-text {display:table-cell; vertical-align:top; padding:7px 0 0 20px; font-weight:bold}
 
 @media screen and (max-width:1119px) {
-    .opendata-chart-map-region-hint {position:fixed; left:0; top:0; right:0; bottom:0; z-index:999; margin:0; pointer-events:auto; white-space:normal}
-    .opendata-chart-map-region-hint-bg {position:absolute; left:0; top:0; right:0; bottom:0; cursor:pointer; background:rgba(49, 49, 49, 0.5)}
-    .opendata-chart-map-region-hint-container {position:absolute; left:50%; top:50%; width:440px; margin:0 0 0 -220px; padding:49px 40px 44px 40px; box-shadow:none; transform:translateY(-50%)}
+    .opendata-chart-map-region-hint {position:fixed; left:0; top:0; right:0; bottom:0; z-index:999; margin:0; pointer-events:auto; white-space:normal; overflow:auto; text-align:center; background:rgba(49, 49, 49, 0.5)}
+    .opendata-chart-map-region-hint-bg {position:absolute; left:0; top:0; right:0; bottom:0; cursor:pointer; background:url(../images/blank.gif)}
+    .opendata-chart-map-region-hint::before {content:""; display:inline-block; width:0; height:100%; vertical-align:middle}
+    .opendata-chart-map-region-hint-container {position:relative; text-align:left; width:440px; display:inline-block; vertical-align:middle; padding:49px 40px 44px 40px; box-shadow:none}
     .opendata-chart-map-region-hint-container::before {display:none}
     .opendata-chart-map-region-hint-title {font-size:24px; line-height:30px}
     .opendata-chart-map-region-hint-value-legend {padding-top:14px}
     .opendata-chart-map-region-hint-value {font-size:20px; line-height:30px}
     .opendata-chart-map-region-hint-close {display:block; position:absolute; right:10px; top:10px; width:38px; height:38px; background:url(../images/opendata-chart-map-region-hint-close.svg) no-repeat}
 }
+
+.opendata-chart-bubble-content::after {content:""; display:block; clear:both}
+.opendata-chart-bubble-legend {float:left; width:440px}
+.opendata-chart-bubble-legend-item {position:relative; padding:15px 0 15px 19px}
+.opendata-chart-bubble-legend-item-color {position:absolute; left:0; top:7px; width:4px; bottom:6px}
+.opendata-chart-bubble-graph {float:right; max-width:566px; position:relative; overflow:auto}
+.opendata-chart-bubble-graph-container {display:inline-block; vertical-align:top; position:relative; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; padding:0 40px}
+.opendata-chart-bubble-graph-item {display:table; width:100%; position:relative; z-index:2}
+.opendata-chart-bubble-graph-item-inner {position:relative; display:table-cell; vertical-align:middle}
+.opendata-chart-bubble-graph-item-inner::before {content:""; display:block; position:absolute; left:-40px; top:50%; right:-40px; height:1px; background:#d6d6d6; opacity:0.5}
+.opendata-chart-bubble-graph-item-bubble {display:inline-block; vertical-align:middle; width:80px; height:80px; position:relative; left:-25px}
+.opendata-chart-bubble-graph-item-bubble-prev {position:absolute; left:-50%; top:50%; right:50%; height:1px; z-index:-1}
+.opendata-chart-bubble-graph-item-bubble-bg {position:absolute; left:50%; top:50%; border-radius:50%; transform:translate(-50%, -50%)}
+.opendata-chart-bubble-graph-item-bubble-value {position:absolute; left:50%; top:50%; border-radius:50%; transform:translate(-50%, -50%); font-weight:600; font-size:14px; line-height:21px; letter-spacing:0}
+.opendata-chart-bubble-graph-years {border-top:2px solid #1e4854; padding:18px 55px 0 55px; margin:15px -40px 0 -40px}
+.opendata-chart-bubble-graph-year {display:inline-block; vertical-align:top; width:80px; height:21px; position:relative; font-size:14px; line-height:21px; letter-spacing:0}
+.opendata-chart-bubble-graph-year:first-child {width:0}
+.opendata-chart-bubble-graph-year::before {content:""; display:block; position:absolute; left:100%; bottom:100%; margin-bottom:20px; height:9999px; width:1px; background:#d6d6d6; opacity:0.4}
+.opendata-chart-bubble-graph-year span {position:absolute; left:100%; top:0; transform:translateX(-50%)}
+
+.opendata-chart-finance-content {margin:40px 0 0 0}
+.opendata-chart-finance-graph {position:relative}
+.opendata-chart-finance-graph-scale-y {position:absolute; left:0; top:0; width:63px}
+.opendata-chart-finance-graph-scale-y-item {position:absolute; right:0; font-size:14px; line-height:21px; margin-bottom:-12px}
+.opendata-chart-finance-graph-scale-y-title {position:absolute; left:0; top:50%; margin-top:-12px; white-space:nowrap; font-weight:normal; transform:translateX(-50%) rotate(-90deg)}
+.opendata-chart-finance-graph-wrapper {position:relative; margin:0 0 0 80px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; overflow:auto}
+.opendata-chart-finance-graph-container {display:inline-block; vertical-align:top; position:relative}
+.opendata-chart-finance-graph-item-point {position:absolute; width:20px; height:20px; border-radius:50%; margin:0 0 -10px 21.5px; cursor:pointer; z-index:2; transition:all 0.2s; border:0 solid transparent}
+.opendata-chart-finance-graph-item-point:hover {z-index:3; width:30px; height:30px; border:3px solid #fff; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.15); margin:0 0 -15px 16.5px}
+.opendata-chart-finance-graph-scale-x {border-top:2px solid #9f9f9f; padding:14px 0 0 0}
+.opendata-chart-finance-graph-scale-x-item {display:inline-block; vertical-align:middle; font-size:14px; line-height:21px; letter-spacing:0; text-align:center; width:63px; position:relative}
+.opendata-chart-finance-graph-scale-x-item::before {content:""; display:block; position:absolute; left:50%; bottom:100%; margin-bottom:16px; width:1px; background:#e8e8e8; height:9999px}
+.opendata-chart-finance-graph-scale-x-title {margin:20px 0 0 80px; text-align:center; font-weight:normal}
+.opendata-chart-finance-legend {margin:0 0 0 50px; font-size:0; line-height:0; letter-spacing:-1px}
+.opendata-chart-finance-legend-item {display:inline-block; vertical-align:top; margin:20px 0 0 30px; padding:0 0 0 28px; position:relative; font-size:14px; line-height:21px; letter-spacing:0}
+.opendata-chart-finance-legend-item-color {position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%}
+.opendata-chart-finance-graph-item {height:70px; border-top:1px solid #e8e8e8}
+
+.opendata-chart-finance-hint {position:absolute; margin:30px 0 0 -44px; pointer-events:none}
+.opendata-chart-finance-hint.right {transform:translateX(-100%); margin:30px 0 0 44px}
+.opendata-chart-finance-hint-container {padding:23px 20px 35px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative}
+.opendata-chart-finance-hint-container::before {content:""; display:block; position:absolute; left:42px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.opendata-chart-finance-hint.right .opendata-chart-finance-hint-container::before {left:auto; right:21px}
+.opendata-chart-finance-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+.opendata-chart-finance-hint-values {display:table; color:#000; margin:18px 0 0 0}
+.opendata-chart-finance-hint-value {display:table-cell; border-left:1px solid #e3e3e3}
+.opendata-chart-finance-hint-value:first-child {border-left:none}
+.opendata-chart-finance-hint-value-title {padding:0 14px 3px 9px; font-size:12px; line-height:18px}
+.opendata-chart-finance-hint-value:first-child .opendata-chart-finance-hint-value-title {padding-left:0}
+.opendata-chart-finance-hint-value:last-child .opendata-chart-finance-hint-value-title {padding-right:0}
+.opendata-chart-finance-hint-value-text {padding:3px 14px 0 9px; font-size:13px; line-height:20px; font-weight:normal; border-top:1px solid #e3e3e3}
+.opendata-chart-finance-hint-value:first-child .opendata-chart-finance-hint-value-text {padding-left:0}
+.opendata-chart-finance-hint-value:last-child .opendata-chart-finance-hint-value-text {padding-right:0}
+
+.opendata-chart-org-content::after {content:""; display:block; clear:both}
+.opendata-chart-org-graph {float:left; width:570px; position:relative}
+.opendata-chart-org-graph-scale-left {position:absolute; left:0; top:0; width:63px; white-space:nowrap}
+.opendata-chart-org-graph-scale-left-item {position:absolute; right:0; font-size:14px; line-height:21px; margin-bottom:-12px}
+.opendata-chart-org-graph-scale-left-title {position:absolute; left:0; top:50%; margin-top:-12px; white-space:nowrap; font-weight:normal; transform:translateX(-50%) rotate(-90deg)}
+.opendata-chart-org-graph-scale-right {position:absolute; right:-20px; top:0; width:0; white-space:nowrap}
+.opendata-chart-org-graph-scale-right-item {position:absolute; left:0; font-size:14px; line-height:21px; margin-bottom:-12px}
+.opendata-chart-org-graph-scale-right-title {position:absolute; right:-70px; top:50%; margin-top:-12px; white-space:nowrap; font-weight:normal; transform:translateX(50%) rotate(-90deg)}
+.opendata-chart-org-graph-wrapper {position:relative; margin:0 0 0 80px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; overflow:auto}
+.opendata-chart-org-graph-container {display:inline-block; vertical-align:top; position:relative}
+.opendata-chart-org-graph-item {height:70px; border-top:1px solid #e8e8e8}
+.opendata-chart-org-graph-item-bar {position:absolute; bottom:0; width:36px; margin:0 0 0 13.5px; z-index:2; cursor:pointer}
+.opendata-chart-org-graph-item-bar-item {position:absolute; left:0; right:0}
+.opendata-chart-org-graph-item-point-line {position:absolute; height:3px; border-top-width:3px; border-top-style:solid; transform-origin:left center; margin-top:-8px; z-index:2; pointer-events:none}
+.opendata-chart-org-graph-item-point {position:absolute; width:15px; height:15px; border-width:2px; border-style:solid; background:#fff; border-radius:50%; margin:0 0 -10px 24px; cursor:pointer; z-index:2; transition:all 0.2s}
+.opendata-chart-org-graph-scale-x {border-top:2px solid #9f9f9f; padding:14px 0 0 0}
+.opendata-chart-org-graph-scale-x-item {display:inline-block; vertical-align:middle; font-size:14px; line-height:21px; letter-spacing:0; text-align:center; width:63px; position:relative}
+.opendata-chart-org-graph-scale-x-item::before {content:""; display:block; position:absolute; left:50%; bottom:100%; margin-bottom:16px; width:1px; background:#e8e8e8; height:9999px}
+.opendata-chart-org-graph-scale-x-title {margin:20px 0 0 80px; text-align:center; font-weight:normal}
+.opendata-chart-org-legend {float:right; width:370px; padding:10px 0 0 0}
+.opendata-chart-org-legend-item {margin:18px 0 0 30px; position:relative; font-size:14px; line-height:21px}
+.opendata-chart-org-legend-item:first-child {margin-top:0}
+.opendata-chart-org-legend-item-color {position:absolute; left:-30px; top:0; width:20px; height:20px}
+.opendata-chart-org-legend-item.right .opendata-chart-org-legend-item-color {top:9px; height:4px}
+
+.opendata-chart-org-hint {position:absolute; margin:20px 0 0 -31px; pointer-events:none}
+.opendata-chart-org-hint.right {transform:translateX(-100%); margin:20px 0 0 31px}
+.opendata-chart-org-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative}
+.opendata-chart-org-hint-container::before {content:""; display:block; position:absolute; left:22px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.opendata-chart-org-hint.right .opendata-chart-org-hint-container::before {left:auto; right:21px}
+.opendata-chart-org-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+.opendata-chart-org-hint-values {display:table; margin:6px 0 0 0; font-size:14px; line-height:21px}
+.opendata-chart-org-hint-value {display:table-row}
+.opendata-chart-org-hint-value-color {padding:5px 0 0 0; display:table-cell; vertical-align:middle}
+.opendata-chart-org-hint-value-color-inner {width:16px; height:16px}
+.opendata-chart-org-hint-value-color-inner.right {height:4px}
+.opendata-chart-org-hint-value-title {padding:5px 0 0 10px; display:table-cell; vertical-align:top}
+.opendata-chart-org-hint-value-text {padding:5px 0 0 24px; font-weight:normal; display:table-cell; vertical-align:top}
