@@ -600,7 +600,7 @@ $(document).ready(function() {
             $('body').append('<div class="opendata-chart-map-region-hint">' +
                                  '<div class="opendata-chart-map-region-hint-container">' +
                                     '<div class="opendata-chart-map-region-hint-title">' + $(this).attr('data-title') + '</div>' +
-                                    '<div class="opendata-chart-map-region-hint-value">' + $(this).attr('data-name') + ': <span>' + $(this).attr('data-value') + '</span></div>' +
+                                    '<div class="opendata-chart-map-region-hint-value-map">' + $(this).attr('data-name') + ': <span>' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</span></div>' +
                                  '</div>' +
                              '</div>');
             var curLeft = e.pageX;
@@ -616,7 +616,7 @@ $(document).ready(function() {
                                  '<div class="opendata-chart-map-region-hint-bg"></div>' +
                                  '<div class="opendata-chart-map-region-hint-container">' +
                                     '<div class="opendata-chart-map-region-hint-title">' + $(this).attr('data-title') + '</div>' +
-                                    '<div class="opendata-chart-map-region-hint-value">' + $(this).attr('data-name') + ': <span>' + $(this).attr('data-value') + '</span></div>' +
+                                    '<div class="opendata-chart-map-region-hint-value">' + $(this).attr('data-name') + ': <span>' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</span></div>' +
                                     '<a href="#" class="opendata-chart-map-region-hint-close"></a>' +
                                  '</div>' +
                              '</div>');
@@ -648,28 +648,79 @@ $(document).ready(function() {
 
     $('body').on('mouseenter', '.opendata-chart-graph-item-bar', function(e) {
         if ($(window).width() > 1119) {
+            var curItemBar = $(this);
             $('.opendata-chart-map-region-hint').remove();
             var windowHTML = '<div class="opendata-chart-map-region-hint">' +
                                  '<div class="opendata-chart-map-region-hint-container">' +
                                     '<div class="opendata-chart-map-region-hint-title">' + $(this).find('.opendata-chart-graph-item-bar-item').eq(0).attr('data-name') + '</div>' +
                                     '<div class="opendata-chart-map-region-hint-values">';
-            $(this).find('.opendata-chart-graph-item-bar-item').each(function() {
+            var curSumm = 0;
+            curItemBar.find('.opendata-chart-graph-item-bar-item').each(function() {
+                curSumm += Number($(this).attr('data-value'));
+            });
+            var summPercent = 0;
+            curItemBar.find('.opendata-chart-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                } else {
+                    summPercent += newPercent;
+                }
                 windowHTML +=           '<div class="opendata-chart-map-region-hint-value">' +
                                             '<div class="opendata-chart-map-region-hint-value-legend">' +
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
-                                            '<div class="opendata-chart-map-region-hint-value-text">' + $(this).attr('data-value') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-percent">' + newPercent + '%</div>' +
                                         '</div>';
             });
 
             windowHTML +=           '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-pie">' +
+                                        '<canvas></canvas>' +
+                                    '</div>' +
                                 '</div>' +
                              '</div>';
             $('body').append(windowHTML);
             var curLeft = e.pageX;
             var curTop = e.pageY;
             $('.opendata-chart-map-region-hint').css({'left': curLeft, 'top': curTop});
+
+            var pieWidth = 126;
+            var pieHeight = 126;
+
+            var canvas = $('.opendata-chart-map-region-hint-pie canvas')[0];
+            var context = canvas.getContext('2d');
+
+			canvas.width = pieWidth;
+            canvas.height = pieHeight;
+
+            var summPercent = 0;
+            var currentAngle = -0.5 * Math.PI;
+            curItemBar.find('.opendata-chart-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                }
+                var sliceAngle = newPercent / 100 * 2 * Math.PI;
+                context.beginPath();
+                context.fillStyle = $(this).css('background-color');
+                context.strokeStyle = $(this).css('background-color');
+                context.moveTo(pieWidth / 2, pieHeight / 2);
+                context.arc(pieWidth / 2, pieHeight / 2, pieWidth / 2, currentAngle, currentAngle + sliceAngle);
+                context.lineTo(pieWidth / 2, pieHeight / 2);
+                context.fill();
+                if (newPercent > 9) {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                } else {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend opendata-chart-map-region-hint-pie-legend-out" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                }
+                currentAngle += sliceAngle;
+                if (curItemBar.find('.opendata-chart-graph-item-bar-item').index($(this)) != curItemBar.find('.opendata-chart-graph-item-bar-item').length - 1) {
+                    summPercent += newPercent;
+                }
+            });
         }
     });
 
@@ -686,7 +737,7 @@ $(document).ready(function() {
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
-                                            '<div class="opendata-chart-map-region-hint-value-text">' + $(this).attr('data-value') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
                                         '</div>';
             });
 
@@ -714,7 +765,7 @@ $(document).ready(function() {
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
-                                            '<div class="opendata-chart-map-region-hint-value-text">' + $(this).attr('data-value') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
                                         '</div>';
             });
 
@@ -740,7 +791,7 @@ $(document).ready(function() {
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
-                                            '<div class="opendata-chart-map-region-hint-value-text">' + $(this).attr('data-value') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
                                         '</div>';
             });
 
@@ -805,6 +856,58 @@ $(document).ready(function() {
         } else {
             curMap.removeClass('opendata-chart-map-zoom-1');
         }
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.opendata-table .sort', function(e) {
+        var curLink = $(this);
+        var curCol = curLink.parent();
+        var curTable = curCol.parents().filter('table');
+        var curColIndex = curTable.find('thead th').index(curCol);
+        if (curLink.hasClass('active')) {
+            curLink.toggleClass('up');
+        } else {
+            curTable.find('thead th a').removeClass('active up');
+            curLink.addClass('active');
+        }
+        var curRows = [];
+        curTable.find('tbody tr').each(function() {
+            curRows.push($(this));
+        });
+        if (curLink.hasClass('sort-number')) {
+            curRows.sort(function(a, b) {
+                var aValue = Number(a.find('td').eq(curColIndex).html().replace(/\ |&nbsp;|—/g, ''));
+                if (aValue == NaN) {
+                    aValue = 0;
+                }
+                var bValue = Number(b.find('td').eq(curColIndex).html().replace(/\ |&nbsp;|—/g, ''));
+                if (bValue == NaN) {
+                    bValue = 0;
+                }
+                if (aValue < bValue) return -1;
+                if (aValue > bValue) return 1;
+                return 0;
+            });
+        } else {
+            curRows.sort(function(a, b) {
+                var aValue = a.find('td').eq(curColIndex).html();
+                var bValue = b.find('td').eq(curColIndex).html();
+                if (aValue < bValue) return -1;
+                if (aValue > bValue) return 1;
+                return 0;
+            });
+        }
+
+        if (curLink.hasClass('up')) {
+            curRows.reverse();
+        }
+
+        var newHTML = '';
+        for (var i = 0; i < curRows.length; i++) {
+            newHTML += '<tr>' + curRows[i].html() + '</tr>';
+        }
+        curTable.find('tbody').html(newHTML);
+
         e.preventDefault();
     });
 
@@ -915,9 +1018,9 @@ function makeChartBar(curBlock, data) {
                             '<table>' +
                                 '<thead>' +
                                     '<tr>' +
-                                        '<th></th>';
+                                        '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
         for (var i = 0; i < data.data.length; i++) {
-            newHTML +=                  '<th>' + data.data[i].year + '</th>';
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
         newHTML +=                  '</tr>' +
                                 '</thead>' +
@@ -925,10 +1028,10 @@ function makeChartBar(curBlock, data) {
 
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
-                                        '<td>' + data.legend[i].title + '</td>';
+                                        '<td><strong>' + data.legend[i].title + '</strong></td>';
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] !== null) {
-                    newHTML +=          '<td>' + data.data[j].values[i] + '</td>';
+                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
                 } else {
                     newHTML +=          '<td>—</td>';
                 }
@@ -1099,7 +1202,7 @@ function makeChartLine(curBlock, data) {
                     if (data.data[i].values[curID] !== null) {
                         hintHTML +=         '<div class="opendata-chart-map-region-hint-value">' +
                                                 '<div class="opendata-chart-map-region-hint-value-title">' + data.data[i].year + '</div>' +
-                                                '<div class="opendata-chart-map-region-hint-value-text">' + data.data[i].values[curID] + '</div>' +
+                                                '<div class="opendata-chart-map-region-hint-value-text">' + String(data.data[i].values[curID]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
                                             '</div>';
                     }
                 }
@@ -1127,7 +1230,7 @@ function makeChartLine(curBlock, data) {
                     if (data.data[i].values[curID] !== null) {
                         hintHTML +=         '<div class="opendata-chart-map-region-hint-value">' +
                                                 '<div class="opendata-chart-map-region-hint-value-title">' + data.data[i].year + '</div>' +
-                                                '<div class="opendata-chart-map-region-hint-value-text">' + data.data[i].values[curID] + '</div>' +
+                                                '<div class="opendata-chart-map-region-hint-value-text">' + String(data.data[i].values[curID]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
                                             '</div>';
                     }
                 }
@@ -1160,9 +1263,9 @@ function makeChartLine(curBlock, data) {
                             '<table>' +
                                 '<thead>' +
                                     '<tr>' +
-                                        '<th></th>';
+                                        '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
         for (var i = 0; i < data.data.length; i++) {
-            newHTML +=                  '<th>' + data.data[i].year + '</th>';
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
         newHTML +=                  '</tr>' +
                                 '</thead>' +
@@ -1170,12 +1273,12 @@ function makeChartLine(curBlock, data) {
 
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
-                                        '<td>' + data.legend[i].title + '</td>';
+                                        '<td><strong>' + data.legend[i].title + '</strong></td>';
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
                     newHTML +=          '<td>—</td>';
                 } else {
-                    newHTML +=          '<td>' + data.data[j].values[i] + '</td>';
+                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1310,9 +1413,9 @@ function makeChartMap(curBlock, data) {
                             '<table>' +
                                 '<thead>' +
                                     '<tr>' +
-                                        '<th></th>';
+                                        '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
         for (var i = 0; i < data.data.length; i++) {
-            newHTML +=                  '<th>' + data.data[i].year + '</th>';
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
         newHTML +=                  '</tr>' +
                                 '</thead>' +
@@ -1320,12 +1423,12 @@ function makeChartMap(curBlock, data) {
 
         for (var i = 0; i < opendataRegions.length; i++) {
             newHTML +=              '<tr>' +
-                                        '<td>' + opendataRegions[i].title + '</td>';
+                                        '<td><strong>' + opendataRegions[i].title + '</strong></td>';
             for (var j = 0; j < data.data.length; j++) {
                 var isHas = false;
                 for (var k = 0; k < data.data[j].values.length; k++) {
                     if (data.data[j].values[k][0] == opendataRegions[i].id) {
-                        newHTML +=      '<td>' + data.data[j].values[k][1] + '</td>';
+                        newHTML +=      '<td>' + String(data.data[j].values[k][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
                         isHas = true;
                     }
                 }
@@ -1432,7 +1535,7 @@ function makeChartBubble(curBlock, data) {
 
                     curBubble = curBubblePrev +
                                 '<div class="opendata-chart-bubble-graph-item-bubble-bg" style="background-color:' + data.legend[i].color + '; width:' + curBubbleSize + '%; height:' + curBubbleSize + '%"></div>' +
-                                '<div class="opendata-chart-bubble-graph-item-bubble-value">' + String(data.data[j].values[i]).replace('.', ',') + '</div>';
+                                '<div class="opendata-chart-bubble-graph-item-bubble-value">' + String(data.data[j].values[i]).replace('.', ',').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>';
                 }
                 $('.opendata-chart-bubble-graph-item').eq(i).find('.opendata-chart-bubble-graph-item-inner').append('<div class="opendata-chart-bubble-graph-item-bubble">' + curBubble + '</div>');
             }
@@ -1454,9 +1557,9 @@ function makeChartBubble(curBlock, data) {
                             '<table>' +
                                 '<thead>' +
                                     '<tr>' +
-                                        '<th></th>';
+                                        '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
         for (var i = 0; i < data.data.length; i++) {
-            newHTML +=                  '<th>' + data.data[i].year + '</th>';
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
         newHTML +=                  '</tr>' +
                                 '</thead>' +
@@ -1464,12 +1567,12 @@ function makeChartBubble(curBlock, data) {
 
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
-                                        '<td>' + data.legend[i].title + '</td>';
+                                        '<td><strong>' + data.legend[i].title + '</strong></td>';
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
                     newHTML +=          '<td>—</td>';
                 } else {
-                    newHTML +=          '<td>' + data.data[j].values[i] + '</td>';
+                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1607,8 +1710,12 @@ function makeChartFinance(curBlock, data) {
                     if (data.data[i].values[curID] !== null) {
                         hintHTML +=         '<div class="opendata-chart-finance-hint-value">' +
                                                 '<div class="opendata-chart-finance-hint-value-title">' + data.data[i].year + '</div>' +
-                                                '<div class="opendata-chart-finance-hint-value-text">' + Number(data.data[i].values[curID]).toFixed(3) + '</div>' +
+                                                '<div class="opendata-chart-finance-hint-value-text">' + String(Number(data.data[i].values[curID]).toFixed(3)).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
                                             '</div>';
+                        if ((i + 1) % 10 == 0) {
+                            hintHTML += '</div>' +
+                                        '<div class="opendata-chart-finance-hint-values">';
+                        }
                     }
                 }
                 hintHTML +=             '</div>' +
@@ -1637,9 +1744,9 @@ function makeChartFinance(curBlock, data) {
                             '<table>' +
                                 '<thead>' +
                                     '<tr>' +
-                                        '<th></th>';
+                                        '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
         for (var i = 0; i < data.data.length; i++) {
-            newHTML +=                  '<th>' + data.data[i].year + '</th>';
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
         newHTML +=                  '</tr>' +
                                 '</thead>' +
@@ -1647,12 +1754,12 @@ function makeChartFinance(curBlock, data) {
 
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
-                                        '<td>' + data.legend[i].title + '</td>';
+                                        '<td><strong>' + data.legend[i].title + '</strong></td>';
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
                     newHTML +=          '<td>—</td>';
                 } else {
-                    newHTML +=          '<td>' + data.data[j].values[i] + '</td>';
+                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1893,7 +2000,7 @@ function makeChartOrg(curBlock, data) {
             }
         });
 
-        curBlock.find('.opendata-chart-org-graph-item-point').on('mouseleave', function(e) {
+        curBlock.find('.opendata-chart-org-graph-item-point, .opendata-chart-org-graph-item-bar').on('mouseleave', function(e) {
             if ($(window).width() > 1119) {
                 $('.opendata-chart-org-hint').remove();
             }
@@ -1906,9 +2013,9 @@ function makeChartOrg(curBlock, data) {
                             '<table>' +
                                 '<thead>' +
                                     '<tr>' +
-                                        '<th></th>';
+                                        '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
         for (var i = 0; i < data.data.length; i++) {
-            newHTML +=                  '<th>' + data.data[i].year + '</th>';
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
         newHTML +=                  '</tr>' +
                                 '</thead>' +
@@ -1916,7 +2023,7 @@ function makeChartOrg(curBlock, data) {
 
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
-                                        '<td>' + data.legend[i].title + '</td>';
+                                        '<td><strong>' + data.legend[i].title + '</strong></td>';
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
                     newHTML +=          '<td>—</td>';

@@ -899,10 +899,9 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 }
 
 .opendata-filter {margin:0 0 26px 0}
-.wrapper .opendata-filter form {margin:0; padding:0}
+.wrapper .opendata-filter form {margin:0 0 -10px -10px; padding:0}
 .opendata-filter form::after {content:""; display:block; clear:both}
-.opendata-filter-item {float:left; margin:0 0 0 10px; min-width:200px}
-.opendata-filter-item:first-child {margin:0}
+.opendata-filter-item {float:left; margin:0 0 10px 10px; min-width:200px}
 .opendata-filter-item .form-select {margin:0}
 
 @media screen and (max-width:1119px) {
@@ -919,10 +918,20 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
     .opendata-results:first-child {margin-top:0}
 }
 
-.wrapper .opendata-table table {margin:0; border-bottom:2px solid #c8c8c8}
+.wrapper .opendata-table table {margin:0}
 .opendata-table+.doc-link {margin-top:28px}
-.wrapper .opendata-table th {width:25%; text-align:left}
-.wrapper .opendata-table td {font-weight:normal; color:#000; text-align:left; vertical-align:top; padding:24px 30px}
+.wrapper .opendata-table th {width:25%; text-align:left; font-size:13px; color:#81a2b0; line-height:20px; font-weight:600; padding-bottom:12px}
+.wrapper .opendata-table th:first-child {min-width:300px}
+.wrapper .opendata-table th a.sort {color:#81a2b0; text-decoration:none; position:relative}
+.wrapper .opendata-table th a.sort:hover,
+.wrapper .opendata-table th a.sort.active {color:#000}
+.wrapper .opendata-table th a.sort::after {content:"↓"; position:absolute; right:-10px; bottom:10px; transform:translateY(50%); opacity:0; pointer-events:none}
+.wrapper .opendata-table th a.sort.active:after {opacity:1}
+.wrapper .opendata-table th a.sort.up:after {content:"↑"}
+.wrapper .opendata-table td {font-weight:300; color:#000; text-align:left; vertical-align:top; padding:13px 30px 16px 30px; font-size:14px; line-height:21px}
+.wrapper .opendata-table td:first-child {min-width:300px}
+.wrapper .opendata-table thead+tbody tr:nth-child(even) td {background:none}
+.wrapper .opendata-table thead+tbody tr:nth-child(odd) td {background:rgba(165, 165, 165, 0.08)}
 
 @media screen and (max-width:1119px) {
     .wrapper .opendata-table table {width:768px; border-bottom:none}
@@ -987,7 +996,9 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
     .up-link {width:54px; height:54px; right:20px; margin-right:0; background-image:url(../images/up-link-mobile.svg); background-position:center}
 }
 
-.opendata-chart-menu {margin:45px 0 0 0; font-size:20px; line-height:30px; position:relative; font-weight:normal; border-bottom:2px solid #dadada; max-width:620px}
+.opendata-chart-header::after {content:""; display:block; clear:both}
+
+.opendata-chart-menu {float:left; font-size:20px; line-height:30px; position:relative; font-weight:normal; border-bottom:2px solid #dadada; max-width:620px}
 .opendata-group-container > .opendata-chart > .opendata-chart-menu:first-child {margin:0}
 .opendata-chart-menu::after {content:""; display:block; clear:both}
 .opendata-chart-menu-item {float:left; margin:0 0 0 40px; padding:0; position:relative}
@@ -999,14 +1010,21 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-menu-item.active a::after {transform:scale(1, 1)}
 
 @media screen and (max-width:1119px) {
-    .opendata-chart-menu {margin:40px 0 0 0; font-size:22px; line-height:33px}
-    .opendata-group-container > .opendata-chart > .opendata-chart-menu:first-child {margin:0}
+    .opendata-chart-menu {float:none; font-size:22px; line-height:33px}
     .opendata-chart-menu-item {margin:0 0 0 36px}
     .opendata-chart-menu-item:first-child {margin:0}
     .opendata-chart-menu-item a {padding:0 0 10px 0}
 }
 
-.opendata-chart-download {margin:30px 0 0 0}
+.opendata-chart-download {float:right; margin:-4px 0 0 0}
+.opendata-chart-download a {display:inline-block; padding:0 15px 0 40px; position:relative; font-size:14px; line-height:35px; height:37px; text-decoration:none; color:#4e4e4e; border:1px solid #ecf3f4; background:#ecf3f4 url(../images/opendata-chart-download.svg) no-repeat 15px center}
+.opendata-chart-download a:hover {border-color:#000}
+.opendata-chart-download a span {font-weight:normal; color:#3e3e3e}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-download {float:none; margin:30px 0 0 0}
+}
+
 .opendata-chart-container {margin:30px 0 0 0}
 
 .opendata-chart-content::after {content:""; display:block; clear:both}
@@ -1029,6 +1047,7 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-graph-item-point {position:absolute; left:50%; width:11px; height:11px; background:#fff; border-width:2px; border-style:solid; border-radius:50%; margin:0 0 -5.5px -5.5px}
 .opendata-chart-map-inner g {cursor:pointer}
 .opendata-chart-map-inner g:hover {stroke:#fff; stroke-width:2px}
+.opendata-chart-map-inner circle {position:relative}
 
 @media screen and (max-width:1119px) {
     .opendata-chart-graph {float:none; width:auto}
@@ -1105,6 +1124,8 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-map-region-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative; max-width:440px}
 .opendata-chart-map-region-hint-container::before {content:""; display:block; position:absolute; left:21px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
 .opendata-chart-map-region-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+.opendata-chart-map-region-hint-value-map {margin:7px 0 0 0; font-size:14px; line-height:21px; color:#000}
+.opendata-chart-map-region-hint-value-map span {font-weight:bold; color:#217084}
 .opendata-chart-map-region-hint-values-title {margin:10px 0 0 0}
 .opendata-chart-map-region-hint-values {display:table; font-size:14px; line-height:21px; color:#000}
 .opendata-chart-map-region-hint-value {display:table-row}
@@ -1113,6 +1134,12 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-map-region-hint-value-title {display:table-cell; vertical-align:top; padding:7px 0 0 20px}
 .opendata-chart-map-region-hint-value-title:first-child {padding-left:0}
 .opendata-chart-map-region-hint-value-text {display:table-cell; vertical-align:top; padding:7px 0 0 20px; font-weight:bold}
+.opendata-chart-map-region-hint-value-percent {display:table-cell; vertical-align:top; padding:7px 0 0 10px; font-weight:300; color:#646464}
+.opendata-chart-map-region-hint-pie {margin:36px 0 0 0; width:126px; height:126px; position:relative; font-weight:normal; font-size:14px; line-height:21px; color:#000; white-space:nowrap}
+.opendata-chart-map-region-hint-pie canvas {display:block}
+.opendata-chart-map-region-hint-pie-legend {position:absolute; left:50%; top:50%; width:0; height:0}
+.opendata-chart-map-region-hint-pie-legend span {display:block; position:absolute; left:0; top:-48px}
+.opendata-chart-map-region-hint-pie-legend-out span {top:-90px}
 
 @media screen and (max-width:1119px) {
     .opendata-chart-map-region-hint {position:fixed; left:0; top:0; right:0; bottom:0; z-index:999; margin:0; pointer-events:auto; white-space:normal; overflow:auto; text-align:center; background:rgba(49, 49, 49, 0.5)}
