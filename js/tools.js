@@ -1366,20 +1366,20 @@ function makeChartMap(curBlock, data) {
         if (curData !== null) {
             var newMap = '';
 
-            for (var i = 0; i < curData.length; i++) {
-                var curColorIndex = -1;
-                var curValue = Number(curData[i][1]);
-                for (var c = 0; c < data.ranges.length; c++) {
-                    if (curValue >= data.ranges[c][0] && curValue <= data.ranges[c][1]) {
-                        curColorIndex = c;
-                    }
-                }
-
-                var curColor = data.ranges[curColorIndex][2];
-
-                for (var j = 0; j < opendataRegions.length; j++) {
-                    var curRegion = opendataRegions[j];
+            for (var j = 0; j < opendataRegions.length; j++) {
+                var curRegion = opendataRegions[j];
+                for (var i = 0; i < curData.length; i++) {
                     if (curRegion.id == curData[i][0]) {
+                        var curColorIndex = -1;
+                        var curValue = Number(curData[i][1]);
+                        for (var c = 0; c < data.ranges.length; c++) {
+                            if (curValue >= data.ranges[c][0] && curValue <= data.ranges[c][1]) {
+                                curColorIndex = c;
+                            }
+                        }
+
+                        var curColor = data.ranges[curColorIndex][2];
+
                         newMap += '<g style="fill:' + curColor + '" data-title="' + curRegion.title + '" data-value="' + curValue + '" data-name="' + data.titleTable + '">' + curRegion.svg + '</g>';
                     }
                 }
