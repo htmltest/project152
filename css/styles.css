@@ -1154,10 +1154,11 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 }
 
 .opendata-chart-bubble-content::after {content:""; display:block; clear:both}
-.opendata-chart-bubble-legend {float:left; width:440px}
-.opendata-chart-bubble-legend-item {position:relative; padding:15px 0 15px 19px}
+.opendata-chart-bubble-legend {float:left; max-width:440px}
+.opendata-chart-bubble-legend-item {position:relative; display:table; width:100%}
+.opendata-chart-bubble-legend-item-inner {display:table-cell; vertical-align:middle; height:80px; padding:15px 0 15px 19px}
 .opendata-chart-bubble-legend-item-color {position:absolute; left:0; top:7px; width:4px; bottom:6px}
-.opendata-chart-bubble-graph {float:right; max-width:566px; position:relative; overflow:auto}
+.opendata-chart-bubble-graph {float:right; max-width:calc(100% - 490px); position:relative; overflow:auto}
 .opendata-chart-bubble-graph-container {display:inline-block; vertical-align:top; position:relative; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; padding:0 40px}
 .opendata-chart-bubble-graph-item {display:table; width:100%; position:relative; z-index:2}
 .opendata-chart-bubble-graph-item-inner {position:relative; display:table-cell; vertical-align:middle}
@@ -1179,8 +1180,9 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-finance-graph-scale-y-title {position:absolute; left:0; top:50%; margin-top:-12px; white-space:nowrap; font-weight:normal; transform:translateX(-50%) rotate(-90deg)}
 .opendata-chart-finance-graph-wrapper {position:relative; margin:0 0 0 80px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; overflow:auto}
 .opendata-chart-finance-graph-container {display:inline-block; vertical-align:top; position:relative}
-.opendata-chart-finance-graph-item-point {position:absolute; width:20px; height:20px; border-radius:50%; margin:0 0 -10px 21.5px; cursor:pointer; z-index:2; transition:all 0.2s; border:0 solid transparent}
-.opendata-chart-finance-graph-item-point:hover {z-index:3; width:30px; height:30px; border:3px solid #fff; box-shadow:0px 0px 10px rgba(0, 0, 0, 0.15); margin:0 0 -15px 16.5px}
+.opendata-chart-finance-graph-item-point {position:absolute; width:16px; height:16px; border-radius:50%; margin:0 0 -8px 23.5px; cursor:pointer; z-index:2; transition:all 0.2s; border:0 solid transparent}
+.opendata-chart-finance-graph-item-point:hover {z-index:3; width:30px; height:30px; border:3px solid #fff; box-shadow:0px 0px 16px 7px rgba(0, 0, 0, 0.15); margin:0 0 -15px 16.5px}
+.opendata-chart-finance-graph-item-point.other {opacity:0.2}
 .opendata-chart-finance-graph-scale-x {border-top:2px solid #9f9f9f; padding:14px 0 0 0}
 .opendata-chart-finance-graph-scale-x-item {display:inline-block; vertical-align:middle; font-size:14px; line-height:21px; letter-spacing:0; text-align:center; width:63px; position:relative}
 .opendata-chart-finance-graph-scale-x-item::before {content:""; display:block; position:absolute; left:50%; bottom:100%; margin-bottom:16px; width:1px; background:#e8e8e8; height:9999px}
@@ -1195,7 +1197,7 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-finance-hint-container {padding:23px 20px 35px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative}
 .opendata-chart-finance-hint-container::before {content:""; display:block; position:absolute; left:42px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
 .opendata-chart-finance-hint.right .opendata-chart-finance-hint-container::before {left:auto; right:21px}
-.opendata-chart-finance-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+.opendata-chart-finance-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212; max-width:666px}
 .opendata-chart-finance-hint-values {display:table; color:#000; margin:18px 0 0 0}
 .opendata-chart-finance-hint-value {display:table-cell; border-left:1px solid #e3e3e3}
 .opendata-chart-finance-hint-value:first-child {border-left:none}

@@ -1458,6 +1458,9 @@ function makeChartMap(curBlock, data) {
 }
 
 function createChartBubble(blockID, data) {
+    for (var i = 0; i < data.legend.length; i++) {
+        data.legend[i].id = i;
+    }
     var curBlock = $('[data-id="' + blockID + '"]');
     if (curBlock.length == 1) {
         makeChartBubble(curBlock, data);
@@ -1481,14 +1484,23 @@ function makeChartBubble(curBlock, data) {
     }
     var newHTML = '';
 
+    if (typeof data.legend[0].sort !== 'undefined') {
+        data.legend.sort(function(a, b) {
+            if (a.sort < b.sort) return -1;
+            if (a.sort > b.sort) return 1;
+            return 0;
+        });
+    }
+
     if (dataType == 'chart') {
 
         newHTML +=  '<div class="opendata-chart-bubble-content">' +
                         '<div class="opendata-chart-bubble-legend">';
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=      '<div class="opendata-chart-bubble-legend-item">' +
-                                data.legend[i].title +
-                                '<div class="opendata-char-bubblet-legend-item-color" style="background-color:' + data.legend[i].color + '"></div>' +
+                                '<div class="opendata-chart-bubble-legend-item-inner">' +
+                                    data.legend[i].title +
+                                '</div>' +
                             '</div>';
         }
         newHTML +=      '</div>' +
@@ -1523,23 +1535,26 @@ function makeChartBubble(curBlock, data) {
 
         var itemWidth = 80;
         for (var i = 0; i < data.legend.length; i++) {
+            var curID = data.legend[i].id;
             for (var j = 0; j < data.data.length; j++) {
                 var curBubble = '';
-                if (data.data[j].values[i] !== null) {
-                    var curBubbleSize = Number(data.data[j].values[i]) / curMax * 100;
+                if (data.data[j].values[curID] !== null) {
+                    var curBubbleSize = Number(data.data[j].values[curID]) / curMax * 100;
 
                     var curBubblePrev = '';
-                    if (j > 0 && data.data[j - 1].values[i] !== null) {
+                    if (j > 0 && data.data[j - 1].values[curID] !== null) {
                         curBubblePrev = '<div class="opendata-chart-bubble-graph-item-bubble-prev" style="background-color:' + data.legend[i].color + '"></div>';
                     }
 
                     curBubble = curBubblePrev +
                                 '<div class="opendata-chart-bubble-graph-item-bubble-bg" style="background-color:' + data.legend[i].color + '; width:' + curBubbleSize + '%; height:' + curBubbleSize + '%"></div>' +
-                                '<div class="opendata-chart-bubble-graph-item-bubble-value">' + String(data.data[j].values[i]).replace('.', ',').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>';
+                                '<div class="opendata-chart-bubble-graph-item-bubble-value">' + String(data.data[j].values[curID]).replace('.', ',').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>';
                 }
                 $('.opendata-chart-bubble-graph-item').eq(i).find('.opendata-chart-bubble-graph-item-inner').append('<div class="opendata-chart-bubble-graph-item-bubble">' + curBubble + '</div>');
             }
         }
+
+        curBlock.find('.opendata-chart-bubble-graph').css({'max-width': 'calc(100% - ' + (curBlock.find('.opendata-chart-bubble-legend').width() + 50) + 'px)'});
 
         curBlock.find('.opendata-chart-bubble-graph').each(function() {
             $(this).mCustomScrollbar({
@@ -1566,13 +1581,14 @@ function makeChartBubble(curBlock, data) {
                                 '<tbody>';
 
         for (var i = 0; i < data.legend.length; i++) {
+            var curID = data.legend[i].id;
             newHTML +=              '<tr>' +
                                         '<td><strong>' + data.legend[i].title + '</strong></td>';
             for (var j = 0; j < data.data.length; j++) {
-                if (data.data[j].values[i] == null) {
+                if (data.data[j].values[curID] == null) {
                     newHTML +=          '<td>—</td>';
                 } else {
-                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
+                    newHTML +=          '<td>' + String(data.data[j].values[curID]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1701,6 +1717,8 @@ function makeChartFinance(curBlock, data) {
         curBlock.find('.opendata-chart-finance-graph-item-point').on('mouseenter', function(e) {
             if ($(window).width() > 1119) {
                 var curID = Number($(this).attr('data-id'));
+                curBlock.find('.opendata-chart-finance-graph-item-point').addClass('other');
+                curBlock.find('.opendata-chart-finance-graph-item-point[data-id="' + curID + '"]').removeClass('other');
                 $('.opendata-chart-finance-hint').remove();
                 var hintHTML =  '<div class="opendata-chart-finance-hint">' +
                                     '<div class="opendata-chart-finance-hint-container">' +
@@ -1734,6 +1752,7 @@ function makeChartFinance(curBlock, data) {
         curBlock.find('.opendata-chart-finance-graph-item-point').on('mouseleave', function(e) {
             if ($(window).width() > 1119) {
                 $('.opendata-chart-finance-hint').remove();
+                $('.opendata-chart-finance-graph-item-point').removeClass('other');
             }
         });
 
