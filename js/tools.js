@@ -1424,11 +1424,14 @@ function makeChartMap(curBlock, data) {
                             if (curValue >= data.ranges[c][0] && curValue <= data.ranges[c][1]) {
                                 curColorIndex = c;
                             }
+                            if (curValue == 0) {
+                                curColorIndex = 0;
+                            }
                         }
 
                         var curColor = data.ranges[curColorIndex][2];
 
-                        newMap += '<g style="fill:' + curColor + '" data-title="' + curRegion.title + '" data-value="' + curValue + '" data-name="' + data.titleTable + '">' + curRegion.svg + '</g>';
+                        newMap += '<g style="fill:' + curColor + '" data-title="' + curRegion.title + '" data-value="' + curValue + '" data-name="' + data.titleRanges + '">' + curRegion.svg + '</g>';
                     }
                 }
             }
