@@ -1,20 +1,20 @@
 <div class="opendata-chart">
-    <div class="opendata-chart-header">
+        <div class="opendata-chart-header">
         <div class="opendata-chart-menu">
             <div class="opendata-chart-menu-item active"><a href="#" data-type="chart">Графики</a></div>
             <div class="opendata-chart-menu-item"><a href="#" data-type="table">Табличный формат</a></div>
         </div>
 
-        <div class="opendata-chart-download">
-            <a href="#"><span>Скачать данные</span> 2.4 Мб PDF</a>
+                <div class="opendata-chart-download">
+            <a href="data/2.1 Совет по грантам Президента Российской Федерации.xlsx"><span>Скачать данные</span> 7.04 КБ XLSX</a>
         </div>
-    </div>
+            </div>
 
-    <div class="opendata-chart-container" data-id="uniqID-6">
+    <div class="opendata-chart-container" data-id="uniqID-2.1">
     </div>
     <script>
-        createChartOrg('uniqID-6', {
-            'titleTable' : 'Финансирование, млн',
+        createChartOrg('uniqID-2.1', {
+            'titleTable' : 'Данные',
             'legend' : [
                 {
                     'type'  : 'left',
@@ -30,63 +30,54 @@
 
                 {
                     'type'  : 'right',
+                    'scaleRightStep' : 180,
                     'color' : '#de54ff',
-                    'title' : 'Общие финансирование, млн'
+                    'title' : 'Общее финансирование, млн'
                 },
 
                 {
                     'type'  : 'right',
+                    'scaleRightStep' : 0.1,
                     'color' : '#297c90',
                     'title' : 'Финансирование в среднем, млн'
                 }
             ],
-            'scaleLeftStep' : 4000,
-            'scaleRightStep' : 400,
+            'scaleLeftStep' : 400,
             'scaleXTitle' : 'Год',
-            'scaleLeftTitle' : 'Финансирование, млн',
-            'scaleRightTitle' : 'Количество проектов',
+            'scaleLeftTitle' : 'Количество проектов',
+            'scaleRightTitle' : 'Финансирование, млн',
             'data' : [
-                {
-                    'year'      : '2015',
-                    'values'    : [13000, 5000, 200, 1300]
-                },
-                {
+                                {
+                    'year'      : '2012',
+                    'values'    : [500, 500, 120, 0.24]
+                },                {
+                    'year'      : '2013',
+                    'values'    : [987, 987, 236.18, 0.2393]
+                },                {
                     'year'      : '2014',
-                    'values'    : [9000, 4500, 450, 1500]
-                },
-                {
+                    'values'    : [1407, 1407, 523.98, 0.3724]
+                },                {
                     'year'      : '2015',
-                    'values'    : [16000, 5500, 450, 1500]
-                },
-                {
+                    'values'    : [1917, 1917, 836.2, 0.4362]
+                },                {
                     'year'      : '2016',
-                    'values'    : [8500, 5500, 600, 1650]
-                },
-                {
+                    'values'    : [1985, 1985, 868.7064, 0.4376]
+                },                {
                     'year'      : '2017',
-                    'values'    : [16000, 4000, 900, 2100]
-                },
-                {
+                    'values'    : [1902, 1902, 858.5916, 0.4514]
+                },                {
                     'year'      : '2018',
-                    'values'    : [9500, 5500, 600, 1650]
-                },
-                {
+                    'values'    : [1909, 1909, 865.302, 0.4533]
+                },                {
                     'year'      : '2019',
-                    'values'    : [9000, 3000, 550, 1550]
-                },
-                {
+                    'values'    : [1913, 1017, 840.568, 0.4394]
+                },                {
                     'year'      : '2020',
-                    'values'    : [14000, 4000, 800, 1900]
-                },
-                {
+                    'values'    : [1879, 525, 857.1924, 0.4562]
+                },                {
                     'year'      : '2021',
-                    'values'    : [14000, 4000, 800, 1900]
-                },
-                {
-                    'year'      : '2022',
-                    'values'    : [14000, 4000, 800, 1900]
-                }
-            ]
+                    'values'    : [874, 0, 409.896, 0.469]
+                },            ]
         });
     </script>
 </div>

@@ -922,12 +922,13 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .opendata-table+.doc-link {margin-top:28px}
 .wrapper .opendata-table th {width:25%; text-align:left; font-size:13px; color:#81a2b0; line-height:20px; font-weight:600; padding-bottom:12px}
 .wrapper .opendata-table th:first-child {min-width:300px}
+.wrapper .opendata-table th.big {min-width:450px}
 .wrapper .opendata-table th a.sort {color:#81a2b0; text-decoration:none; position:relative}
 .wrapper .opendata-table th a.sort:hover,
 .wrapper .opendata-table th a.sort.active {color:#000}
-.wrapper .opendata-table th a.sort::after {content:"↓"; position:absolute; right:-10px; bottom:10px; transform:translateY(50%); opacity:0; pointer-events:none}
+.wrapper .opendata-table th a.sort::after {content:"↑"; position:absolute; right:-10px; bottom:10px; transform:translateY(50%); opacity:0; pointer-events:none}
 .wrapper .opendata-table th a.sort.active:after {opacity:1}
-.wrapper .opendata-table th a.sort.up:after {content:"↑"}
+.wrapper .opendata-table th a.sort.up:after {content:"↓"}
 .wrapper .opendata-table td {font-weight:300; color:#000; text-align:left; vertical-align:top; padding:13px 30px 16px 30px; font-size:14px; line-height:21px}
 .wrapper .opendata-table td:first-child {min-width:300px}
 .wrapper .opendata-table thead+tbody tr:nth-child(even) td {background:none}
@@ -1017,8 +1018,8 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 }
 
 .opendata-chart-download {float:right; margin:-4px 0 0 0}
-.opendata-chart-download a {display:inline-block; padding:0 15px 0 40px; position:relative; font-size:14px; line-height:35px; height:37px; text-decoration:none; color:#4e4e4e; border:1px solid #ecf3f4; background:#ecf3f4 url(../images/opendata-chart-download.svg) no-repeat 15px center}
-.opendata-chart-download a:hover {border-color:#000}
+.opendata-chart-download a {display:inline-block; padding:0 15px 0 40px; position:relative; font-size:14px; line-height:37px; height:37px; text-decoration:none; color:#4e4e4e; background:#ecf3f4 url(../images/opendata-chart-download.svg) no-repeat 15px center}
+.opendata-chart-download a:hover {background-color:#c0d1d5}
 .opendata-chart-download a span {font-weight:normal; color:#3e3e3e}
 
 @media screen and (max-width:1119px) {
@@ -1180,8 +1181,8 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-finance-graph-scale-y-title {position:absolute; left:0; top:50%; margin-top:-12px; white-space:nowrap; font-weight:normal; transform:translateX(-50%) rotate(-90deg)}
 .opendata-chart-finance-graph-wrapper {position:relative; margin:0 0 0 80px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; overflow:auto}
 .opendata-chart-finance-graph-container {display:inline-block; vertical-align:top; position:relative}
-.opendata-chart-finance-graph-item-point {position:absolute; width:16px; height:16px; border-radius:50%; margin:0 0 -8px 23.5px; cursor:pointer; z-index:2; transition:all 0.2s; border:0 solid transparent}
-.opendata-chart-finance-graph-item-point:hover {z-index:3; width:30px; height:30px; border:3px solid #fff; box-shadow:0px 0px 16px 7px rgba(0, 0, 0, 0.15); margin:0 0 -15px 16.5px}
+.opendata-chart-finance-graph-item-point {position:absolute; width:16px; height:16px; border-radius:50%; margin:0 0 -8px -7px; cursor:pointer; z-index:2; transition:all 0.2s; border:0 solid transparent}
+.opendata-chart-finance-graph-item-point:hover {z-index:3; width:30px; height:30px; border:3px solid #fff; box-shadow:0px 0px 16px 7px rgba(0, 0, 0, 0.15); margin:0 0 -15px -14px}
 .opendata-chart-finance-graph-item-point.other {opacity:0.2}
 .opendata-chart-finance-graph-scale-x {border-top:2px solid #9f9f9f; padding:14px 0 0 0}
 .opendata-chart-finance-graph-scale-x-item {display:inline-block; vertical-align:middle; font-size:14px; line-height:21px; letter-spacing:0; text-align:center; width:63px; position:relative}
@@ -1219,8 +1220,8 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-org-graph-wrapper {position:relative; margin:0 0 0 80px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; overflow:auto}
 .opendata-chart-org-graph-container {display:inline-block; vertical-align:top; position:relative}
 .opendata-chart-org-graph-item {height:70px; border-top:1px solid #e8e8e8}
-.opendata-chart-org-graph-item-bar {position:absolute; bottom:0; width:36px; margin:0 0 0 13.5px; z-index:2; cursor:pointer}
-.opendata-chart-org-graph-item-bar-item {position:absolute; left:0; right:0}
+.opendata-chart-org-graph-item-bar {position:absolute; bottom:0; top:0; width:36px; margin:0 0 0 13.5px; z-index:2; cursor:pointer}
+.opendata-chart-org-graph-item-bar-item {position:absolute; left:0; right:0; bottom:0}
 .opendata-chart-org-graph-item-point-line {position:absolute; height:3px; border-top-width:3px; border-top-style:solid; transform-origin:left center; margin-top:-8px; z-index:2; pointer-events:none}
 .opendata-chart-org-graph-item-point {position:absolute; width:15px; height:15px; border-width:2px; border-style:solid; background:#fff; border-radius:50%; margin:0 0 -10px 24px; cursor:pointer; z-index:2; transition:all 0.2s}
 .opendata-chart-org-graph-scale-x {border-top:2px solid #9f9f9f; padding:14px 0 0 0}
@@ -1246,3 +1247,12 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-org-hint-value-color-inner.right {height:4px}
 .opendata-chart-org-hint-value-title {padding:5px 0 0 10px; display:table-cell; vertical-align:top}
 .opendata-chart-org-hint-value-text {padding:5px 0 0 24px; font-weight:normal; display:table-cell; vertical-align:top}
+
+.opendata-chart-org-right-switch {font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; overflow:auto; width:100%; margin:40px 0}
+.opendata-chart-org-right-switch-inner {display:inline-block; vertical-align:top}
+.opendata-chart-org-right-switch-item {display:inline-block; vertical-align:top; margin:0 0 0 20px}
+.opendata-chart-org-right-switch-item:first-child {margin:0}
+.opendata-chart-org-right-switch-item a {display:block; padding:0 0 10px 0; position:relative; text-decoration:none; font-size:16px; line-height:24px; letter-spacing:0; color:#999; font-weight:normal}
+.opendata-chart-org-right-switch-item a:hover {color:#000}
+.opendata-chart-org-right-switch-item.active a {color:#000}
+.opendata-chart-org-right-switch-item.active a::after {content:""; display:block; position:absolute; left:0; bottom:0; right:0; height:4px; background:#2c6573}

@@ -600,7 +600,7 @@ $(document).ready(function() {
             $('body').append('<div class="opendata-chart-map-region-hint">' +
                                  '<div class="opendata-chart-map-region-hint-container">' +
                                     '<div class="opendata-chart-map-region-hint-title">' + $(this).attr('data-title') + '</div>' +
-                                    '<div class="opendata-chart-map-region-hint-value-map">' + $(this).attr('data-name') + ': <span>' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</span></div>' +
+                                    '<div class="opendata-chart-map-region-hint-value-map">' + $(this).attr('data-name') + ': <span>' + numberWithSpaces($(this).attr('data-value')) + '</span></div>' +
                                  '</div>' +
                              '</div>');
             var curLeft = e.pageX;
@@ -616,7 +616,7 @@ $(document).ready(function() {
                                  '<div class="opendata-chart-map-region-hint-bg"></div>' +
                                  '<div class="opendata-chart-map-region-hint-container">' +
                                     '<div class="opendata-chart-map-region-hint-title">' + $(this).attr('data-title') + '</div>' +
-                                    '<div class="opendata-chart-map-region-hint-value">' + $(this).attr('data-name') + ': <span>' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</span></div>' +
+                                    '<div class="opendata-chart-map-region-hint-value">' + $(this).attr('data-name') + ': <span>' + numberWithSpaces($(this).attr('data-value')) + '</span></div>' +
                                     '<a href="#" class="opendata-chart-map-region-hint-close"></a>' +
                                  '</div>' +
                              '</div>');
@@ -671,7 +671,7 @@ $(document).ready(function() {
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
-                                            '<div class="opendata-chart-map-region-hint-value-text">' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')) + '</div>' +
                                             '<div class="opendata-chart-map-region-hint-value-percent">' + newPercent + '%</div>' +
                                         '</div>';
             });
@@ -737,7 +737,7 @@ $(document).ready(function() {
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
-                                            '<div class="opendata-chart-map-region-hint-value-text">' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')) + '</div>' +
                                         '</div>';
             });
 
@@ -765,7 +765,7 @@ $(document).ready(function() {
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
-                                            '<div class="opendata-chart-map-region-hint-value-text">' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')) + '</div>' +
                                         '</div>';
             });
 
@@ -791,7 +791,7 @@ $(document).ready(function() {
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
-                                            '<div class="opendata-chart-map-region-hint-value-text">' + String($(this).attr('data-value')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')) + '</div>' +
                                         '</div>';
             });
 
@@ -868,7 +868,7 @@ $(document).ready(function() {
             curLink.toggleClass('up');
         } else {
             curTable.find('thead th a').removeClass('active up');
-            curLink.addClass('active');
+            curLink.addClass('active up');
         }
         var curRows = [];
         curTable.find('tbody tr').each(function() {
@@ -1019,6 +1019,9 @@ function makeChartBar(curBlock, data) {
                                 '<thead>' +
                                     '<tr>' +
                                         '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
+        if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.summTitle + '</a></th>';
+        }
         for (var i = 0; i < data.data.length; i++) {
             newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
@@ -1029,9 +1032,18 @@ function makeChartBar(curBlock, data) {
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
                                         '<td><strong>' + data.legend[i].title + '</strong></td>';
+            if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+                var summAll = 0;
+                for (var j = 0; j < data.data.length; j++) {
+                    if (data.data[j].values[i] !== null) {
+                        summAll += data.data[j].values[i];
+                    }
+                }
+                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
+            }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] !== null) {
-                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
+                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
                 } else {
                     newHTML +=          '<td>—</td>';
                 }
@@ -1202,7 +1214,7 @@ function makeChartLine(curBlock, data) {
                     if (data.data[i].values[curID] !== null) {
                         hintHTML +=         '<div class="opendata-chart-map-region-hint-value">' +
                                                 '<div class="opendata-chart-map-region-hint-value-title">' + data.data[i].year + '</div>' +
-                                                '<div class="opendata-chart-map-region-hint-value-text">' + String(data.data[i].values[curID]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
+                                                '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces(data.data[i].values[curID]) + '</div>' +
                                             '</div>';
                     }
                 }
@@ -1230,7 +1242,7 @@ function makeChartLine(curBlock, data) {
                     if (data.data[i].values[curID] !== null) {
                         hintHTML +=         '<div class="opendata-chart-map-region-hint-value">' +
                                                 '<div class="opendata-chart-map-region-hint-value-title">' + data.data[i].year + '</div>' +
-                                                '<div class="opendata-chart-map-region-hint-value-text">' + String(data.data[i].values[curID]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
+                                                '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces(data.data[i].values[curID]) + '</div>' +
                                             '</div>';
                     }
                 }
@@ -1264,6 +1276,9 @@ function makeChartLine(curBlock, data) {
                                 '<thead>' +
                                     '<tr>' +
                                         '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
+        if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.summTitle + '</a></th>';
+        }
         for (var i = 0; i < data.data.length; i++) {
             newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
@@ -1274,11 +1289,20 @@ function makeChartLine(curBlock, data) {
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
                                         '<td><strong>' + data.legend[i].title + '</strong></td>';
+            if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+                var summAll = 0;
+                for (var j = 0; j < data.data.length; j++) {
+                    if (data.data[j].values[i] !== null) {
+                        summAll += data.data[j].values[i];
+                    }
+                }
+                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
+            }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
                     newHTML +=          '<td>—</td>';
                 } else {
-                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
+                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1340,22 +1364,9 @@ function makeChartMap(curBlock, data) {
 
         newHTML +=  '<div class="opendata-chart-map-wrapper"><div class="opendata-chart-map-inner"><svg width="1040" height="591" viewBox="0 0 1107.77 630.12" fill="none" xmlns="http://www.w3.org/2000/svg"></svg></div><a href="#" class="opendata-chart-map-zoom-inc"></a><a href="#" class="opendata-chart-map-zoom-dec"></a></div>';
 
-        newHTML +=  '<div class="opendata-chart-map-legend">' +
-                        '<div class="opendata-chart-map-legend-title">' + data.titleTable + '</div>' +
-                        '<div class="opendata-chart-map-legend-list">';
-        for (var i = 1; i < data.ranges.length; i++) {
-            newHTML +=      '<div class="opendata-chart-map-legend-item" style="background:' + data.ranges[i][2] + '"><span>' + data.ranges[i][1] + '</span></div>';
-        }
-        newHTML += '<em>' + data.ranges[0][0] + '</em>';
-        newHTML +=      '</div>' +
-                    '</div>';
-
-        curBlock.html(newHTML);
         if (curBlock.data('year') === undefined) {
             curBlock.data('year', data.data[0].year);
         }
-        curBlock.find('.opendata-chart-map-year-item a:contains("' + curBlock.data('year') + '")').parent().addClass('active');
-
         var curYear = curBlock.data('year');
         var curData = null;
         for (var i = 0; i < data.data.length; i++) {
@@ -1363,6 +1374,43 @@ function makeChartMap(curBlock, data) {
                 curData =  data.data[i].values;
             }
         }
+
+        var curMax = 0;
+        for (var i = 0; i < curData.length; i++) {
+            if (curMax < Number(curData[i][1])) {
+                curMax = Number(curData[i][1]);
+            }
+        }
+
+        data.ranges = [];
+        var map_rages = [0.000001, 0.01, 0.03, 0.20, 1.10];
+        var mr_prev = 0;
+
+        for (var i = 0; i < map_rages.length; i++) {
+            var rangeStart = curMax * mr_prev;
+            var rangeStop = curMax * map_rages[i];
+            if (data.numberFixed == 0) {
+                rangeStop = Math.ceil(rangeStop);
+                rangeStart = Math.ceil(rangeStart);
+            }
+            data.ranges.push([rangeStart, rangeStop, data.colors[i]]);
+            mr_prev = map_rages[i];
+        }
+        
+        newHTML +=  '<div class="opendata-chart-map-legend">' +
+                        '<div class="opendata-chart-map-legend-title">' + data.titleRanges + '</div>' +
+                        '<div class="opendata-chart-map-legend-list">';
+        for (var i = 1; i < data.ranges.length; i++) {
+            newHTML +=      '<div class="opendata-chart-map-legend-item" style="background:' + data.ranges[i][2] + '"><span>' + (data.ranges[i][1]).toFixed(data.numberFixed) + '</span></div>';
+        }
+        newHTML += '<em>' + data.ranges[0][0] + '</em>';
+        newHTML +=      '</div>' +
+                    '</div>';
+
+        curBlock.html(newHTML);
+
+        curBlock.find('.opendata-chart-map-year-item a:contains("' + curBlock.data('year') + '")').parent().addClass('active');
+
         if (curData !== null) {
             var newMap = '';
 
@@ -1414,6 +1462,9 @@ function makeChartMap(curBlock, data) {
                                 '<thead>' +
                                     '<tr>' +
                                         '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
+        if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.summTitle + '</a></th>';
+        }
         for (var i = 0; i < data.data.length; i++) {
             newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
@@ -1424,11 +1475,28 @@ function makeChartMap(curBlock, data) {
         for (var i = 0; i < opendataRegions.length; i++) {
             newHTML +=              '<tr>' +
                                         '<td><strong>' + opendataRegions[i].title + '</strong></td>';
+            if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+                var summAll = 0;
+                var isHas = false;
+                for (var j = 0; j < data.data.length; j++) {
+                    for (var k = 0; k < data.data[j].values.length; k++) {
+                        if (data.data[j].values[k][0] == opendataRegions[i].id) {
+                            summAll += data.data[j].values[k][1];
+                            isHas = true;
+                        }
+                    }
+                }
+                if (!isHas) {
+                    newHTML +=          '<td>—</td>';
+                } else {
+                    newHTML +=          '<td>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
+                }
+            }
             for (var j = 0; j < data.data.length; j++) {
                 var isHas = false;
                 for (var k = 0; k < data.data[j].values.length; k++) {
                     if (data.data[j].values[k][0] == opendataRegions[i].id) {
-                        newHTML +=      '<td>' + String(data.data[j].values[k][1]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
+                        newHTML +=      '<td>' + numberWithSpaces(data.data[j].values[k][1]) + '</td>';
                         isHas = true;
                     }
                 }
@@ -1548,7 +1616,7 @@ function makeChartBubble(curBlock, data) {
 
                     curBubble = curBubblePrev +
                                 '<div class="opendata-chart-bubble-graph-item-bubble-bg" style="background-color:' + data.legend[i].color + '; width:' + curBubbleSize + '%; height:' + curBubbleSize + '%"></div>' +
-                                '<div class="opendata-chart-bubble-graph-item-bubble-value">' + String(data.data[j].values[curID]).replace('.', ',').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>';
+                                '<div class="opendata-chart-bubble-graph-item-bubble-value">' + numberWithSpaces(data.data[j].values[curID]) + '</div>';
                 }
                 $('.opendata-chart-bubble-graph-item').eq(i).find('.opendata-chart-bubble-graph-item-inner').append('<div class="opendata-chart-bubble-graph-item-bubble">' + curBubble + '</div>');
             }
@@ -1573,6 +1641,9 @@ function makeChartBubble(curBlock, data) {
                                 '<thead>' +
                                     '<tr>' +
                                         '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
+        if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.summTitle + '</a></th>';
+        }
         for (var i = 0; i < data.data.length; i++) {
             newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
@@ -1584,11 +1655,20 @@ function makeChartBubble(curBlock, data) {
             var curID = data.legend[i].id;
             newHTML +=              '<tr>' +
                                         '<td><strong>' + data.legend[i].title + '</strong></td>';
+            if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+                var summAll = 0;
+                for (var j = 0; j < data.data.length; j++) {
+                    if (data.data[j].values[curID] !== null) {
+                        summAll += data.data[j].values[curID];
+                    }
+                }
+                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
+            }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[curID] == null) {
                     newHTML +=          '<td>—</td>';
                 } else {
-                    newHTML +=          '<td>' + String(data.data[j].values[curID]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
+                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[curID]) + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1662,8 +1742,16 @@ function makeChartFinance(curBlock, data) {
 
         var curScaleX = curBlock.find('.opendata-chart-finance-graph-scale-x');
 
+        var curGraph = curBlock.find('.opendata-chart-finance-graph-container');
+        var itemWidth = 63;
+        curGraph.css({'width': data.data.length * itemWidth + 'px'});
+        if (curGraph.width() < curBlock.find('.opendata-chart-finance-graph-wrapper').width()) {
+            itemWidth = curBlock.find('.opendata-chart-finance-graph-wrapper').width() / data.data.length;
+        }
+        curGraph.css({'width': data.data.length * itemWidth + 'px'});
+
         for (var i = 0; i < data.data.length; i++) {
-            var itemHTML =  '<div class="opendata-chart-finance-graph-scale-x-item">' +
+            var itemHTML =  '<div class="opendata-chart-finance-graph-scale-x-item" style="width:' + itemWidth + 'px">' +
                                 '<div class="opendata-chart-finance-graph-item-year">' + data.data[i].year + '</div>';
             itemHTML +=     '</div>';
             curScaleX.append(itemHTML);
@@ -1674,8 +1762,10 @@ function makeChartFinance(curBlock, data) {
         var curMax = 0;
         for (var i = 0; i < data.data.length; i++) {
             for (var j = 0; j < data.data[i].values.length; j++) {
-                if (curMax < Number(data.data[i].values[j])) {
-                    curMax = Number(data.data[i].values[j]);
+                if (j < 10) {
+                    if (curMax < Number(data.data[i].values[j])) {
+                        curMax = Number(data.data[i].values[j]);
+                    }
                 }
             }
         }
@@ -1689,18 +1779,16 @@ function makeChartFinance(curBlock, data) {
         var itemHeight = 70;
         curScaleY.css({'height': countYLines * itemHeight + 'px'});
 
-        var curGraph = curBlock.find('.opendata-chart-finance-graph-container');
         for (var i = 0; i < countYLines; i++) {
             curGraph.append('<div class="opendata-chart-finance-graph-item"></div>');
         }
 
-        var itemWidth = 63;
-        curGraph.css({'width': data.data.length * itemWidth + 'px'});
-
         for (var i = 0; i < data.data.length; i++) {
             for (var j = 0; j < data.data[i].values.length; j++) {
-                if (data.data[i].values[j] !== null) {
-                    curGraph.append('<div class="opendata-chart-finance-graph-item-point" style="left:' + (itemWidth * i) + 'px; bottom:' + (Number(data.data[i].values[j]) / curMax * 100) + '%; background-color:' + data.legend[j].color + '" data-id="' + j + '"></div>');
+                if (j < 10) {
+                    if (data.data[i].values[j] !== null) {
+                        curGraph.append('<div class="opendata-chart-finance-graph-item-point" style="left:' + (itemWidth * i + itemWidth / 2) + 'px; bottom:' + (Number(data.data[i].values[j]) / curMax * 100) + '%; background-color:' + data.legend[j].color + '" data-id="' + j + '"></div>');
+                    }
                 }
             }
         }
@@ -1728,7 +1816,7 @@ function makeChartFinance(curBlock, data) {
                     if (data.data[i].values[curID] !== null) {
                         hintHTML +=         '<div class="opendata-chart-finance-hint-value">' +
                                                 '<div class="opendata-chart-finance-hint-value-title">' + data.data[i].year + '</div>' +
-                                                '<div class="opendata-chart-finance-hint-value-text">' + String(Number(data.data[i].values[curID]).toFixed(3)).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
+                                                '<div class="opendata-chart-finance-hint-value-text">' + numberWithSpaces(Number(data.data[i].values[curID]).toFixed(3)) + '</div>' +
                                             '</div>';
                         if ((i + 1) % 10 == 0) {
                             hintHTML += '</div>' +
@@ -1763,7 +1851,10 @@ function makeChartFinance(curBlock, data) {
                             '<table>' +
                                 '<thead>' +
                                     '<tr>' +
-                                        '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
+                                        '<th class="big"><a href="#" class="sort">' + data.titleTable + '</a></th>';
+        if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.summTitle + '</a></th>';
+        }
         for (var i = 0; i < data.data.length; i++) {
             newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
@@ -1774,11 +1865,20 @@ function makeChartFinance(curBlock, data) {
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
                                         '<td><strong>' + data.legend[i].title + '</strong></td>';
+            if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+                var summAll = 0;
+                for (var j = 0; j < data.data.length; j++) {
+                    if (data.data[j].values[i] !== null) {
+                        summAll += data.data[j].values[i];
+                    }
+                }
+                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(3)) + '</td>';
+            }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
                     newHTML +=          '<td>—</td>';
                 } else {
-                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
+                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1828,7 +1928,35 @@ function makeChartOrg(curBlock, data) {
 
     if (dataType == 'chart') {
 
+        function angle_point(a, b, c) {
+            var x1 = a[0] - b[0];
+            var x2 = c[0] - b[0];
+            var y1 = a[1] - b[1];
+            var y2 = c[1] - b[1];
+
+            var d1 = Math.sqrt(x1 * x1 + y1 * y1);
+            var d2 = Math.sqrt(x2 * x2 + y2 * y2);
+            return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
+        }
+        curBlock.html('');
+
+        var curRightSwitch = '';
+        for (var i = 0; i < data.legend.length; i++) {
+            if (data.legend[i].type == 'right') {
+                if (curRightSwitch == '') {
+                    curRightSwitch =    '<div class="opendata-chart-org-right-switch">' +
+                                            '<div class="opendata-chart-org-right-switch-inner">';
+                }
+                curRightSwitch +=               '<div class="opendata-chart-org-right-switch-item" data-id="' + i + '"><a href="#">' + data.legend[i].title + '</a></div>';
+            }
+        }
+        if (curRightSwitch != '') {
+            curRightSwitch +=               '</div>' +
+                                        '</div>';
+        }
+
         newHTML +=  '<div class="opendata-chart-org-content">' +
+                        curRightSwitch +
                         '<div class="opendata-chart-org-graph">' +
                             '<div class="opendata-chart-org-graph-scale-left-title">' + data.scaleLeftTitle + '</div>' +
                             '<div class="opendata-chart-org-graph-scale-left"></div>' +
@@ -1843,14 +1971,34 @@ function makeChartOrg(curBlock, data) {
                         '</div>' +
                         '<div class="opendata-chart-org-legend">';
         for (var i = 0; i < data.legend.length; i++) {
-            newHTML +=      '<div class="opendata-chart-org-legend-item ' + data.legend[i].type + '">' +
-                                data.legend[i].title +
-                                '<div class="opendata-chart-org-legend-item-color" style="background-color:' + data.legend[i].color + '"></div>' +
-                            '</div>';
+            newHTML +=  '<div class="opendata-chart-org-legend-item ' + data.legend[i].type + '">' +
+                            data.legend[i].title +
+                            '<div class="opendata-chart-org-legend-item-color" style="background-color:' + data.legend[i].color + '"></div>' +
+                        '</div>';
         }
         newHTML +=      '</div>' +
                     '</div>';
-        curBlock.html(newHTML);
+        curBlock.append(newHTML);
+
+        if (curRightSwitch != '') {
+            if (curBlock.data('right') === undefined) {
+                curBlock.data('right', curBlock.find('.opendata-chart-org-right-switch-item').eq(0).attr('data-id'));
+            }
+            curBlock.find('.opendata-chart-org-right-switch-item[data-id="' + curBlock.data('right') + '"]').addClass('active');
+
+            var curRight = curBlock.data('right');
+        }
+
+        curBlock.find('.opendata-chart-org-right-switch-item a').click(function(e) {
+            var curItem = $(this).parent();
+            if (!curItem.hasClass('active')) {
+                curItem.parent().find('.opendata-chart-org-right-switch-item.active').removeClass('active');
+                curItem.addClass('active');
+                curItem.parents().find('.opendata-chart-container').data('right', curItem.attr('data-id'));
+                makeChartOrg(curBlock, data);
+            }
+            e.preventDefault();
+        });
 
         var curScaleX = curBlock.find('.opendata-chart-org-graph-scale-x');
 
@@ -1867,20 +2015,18 @@ function makeChartOrg(curBlock, data) {
 
         var curMaxLeft = 0;
         for (var i = 0; i < data.data.length; i++) {
-            var curSumm = 0;
             for (var j = 0; j < data.data[i].values.length; j++) {
                 if (data.legend[j].type == 'left') {
-                    curSumm += Number(data.data[i].values[j]);
+                    if (curMaxLeft < Number(data.data[i].values[j])) {
+                        curMaxLeft = Number(data.data[i].values[j]);
+                    }
                 }
-            }
-            if (curMaxLeft < curSumm) {
-                curMaxLeft = curSumm;
             }
         }
 
         var countLeftLines = Math.ceil(curMaxLeft / Number(data.scaleLeftStep));
         for (var i = 0; i <= countLeftLines; i++) {
-            curScaleLeft.append('<div class="opendata-chart-org-graph-scale-left-item" style="bottom:' + (i / countLeftLines * 100) + '%">' + String(i * Number(data.scaleLeftStep)).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>');
+            curScaleLeft.append('<div class="opendata-chart-org-graph-scale-left-item" style="bottom:' + (i / countLeftLines * 100) + '%">' + numberWithSpaces(i * Number(data.scaleLeftStep)) + '</div>');
         }
         curMaxLeft = countLeftLines * Number(data.scaleLeftStep);
 
@@ -1891,7 +2037,7 @@ function makeChartOrg(curBlock, data) {
         var curMaxRight = 0;
         for (var i = 0; i < data.data.length; i++) {
             for (var j = 0; j < data.data[i].values.length; j++) {
-                if (data.legend[j].type == 'right') {
+                if (data.legend[j].type == 'right' && j == curRight) {
                     if (curMaxRight < Number(data.data[i].values[j])) {
                         curMaxRight = Number(data.data[i].values[j]);
                     }
@@ -1899,11 +2045,15 @@ function makeChartOrg(curBlock, data) {
             }
         }
 
-        var countRightLines = Math.ceil(curMaxRight / Number(data.scaleRightStep));
+        var countRightLines = Math.ceil(curMaxRight / Number(data.legend[curRight].scaleRightStep));
         for (var i = 0; i <= countRightLines; i++) {
-            curScaleRight.append('<div class="opendata-chart-org-graph-scale-right-item" style="bottom:' + (i / countRightLines * 100) + '%">' + String(i * Number(data.scaleRightStep)).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>');
+            var curRightValue = i * Number(data.legend[curRight].scaleRightStep);
+            if (String(curRightValue).indexOf('.') > -1) {
+                curRightValue = curRightValue.toFixed(1);
+            }
+            curScaleRight.append('<div class="opendata-chart-org-graph-scale-right-item" style="bottom:' + (i / countRightLines * 100) + '%">' + numberWithSpaces(curRightValue) + '</div>');
         }
-        curMaxRight = countRightLines * Number(data.scaleRightStep);
+        curMaxRight = countRightLines * Number(data.legend[curRight].scaleRightStep);
 
         curScaleRight.css({'height': countLeftLines * itemHeight + 'px'});
 
@@ -1917,39 +2067,20 @@ function makeChartOrg(curBlock, data) {
 
         for (var i = 0; i < data.data.length; i++) {
             var itemHTML = '';
-            var curSumm = 0;
-            for (var j = 0; j < data.data[i].values.length; j++) {
-                if (data.legend[j].type == 'left') {
-                    curSumm += Number(data.data[i].values[j]);
-                }
-            }
             var itemBarHTML = '';
-            var tmpSumm = 0;
             for (var j = 0; j < data.data[i].values.length; j++) {
                 if (data.legend[j].type == 'left') {
-                    itemBarHTML += '<div class="opendata-chart-org-graph-item-bar-item" style="background-color:' + data.legend[j].color + '; bottom:' + tmpSumm + '%; height:' + (Number(data.data[i].values[j]) / curSumm * 100) + '%"></div>';
-                    tmpSumm += Number(data.data[i].values[j]) / curSumm * 100;
+                    itemBarHTML += '<div class="opendata-chart-org-graph-item-bar-item" style="transform:translateX(' + (j * 10) + 'px); background-color:' + data.legend[j].color + '; height:' + (Number(data.data[i].values[j]) / curMaxLeft * 100) + '%"></div>';
                 }
             }
-            itemHTML += '<div class="opendata-chart-org-graph-item-bar" style="left:' + (itemWidth * i) + 'px; height:' + (curSumm / curMaxLeft * 100) + '%" data-year="' + i + '">' + itemBarHTML + '</div>';
+            itemHTML += '<div class="opendata-chart-org-graph-item-bar" style="left:' + (itemWidth * i) + 'px" data-year="' + i + '">' + itemBarHTML + '</div>';
             curGraph.append(itemHTML);
-        }
-
-        function angle_point(a, b, c) {
-            var x1 = a[0] - b[0];
-            var x2 = c[0] - b[0];
-            var y1 = a[1] - b[1];
-            var y2 = c[1] - b[1];
-
-            var d1 = Math.sqrt(x1 * x1 + y1 * y1);
-            var d2 = Math.sqrt(x2 * x2 + y2 * y2);
-            return Math.acos((x1 * x2 + y1 * y2) / (d1 * d2)) * 180 / Math.PI;
         }
 
         for (var i = 0; i < data.legend.length; i++) {
             var lineDots = [];
             for (var j = 0; j < data.data.length; j++) {
-                if (data.legend[i].type == 'right') {
+                if (data.legend[i].type == 'right' && i == curRight) {
                     if (data.data[j].values[i] !== null) {
                         lineDots.push({'year': j, 'value': Number(data.data[j].values[i])});
                     }
@@ -1974,7 +2105,7 @@ function makeChartOrg(curBlock, data) {
 
         for (var i = 0; i < data.data.length; i++) {
             for (var j = 0; j < data.data[i].values.length; j++) {
-                if (data.legend[j].type == 'right') {
+                if (data.legend[j].type == 'right' && j == curRight) {
                     if (data.data[i].values[j] !== null) {
                         curGraph.append('<div class="opendata-chart-org-graph-item-point" style="left:' + (itemWidth * i) + 'px; bottom:' + (Number(data.data[i].values[j]) / curMaxRight * 100) + '%; border-color:' + data.legend[j].color + '" data-year="' + i + '"></div>');
                     }
@@ -2000,11 +2131,11 @@ function makeChartOrg(curBlock, data) {
                                         '<div class="opendata-chart-org-hint-title">' + data.data[curYear].year + ' г</div>' +
                                         '<div class="opendata-chart-org-hint-values">';
                 for (var i = 0; i < data.legend.length; i++) {
-                    hintHTML +=         '<div class="opendata-chart-org-hint-value">' +
-                                            '<div class="opendata-chart-org-hint-value-color"><div class="opendata-chart-org-hint-value-color-inner ' + data.legend[i].type + '" style="background-color:' + data.legend[i].color + '"></div></div>' +
-                                            '<div class="opendata-chart-org-hint-value-title">' + data.legend[i].title + '</div>' +
-                                            '<div class="opendata-chart-org-hint-value-text">' + String(data.data[curYear].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</div>' +
-                                        '</div>';
+                    hintHTML +=     '<div class="opendata-chart-org-hint-value">' +
+                                        '<div class="opendata-chart-org-hint-value-color"><div class="opendata-chart-org-hint-value-color-inner ' + data.legend[i].type + '" style="background-color:' + data.legend[i].color + '"></div></div>' +
+                                        '<div class="opendata-chart-org-hint-value-title">' + data.legend[i].title + '</div>' +
+                                        '<div class="opendata-chart-org-hint-value-text">' + numberWithSpaces(data.data[curYear].values[i]) + '</div>' +
+                                    '</div>';
                 }
                 hintHTML +=             '</div>' +
                                     '</div>' +
@@ -2033,6 +2164,9 @@ function makeChartOrg(curBlock, data) {
                                 '<thead>' +
                                     '<tr>' +
                                         '<th><a href="#" class="sort">' + data.titleTable + '</a></th>';
+        if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+            newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.summTitle + '</a></th>';
+        }
         for (var i = 0; i < data.data.length; i++) {
             newHTML +=                  '<th><a href="#" class="sort sort-number">' + data.data[i].year + '</a></th>';
         }
@@ -2043,11 +2177,20 @@ function makeChartOrg(curBlock, data) {
         for (var i = 0; i < data.legend.length; i++) {
             newHTML +=              '<tr>' +
                                         '<td><strong>' + data.legend[i].title + '</strong></td>';
+            if (typeof data.needSumm !== 'undefined' && data.needSumm) {
+                var summAll = 0;
+                for (var j = 0; j < data.data.length; j++) {
+                    if (data.data[j].values[i] !== null) {
+                        summAll += data.data[j].values[i];
+                    }
+                }
+                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(3)) + '</td>';
+            }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
                     newHTML +=          '<td>—</td>';
                 } else {
-                    newHTML +=          '<td>' + String(data.data[j].values[i]).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;') + '</td>';
+                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -2069,4 +2212,10 @@ function makeChartOrg(curBlock, data) {
         });
 
     }
+}
+
+function numberWithSpaces(x) {
+    var parts = x.toString().split('.');
+    parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;');
+    return parts.join('.');
 }
