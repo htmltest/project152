@@ -1773,7 +1773,7 @@ function makeChartFinance(curBlock, data) {
             }
         }
 
-        var countYLines = Math.ceil(curMax / Number(data.scaleYStep)) + 1;
+        var countYLines = Math.ceil(curMax / Number(data.scaleYStep));
         for (var i = 0; i <= countYLines; i++) {
             curScaleY.append('<div class="opendata-chart-finance-graph-scale-y-item" style="bottom:' + (i / countYLines * 100) + '%">' + (i * Number(data.scaleYStep)) + '</div>');
         }

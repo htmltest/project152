@@ -892,7 +892,7 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 
 .opendata-group-container {position:absolute; left:-9999px; top:-9999px; opacity:0; transition:opacity 0.2s; padding:0 0 55px 0; width:100%}
 .opendata-group.open .opendata-group-container {position:relative; left:auto; top:auto; opacity:1}
-.opendata-group-container.loading {min-height:200px; background:url(../images/loading.gif) no-repeat center}
+.opendata-group-container.loading {min-height:200px; background:url(../images/loading.gif) no-repeat center top}
 
 @media screen and (max-width:1119px) {
     .opendata-group-container {padding:35px 0 33px 0}
@@ -911,8 +911,8 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 }
 
 .opendata-results:first-child {margin-top:36px}
-.opendata-results.loading {position:relative}
-.opendata-results.loading::after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(255, 255, 255, 0.5) url(../images/loading.gif) no-repeat center}
+.opendata-results.loading {position:relative; min-height:200px}
+.opendata-results.loading::after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(255, 255, 255, 0.5) url(../images/loading.gif) no-repeat center top}
 
 @media screen and (max-width:1119px) {
     .opendata-results:first-child {margin-top:0}
@@ -1177,10 +1177,10 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-finance-content {margin:40px 0 0 0}
 .opendata-chart-finance-graph {position:relative}
 .opendata-chart-finance-graph-scale-y {position:absolute; left:0; top:0; width:63px}
-.opendata-chart-finance-graph-scale-y-item {position:absolute; right:0; font-size:14px; line-height:21px; margin-bottom:-12px}
+.opendata-chart-finance-graph-scale-y-item {position:absolute; right:0; font-size:14px; line-height:21px; margin-bottom:-40px}
 .opendata-chart-finance-graph-scale-y-title {position:absolute; left:0; top:50%; margin-top:-12px; white-space:nowrap; font-weight:normal; transform:translateX(-50%) rotate(-90deg)}
 .opendata-chart-finance-graph-wrapper {position:relative; margin:0 0 0 80px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; overflow:auto}
-.opendata-chart-finance-graph-container {display:inline-block; vertical-align:top; position:relative}
+.opendata-chart-finance-graph-container {display:inline-block; vertical-align:top; position:relative; margin-top:30px}
 .opendata-chart-finance-graph-item-point {position:absolute; width:16px; height:16px; border-radius:50%; margin:0 0 -8px -7px; cursor:pointer; z-index:2; transition:all 0.2s; border:0 solid transparent}
 .opendata-chart-finance-graph-item-point:hover {z-index:3; width:30px; height:30px; border:3px solid #fff; box-shadow:0px 0px 16px 7px rgba(0, 0, 0, 0.15); margin:0 0 -15px -14px}
 .opendata-chart-finance-graph-item-point.other {opacity:0.2}
