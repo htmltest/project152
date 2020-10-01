@@ -1,6 +1,7 @@
 .select2-container {
   box-sizing: border-box;
-  display: inline-block;
+  display: block;
+  width: auto !important;
   margin: 0;
   font-weight: normal;
   position: relative;

@@ -98,62 +98,29 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('.main-regions-map').each(function() {
-        var newMap = '';
-        for (var i = 0; i < russiaRegions.length; i++) {
-            newMap += '<g class="main-regions-map-region" data-id="' + russiaRegions[i].id + '" data-title="' + russiaRegions[i].title + '">' + russiaRegions[i].svg + '</g>';
-        }
-        $('.main-regions-map-inner svg').html(newMap);
-    });
-
-    $('body').on('mouseenter', '.main-regions-map-region', function(e) {
-        $('.main-regions-map-region-hint').remove();
-        $('body').append('<div class="main-regions-map-region-hint">' + $(this).attr('data-title') + '</div>');
-        var curLeft = e.pageX;
-        var curTop = e.pageY;
-        $('.main-regions-map-region-hint').css({'left': curLeft, 'top': curTop});
-    });
-
-    $('body').on('mousemove', '.main-regions-map-region', function(e) {
-        var curLeft = e.pageX;
-        var curTop = e.pageY;
-        $('.main-regions-map-region-hint').css({'left': curLeft, 'top': curTop});
-    });
-
-    $('body').on('mouseleave', '.main-regions-map-region', function(e) {
-        $('.main-regions-map-region-hint').remove();
-    });
-
-    $('body').on('click', '.main-regions-map-region', function(e) {
+    $('body').on('click', '.main-regions-map .opendata-chart-map-inner g', function(e) {
         var curMapRegion = $(this);
-        if (curMapRegion.hasClass('active')) {
-            curMapRegion.removeClass('active');
-            $('.main-regions-map-window').removeClass('visible');
-        } else {
-            $('.main-regions-map-region.active').removeClass('active');
-            curMapRegion.addClass('active');
-            $('.main-regions-map-window').removeClass('visible');
-            var regionID = curMapRegion.attr('data-id');
-            var regionData = null;
-            for (var i = 0; i < russiaRegions.length; i++) {
-                if (russiaRegions[i].id == regionID) {
-                    regionData = russiaRegions[i];
-                }
+        $('.main-regions-map-window').removeClass('visible');
+        var regionID = curMapRegion.attr('data-id');
+        var regionData = null;
+        for (var i = 0; i < mainRegionsData.length; i++) {
+            if (mainRegionsData[i][0] == regionID) {
+                regionData = mainRegionsData[i][2];
             }
-            if (regionData !== null) {
-                $('#main-regions-map-window-item-funds').html(regionData.funds);
-                $('#main-regions-map-window-item-projects').html(regionData.projects);
-                $('#main-regions-map-window-item-tenders').html(regionData.tenders);
-                $('#main-regions-map-window-item-finance').html(regionData.finance);
-                if (regionData.link !== null) {
-                    $('.main-regions-map-window-link').addClass('visible');
-                    $('.main-regions-map-window-link a').attr('href', regionData.link);
-                } else {
-                    $('.main-regions-map-window-link').removeClass('visible');
-                }
-            }
-            $('.main-regions-map-window').addClass('visible');
         }
+        if (regionData !== null) {
+            $('#main-regions-map-window-item-funds').html(regionData.funds);
+            $('#main-regions-map-window-item-projects').html(regionData.projects);
+            $('#main-regions-map-window-item-tenders').html(regionData.tenders);
+            $('#main-regions-map-window-item-finance').html(regionData.finance);
+            if (regionData.link !== null) {
+                $('.main-regions-map-window-link').addClass('visible');
+                $('.main-regions-map-window-link a').attr('href', regionData.link);
+            } else {
+                $('.main-regions-map-window-link').removeClass('visible');
+            }
+        }
+        $('.main-regions-map-window').addClass('visible');
     });
 
     $('.up-link').click(function(e) {
@@ -419,6 +386,51 @@ $(window).on('load resize', function() {
             var curTop = curBlock.offset().top;
 
             curList.find('.opendata-item-inner').each(function() {
+                var otherBlock = $(this);
+                if (otherBlock.offset().top == curTop) {
+                    var newHeight = otherBlock.outerHeight();
+                    if (newHeight > curHeight) {
+                        curBlock.css({'min-height': newHeight + 'px'});
+                    } else {
+                        otherBlock.css({'min-height': curHeight + 'px'});
+                    }
+                }
+            });
+        });
+    });
+
+    $('.main-navigator-list').each(function() {
+        var curList = $(this);
+        if ($(window).width() < 1120) {
+            if (!curList.hasClass('slick-slider')) {
+                $('.main-navigator-list').slick({
+                    infinite: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    prevArrow: '<button type="button" class="slick-prev"></button>',
+                    nextArrow: '<button type="button" class="slick-next"></button>',
+                    adaptiveHeight: true,
+                    dots: true
+                });
+            }
+        } else {
+            if (curList.hasClass('slick-slider')) {
+                curList.slick('unslick');
+            }
+        }
+    });
+
+    $('.main-navigator-list').each(function() {
+        var curList = $(this);
+
+        curList.find('.main-navigator-item-inner').css({'min-height': '0px'});
+
+        curList.find('.main-navigator-item-inner').each(function() {
+            var curBlock = $(this);
+            var curHeight = curBlock.outerHeight();
+            var curTop = curBlock.offset().top;
+
+            curList.find('.main-navigator-item-inner').each(function() {
                 var otherBlock = $(this);
                 if (otherBlock.offset().top == curTop) {
                     var newHeight = otherBlock.outerHeight();
@@ -845,7 +857,7 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('body').on('click', '.opendata-chart-map-zoom-dev', function(e) {
+    $('body').on('click', '.opendata-chart-map-zoom-dec', function(e) {
         var curMap = $(this).parent();
         if (curMap.hasClass('opendata-chart-map-zoom-3')) {
             curMap.removeClass('opendata-chart-map-zoom-3');
@@ -1396,7 +1408,7 @@ function makeChartMap(curBlock, data) {
             data.ranges.push([rangeStart, rangeStop, data.colors[i]]);
             mr_prev = map_rages[i];
         }
-        
+
         newHTML +=  '<div class="opendata-chart-map-legend">' +
                         '<div class="opendata-chart-map-legend-title">' + data.titleRanges + '</div>' +
                         '<div class="opendata-chart-map-legend-list">';
@@ -1431,7 +1443,7 @@ function makeChartMap(curBlock, data) {
 
                         var curColor = data.ranges[curColorIndex][2];
 
-                        newMap += '<g style="fill:' + curColor + '" data-title="' + curRegion.title + '" data-value="' + curValue + '" data-name="' + data.titleRanges + '">' + curRegion.svg + '</g>';
+                        newMap += '<g style="fill:' + curColor + '" data-id="' + curRegion.id + '" data-title="' + curRegion.title + '" data-value="' + curValue + '" data-name="' + data.titleRanges + '">' + curRegion.svg + '</g>';
                     }
                 }
             }
@@ -2221,4 +2233,300 @@ function numberWithSpaces(x) {
     var parts = x.toString().split('.');
     parts[0] = parts[0].replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1&nbsp;');
     return parts.join('.');
+}
+
+$(document).ready(function() {
+
+    $('body').on('mouseenter', '.opendata-chart-forecast-graph-item-bar', function(e) {
+        if ($(window).width() > 1119) {
+            var curItemBar = $(this);
+            $('.opendata-chart-map-region-hint').remove();
+            var windowHTML = '<div class="opendata-chart-map-region-hint">' +
+                                 '<div class="opendata-chart-map-region-hint-container">' +
+                                    '<div class="opendata-chart-map-region-hint-title">' + $(this).find('.opendata-chart-forecast-graph-item-bar-item').eq(0).attr('data-name') + '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-values">';
+            var curSumm = 0;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                curSumm += Number($(this).attr('data-value'));
+            });
+            var summPercent = 0;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                } else {
+                    summPercent += newPercent;
+                }
+                windowHTML +=           '<div class="opendata-chart-map-region-hint-value">' +
+                                            '<div class="opendata-chart-map-region-hint-value-legend">' +
+                                                '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
+                                            '</div>'+
+                                            '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')).replace('.', ',') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-percent">' + newPercent + '%</div>' +
+                                        '</div>';
+            });
+
+            windowHTML +=           '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-pie">' +
+                                        '<canvas></canvas>' +
+                                    '</div>' +
+                                '</div>' +
+                             '</div>';
+            $('body').append(windowHTML);
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.opendata-chart-map-region-hint').css({'left': curLeft, 'top': curTop});
+
+            var pieWidth = 126;
+            var pieHeight = 126;
+
+            var canvas = $('.opendata-chart-map-region-hint-pie canvas')[0];
+            var context = canvas.getContext('2d');
+
+			canvas.width = pieWidth;
+            canvas.height = pieHeight;
+
+            var summPercent = 0;
+            var currentAngle = -0.5 * Math.PI;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                }
+                var sliceAngle = newPercent / 100 * 2 * Math.PI;
+                context.beginPath();
+                context.fillStyle = $(this).css('background-color');
+                context.strokeStyle = $(this).css('background-color');
+                context.moveTo(pieWidth / 2, pieHeight / 2);
+                context.arc(pieWidth / 2, pieHeight / 2, pieWidth / 2, currentAngle, currentAngle + sliceAngle);
+                context.lineTo(pieWidth / 2, pieHeight / 2);
+                context.fill();
+                if (newPercent > 9) {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                } else {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend opendata-chart-map-region-hint-pie-legend-out" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                }
+                currentAngle += sliceAngle;
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) != curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    summPercent += newPercent;
+                }
+            });
+        }
+    });
+
+    $('body').on('mouseenter', '.opendata-chart-forecast-graph-item-year', function(e) {
+        if ($(window).width() > 1119) {
+            $('.opendata-chart-map-region-hint').remove();
+            var windowHTML = '<div class="opendata-chart-map-region-hint">' +
+                                 '<div class="opendata-chart-map-region-hint-container">' +
+                                    '<div class="opendata-chart-map-region-hint-title">' + $(this).parent().find('.opendata-chart-forecast-graph-item-bar').find('.opendata-chart-forecast-graph-item-bar-item').eq(0).attr('data-name') + '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-values">';
+            $(this).parent().find('.opendata-chart-forecast-graph-item-bar').find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                windowHTML +=           '<div class="opendata-chart-map-region-hint-value">' +
+                                            '<div class="opendata-chart-map-region-hint-value-legend">' +
+                                                '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
+                                            '</div>'+
+                                            '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')).replace('.', ',') + '</div>' +
+                                        '</div>';
+            });
+
+            windowHTML +=           '</div>' +
+                                '</div>' +
+                             '</div>';
+            $('body').append(windowHTML);
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.opendata-chart-map-region-hint').css({'left': curLeft, 'top': curTop});
+        }
+    });
+
+    $('body').on('click', '.opendata-chart-forecast-graph-item-bar', function(e) {
+        if ($(window).width() < 1120) {
+            $('.opendata-chart-map-region-hint').remove();
+            var windowHTML = '<div class="opendata-chart-map-region-hint">' +
+                                 '<div class="opendata-chart-map-region-hint-bg"></div>' +
+                                 '<div class="opendata-chart-map-region-hint-container">' +
+                                    '<div class="opendata-chart-map-region-hint-title">' + $(this).find('.opendata-chart-forecast-graph-item-bar-item').eq(0).attr('data-name') + '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-values">';
+            $(this).find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                windowHTML +=           '<div class="opendata-chart-map-region-hint-value">' +
+                                            '<div class="opendata-chart-map-region-hint-value-legend">' +
+                                                '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
+                                            '</div>'+
+                                            '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')).replace('.', ',') + '</div>' +
+                                        '</div>';
+            });
+
+            windowHTML +=           '</div>' +
+                                    '<a href="#" class="opendata-chart-map-region-hint-close"></a>' +
+                                 '</div>' +
+                             '</div>';
+            $('body').append(windowHTML);
+        }
+    });
+
+    $('body').on('click', '.opendata-chart-forecast-graph-item-year', function(e) {
+        if ($(window).width() < 1120) {
+            $('.opendata-chart-map-region-hint').remove();
+            var windowHTML = '<div class="opendata-chart-map-region-hint">' +
+                                 '<div class="opendata-chart-map-region-hint-bg"></div>' +
+                                 '<div class="opendata-chart-map-region-hint-container">' +
+                                    '<div class="opendata-chart-map-region-hint-title">' + $(this).parent().find('.opendata-chart-forecast-graph-item-bar').find('.opendata-chart-forecast-graph-item-bar-item').eq(0).attr('data-name') + '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-values">';
+            $(this).parent().find('.opendata-chart-forecast-graph-item-bar').find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                windowHTML +=           '<div class="opendata-chart-map-region-hint-value">' +
+                                            '<div class="opendata-chart-map-region-hint-value-legend">' +
+                                                '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
+                                            '</div>'+
+                                            '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')).replace('.', ',') + '</div>' +
+                                        '</div>';
+            });
+
+            windowHTML +=           '</div>' +
+                                    '<a href="#" class="opendata-chart-map-region-hint-close"></a>' +
+                                 '</div>' +
+                             '</div>';
+            $('body').append(windowHTML);
+        }
+    });
+
+    $('body').on('mousemove', '.opendata-chart-forecast-graph-item-bar', function(e) {
+        if ($(window).width() > 1119) {
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.opendata-chart-map-region-hint').css({'left': curLeft, 'top': curTop});
+        }
+    });
+
+    $('body').on('mousemove', '.opendata-chart-forecast-graph-item-year', function(e) {
+        if ($(window).width() > 1119) {
+            var curLeft = e.pageX;
+            var curTop = e.pageY;
+            $('.opendata-chart-map-region-hint').css({'left': curLeft, 'top': curTop});
+        }
+    });
+
+    $('body').on('mouseleave', '.opendata-chart-forecast-graph-item-bar', function(e) {
+        if ($(window).width() > 1119) {
+            $('.opendata-chart-map-region-hint').remove();
+        }
+    });
+
+    $('body').on('mouseleave', '.opendata-chart-forecast-graph-item-year', function(e) {
+        if ($(window).width() > 1119) {
+            $('.opendata-chart-map-region-hint').remove();
+        }
+    });
+
+});
+
+function createChartBarForecast(blockID, data) {
+    var curBlock = $('[data-id="' + blockID + '"]');
+    if (curBlock.length == 1) {
+        makeChartBarForecast(curBlock, data);
+    }
+}
+
+function makeChartBarForecast(curBlock, data) {
+    var newHTML = '';
+
+    newHTML +=  '<div class="opendata-chart-forecast-content">' +
+                    '<div class="opendata-chart-forecast-graph-scale-left-title">' + data.scaleLeftTitle + '</div>' +
+                    '<div class="opendata-chart-forecast-graph">' +
+                        '<div class="opendata-chart-forecast-graph-wrap">' +
+                            '<div class="opendata-chart-forecast-graph-container">' +
+                                '<div class="opendata-chart-forecast-graph-scale"></div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="opendata-chart-forecast-legend">';
+    for (var i = data.legend.length - 1; i >= 0; i--) {
+        newHTML +=      '<div class="opendata-chart-forecast-legend-item">' +
+                            '<div class="opendata-chart-forecast-legend-item-title"><div class="opendata-chart-forecast-legend-item-title-short">' + data.legend[i].title + '</div><div class="opendata-chart-forecast-legend-item-title-full">' + data.legend[i].title + '</div></div>' +
+                            '<div class="opendata-chart-forecast-legend-item-color" style="background-color:' + data.legend[i].color + '"></div>' +
+                        '</div>';
+    }
+    if (typeof data.notice !== 'undefined') {
+        newHTML +=      '<div class="opendata-chart-forecast-legend-notice"><span>*</span> ' + data.notice + '</div>';
+    }
+    newHTML +=      '</div>' +
+                '</div>';
+    curBlock.html(newHTML);
+    var curMax = 0;
+    for (var i = 0; i < data.data.length; i++) {
+        var curSumm = 0;
+        for (var j = 0; j < data.data[i].values.length; j++) {
+            curSumm += Number(data.data[i].values[j]);
+        }
+        if (curMax < curSumm) {
+            curMax = curSumm;
+        }
+    }
+
+    var curScale = curBlock.find('.opendata-chart-forecast-graph-scale');
+    var scaleTicks = Math.ceil(curMax / (Number(data.scaleStep)));
+    var scaleMax = scaleTicks * (Number(data.scaleStep));
+
+    curScale.append('<div class="opendata-chart-forecast-graph-scale-sizer">' + scaleMax + '</div>');
+
+    curScale.append('<div class="opendata-chart-forecast-graph-scale-tick bottom" style="bottom:0%"></div>');
+    for (var i = 1; i <= scaleTicks; i++) {
+        var tickClass = '';
+        if (i % 2 != 0) {
+            tickClass = 'step';
+        }
+        curScale.append('<div class="opendata-chart-forecast-graph-scale-title" style="bottom:' + (i / scaleTicks * 100) + '%">' + (i * Number(data.scaleStep)) + '</div>');
+        curScale.append('<div class="opendata-chart-forecast-graph-scale-tick ' + tickClass + '" style="bottom:' + (i / scaleTicks * 100) + '%"></div>');
+    }
+
+    var curGraph = curBlock.find('.opendata-chart-forecast-graph-container');
+
+    var curForecastYear = -1;
+    for (var i = 0; i < data.data.length; i++) {
+        if (curForecastYear == -1 && data.data[i].type == 'forecast') {
+            curForecastYear = i;
+        }
+    }
+    curGraph.append('<div class="opendata-chart-forecast-graph-forecast-sep" style="left:' + (curForecastYear / data.data.length * 100) + '%"></div>');
+    curGraph.append('<div class="opendata-chart-forecast-graph-forecast-title" style="left:0; width:' + (curForecastYear / data.data.length * 100) + '%">' + data.titleActually + '</div>');
+    curGraph.append('<div class="opendata-chart-forecast-graph-forecast-title" style="left:' + (curForecastYear / data.data.length * 100) + '%; right:0">' + data.titleForecast + '<span>*</span></div>');
+
+    for (var i = 0; i < data.data.length; i++) {
+        var itemHTML =  '<div class="opendata-chart-forecast-graph-item">' +
+                            '<div class="opendata-chart-forecast-graph-item-year">' + data.data[i].year + '</div>';
+        var curSumm = 0;
+        for (var j = 0; j < data.data[i].values.length; j++) {
+            if (data.data[i].values[j] !== null) {
+                curSumm += Number(data.data[i].values[j]);
+            }
+        }
+        var itemBarHTML = '';
+        var tmpSumm = 0;
+        for (var j = 0; j < data.data[i].values.length; j++) {
+            if (data.data[i].values[j] !== null) {
+                var classTop = '';
+                if (Number(data.data[i].values[j]) <= 1) {
+                    classTop = ' top';
+                }
+                itemBarHTML +=      '<div class="opendata-chart-forecast-graph-item-bar-item' + classTop + '" style="background-color:' + data.legend[j].color + '; bottom:' + tmpSumm + '%; height:' + (Number(data.data[i].values[j]) / curSumm * 100) + '%" data-title="' + data.legend[j].title + '" data-value="' + data.data[i].values[j] + '" data-name="' + data.chartTitle + '"><span>' + (String(data.data[i].values[j]).replace('.', ',')) + '</span></div>';
+                tmpSumm += Number(data.data[i].values[j]) / curSumm * 100;
+            }
+        }
+        itemHTML +=         '<div class="opendata-chart-forecast-graph-item-bar" style="height:' + (curSumm / scaleMax * 100) + '%">' + itemBarHTML + '</div>';
+        itemHTML +=     '</div>';
+        curGraph.append(itemHTML);
+    }
+
+    curBlock.find('.opendata-chart-forecast-graph').each(function() {
+        $(this).mCustomScrollbar({
+            axis: 'x',
+            scrollButtons: {
+                enable: true
+            }
+        });
+    });
 }
