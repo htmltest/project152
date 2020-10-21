@@ -102,6 +102,7 @@ $(document).ready(function() {
         var curMapRegion = $(this);
         $('.main-regions-map-window').removeClass('visible');
         var regionID = curMapRegion.attr('data-id');
+        var regionTitle = curMapRegion.attr('data-title');
         var regionData = null;
         for (var i = 0; i < mainRegionsData.length; i++) {
             if (mainRegionsData[i][0] == regionID) {
@@ -109,6 +110,7 @@ $(document).ready(function() {
             }
         }
         if (regionData !== null) {
+            $('#main-regions-map-window-item-title').html(regionTitle);
             $('#main-regions-map-window-item-funds').html(regionData.funds);
             $('#main-regions-map-window-item-projects').html(regionData.projects);
             $('#main-regions-map-window-item-tenders').html(regionData.tenders);
@@ -1073,6 +1075,7 @@ function makeChartBar(curBlock, data) {
         curBlock.find('.table-scroll').each(function() {
             $(this).mCustomScrollbar({
                 axis: 'x',
+                scrollInertia: 0,
                 scrollButtons: {
                     enable: true
                 }
@@ -1329,6 +1332,7 @@ function makeChartLine(curBlock, data) {
         curBlock.find('.table-scroll').each(function() {
             $(this).mCustomScrollbar({
                 axis: 'x',
+                scrollInertia: 0,
                 scrollButtons: {
                     enable: true
                 }
@@ -1531,6 +1535,7 @@ function makeChartMap(curBlock, data) {
         curBlock.find('.table-scroll').each(function() {
             $(this).mCustomScrollbar({
                 axis: 'x',
+                scrollInertia: 0,
                 scrollButtons: {
                     enable: true
                 }
@@ -1615,6 +1620,14 @@ function makeChartBubble(curBlock, data) {
         }
         graphHTML +=            '</div>';
         curGraph.html(graphHTML);
+        graphHTML =             '<div class="opendata-chart-bubble-graph-years-fixed">' +
+                                    '<div class="opendata-chart-bubble-graph-years-fixed-inner">';
+        for (var i = 0; i < data.data.length; i++) {
+            graphHTML +=                '<div class="opendata-chart-bubble-graph-year"><span>' + data.data[i].year + '</span></div>';
+        }
+        graphHTML +=                '</div>' +
+                                '</div>';
+        curBlock.find('.opendata-chart-bubble-content').append(graphHTML);
 
         var itemWidth = 80;
         for (var i = 0; i < data.legend.length; i++) {
@@ -1640,10 +1653,33 @@ function makeChartBubble(curBlock, data) {
         curBlock.find('.opendata-chart-bubble-graph').css({'max-width': 'calc(100% - ' + (curBlock.find('.opendata-chart-bubble-legend').width() + 50) + 'px)'});
 
         curBlock.find('.opendata-chart-bubble-graph').each(function() {
+            var curScrollBlock = $(this);
             $(this).mCustomScrollbar({
                 axis: 'x',
                 scrollButtons: {
                     enable: true
+                },
+                callbacks: {
+                    onInit: function() {
+                        curScrollBlock.addClass('shadowRight');
+                    },
+
+                    whileScrolling: function() {
+                        if (this.mcs.leftPct == 100) {
+                            curScrollBlock.removeClass('shadowRight');
+                        } else {
+                            curScrollBlock.addClass('shadowRight');
+                        }
+
+                        if (this.mcs.leftPct == 0) {
+                            curScrollBlock.removeClass('shadowLeft');
+                        } else {
+                            curScrollBlock.addClass('shadowLeft');
+
+                        }
+                        curBlock.find('.opendata-chart-bubble-graph-years-fixed').css({'width': curBlock.find('.opendata-chart-bubble-graph').width(), 'left': curBlock.find('.opendata-chart-bubble-graph').offset().left});
+                        curBlock.find('.opendata-chart-bubble-graph-years-fixed-inner').css({'left': curBlock.find('.mCSB_container').css('left')});
+                    }
                 }
             });
         });
@@ -1698,6 +1734,7 @@ function makeChartBubble(curBlock, data) {
         curBlock.find('.table-scroll').each(function() {
             $(this).mCustomScrollbar({
                 axis: 'x',
+                scrollInertia: 0,
                 scrollButtons: {
                     enable: true
                 }
@@ -1746,10 +1783,12 @@ function makeChartFinance(curBlock, data) {
                         '</div>' +
                         '<div class="opendata-chart-finance-legend">';
         for (var i = 0; i < data.legend.length; i++) {
-            newHTML +=      '<div class="opendata-chart-finance-legend-item">' +
+            if (i < 10) {
+                newHTML +=  '<div class="opendata-chart-finance-legend-item">' +
                                 data.legend[i].title +
                                 '<div class="opendata-chart-finance-legend-item-color" style="background-color:' + data.legend[i].color + '"></div>' +
                             '</div>';
+            }
         }
         newHTML +=      '</div>' +
                     '</div>';
@@ -1908,6 +1947,7 @@ function makeChartFinance(curBlock, data) {
         curBlock.find('.table-scroll').each(function() {
             $(this).mCustomScrollbar({
                 axis: 'x',
+                scrollInertia: 0,
                 scrollButtons: {
                     enable: true
                 }
@@ -2220,6 +2260,7 @@ function makeChartOrg(curBlock, data) {
         curBlock.find('.table-scroll').each(function() {
             $(this).mCustomScrollbar({
                 axis: 'x',
+                scrollInertia: 0,
                 scrollButtons: {
                     enable: true
                 }
@@ -2530,3 +2571,30 @@ function makeChartBarForecast(curBlock, data) {
         });
     });
 }
+
+$(window).on('load resize scroll', function() {
+    $('.opendata-chart-bubble-content .mCSB_scrollTools').each(function() {
+        var curTools = $(this);
+        var curBlock = curTools.parent();
+        if ($(window).scrollTop() + $(window).height() > curBlock.offset().top) {
+            var curBottom = ($(window).scrollTop() + $(window).height()) - (curBlock.offset().top + curBlock.height() - 39);
+            if (curBottom < 39) {
+                curBottom = 39;
+            }
+            curTools.css({'position': 'fixed', 'z-index': 2, 'left': curBlock.offset().left, 'bottom': curBottom, 'right': 'auto', 'width': curBlock.width()});
+        } else {
+            curTools.css({'position': 'absolute', 'left': 0, 'bottom': 0, 'right': '0', 'width': 'auto'});
+        }
+    });
+
+    $('.opendata-chart-bubble-content .opendata-chart-bubble-graph-years-fixed').each(function() {
+        var curYears = $(this);
+        var curBlock = curYears.parent();
+        if (($(window).scrollTop() + $(window).height() > curBlock.offset().top) && ($(window).scrollTop() + $(window).height() < curBlock.find('.opendata-chart-bubble-graph-years').offset().top)) {
+            curYears.addClass('visible');
+            curYears.css({'width': curBlock.find('.opendata-chart-bubble-graph').width(), 'left': curBlock.find('.opendata-chart-bubble-graph').offset().left});
+        } else {
+            curYears.removeClass('visible');
+        }
+    });
+});
