@@ -89,7 +89,7 @@
                     <h1>Открытые данные</h1>
 
                     <script src="js/regions.js"></script>
-                    
+
                     <!-- tabs -->
                     <div class="tabs">
 
@@ -101,42 +101,244 @@
                             <!-- tabs content -->
                             <div class="tabs-content" data-title="Графики">
 
-                                <div class="opendata-list">
-                                    <div class="opendata-item">
-                                        <div class="opendata-item-inner">
-                                            <div class="opendata-item-chart"><img src="files/main-chart-1.png" alt="" /></div>
-                                            <div class="opendata-item-title">Объемы финансирования научных проектов РНФ</div>
-                                        </div>
+                                <div class="main-opendata-chart">
+                                    <div class="main-opendata-chart-title">Объемы финансирования научных проектов РНФ</div>
+                                    <div class="opendata-chart">
+                                        <div class="opendata-chart-container" data-id="uniqID-mainchart-1"></div>
+                                        <script>
+                                            window.addEventListener('load', function() {
+                                                createChartBarForecast('uniqID-mainchart-1', {
+                                                    'chartTitle' : 'Объемы финансирования научных проектов РНФ',
+                                                    'legend' : [
+                                                        {
+                                                            'color' : '#f7b7d3',
+                                                            'title' : 'Средства федерального бюджета, млрд.&nbsp;руб.'
+                                                        },
+
+                                                        {
+                                                            'color' : '#9fcff3',
+                                                            'title' : 'Внебюджетные средства, млрд.&nbsp;руб.'
+                                                        }
+                                                    ],
+                                                    'scaleLeftTitle' : 'Объем финансирования, млрд.&nbsp;руб',
+                                                    'titleActually' : 'Факт',
+                                                    'titleForecast' : 'План',
+                                                    'notice' : 'Плановые показатели отражены в соответствии с Федеральным законом от 02.12.2019 № 380-ФЗ “О федеральном бюджете на 2020 года и на плановый период 2021 и 2022 годов”',
+                                                    'scaleStep' : 5,
+                                                    'data' : [
+                                                        {
+                                                            'year'      : '2015',
+                                                            'type'      : 'actually',
+                                                            'values'    : [15.5, 1.4]
+                                                        },
+                                                        {
+                                                            'year'      : '2016',
+                                                            'type'      : 'actually',
+                                                            'values'    : [0.3, 23.2]
+                                                        },
+                                                        {
+                                                            'year'      : '2017',
+                                                            'type'      : 'actually',
+                                                            'values'    : [5.2, 23.2]
+                                                        },
+                                                        {
+                                                            'year'      : '2018',
+                                                            'type'      : 'actually',
+                                                            'values'    : [7.8, 17.7]
+                                                        },
+                                                        {
+                                                            'year'      : '2019',
+                                                            'type'      : 'forecast',
+                                                            'values'    : [20.8, null]
+                                                        },
+                                                        {
+                                                            'year'      : '2020',
+                                                            'type'      : 'forecast',
+                                                            'values'    : [9.4, null]
+                                                        },
+                                                        {
+                                                            'year'      : '2021',
+                                                            'type'      : 'forecast',
+                                                            'values'    : [21.8, null]
+                                                        }
+                                                    ]
+                                                });
+                                            });
+                                        </script>
                                     </div>
-                                    <div class="opendata-item">
-                                        <div class="opendata-item-inner">
-                                            <div class="opendata-item-chart"><img src="files/main-chart-2.png" alt="" /></div>
-                                            <div class="opendata-item-title">Объемы финансирования научных проектов РФФИ</div>
-                                        </div>
+                                </div>
+
+                                <div class="main-opendata-chart">
+                                    <div class="main-opendata-chart-title">Объемы финансирования научных проектов РФФИ</div>
+                                    <div class="opendata-chart">
+                                        <div class="opendata-chart-container" data-id="uniqID-mainchart-2"></div>
+                                        <script>
+                                            window.addEventListener('load', function() {
+                                                createChartBarForecast('uniqID-mainchart-2', {
+                                                    'chartTitle' : 'Объемы финансирования научных проектов РФФИ',
+                                                    'legend' : [
+                                                        {
+                                                            'color' : '#f7b7d3',
+                                                            'title' : 'Средства федерального бюджета, млрд.&nbsp;руб.'
+                                                        },
+
+                                                        {
+                                                            'color' : '#9fcff3',
+                                                            'title' : 'Внебюджетные средства, млрд.&nbsp;руб.'
+                                                        }
+                                                    ],
+                                                    'scaleLeftTitle' : 'Объем финансирования, млрд.&nbsp;руб',
+                                                    'titleActually' : 'Факт',
+                                                    'titleForecast' : 'План',
+                                                    'notice' : 'Плановые показатели отражены в соответствии с Федеральным законом от 02.12.2019 № 380-ФЗ “О федеральном бюджете на 2020 года и на плановый период 2021 и 2022 годов”',
+                                                    'scaleStep' : 5,
+                                                    'data' : [
+                                                        {
+                                                            'year'      : '2015',
+                                                            'type'      : 'actually',
+                                                            'values'    : [10.9, 0.056]
+                                                        },
+                                                        {
+                                                            'year'      : '2016',
+                                                            'type'      : 'actually',
+                                                            'values'    : [11.6, 0.105]
+                                                        },
+                                                        {
+                                                            'year'      : '2017',
+                                                            'type'      : 'actually',
+                                                            'values'    : [11.6, 0.006]
+                                                        },
+                                                        {
+                                                            'year'      : '2018',
+                                                            'type'      : 'actually',
+                                                            'values'    : [21.1, 0.102]
+                                                        },
+                                                        {
+                                                            'year'      : '2019',
+                                                            'type'      : 'forecast',
+                                                            'values'    : [22.2, null]
+                                                        },
+                                                        {
+                                                            'year'      : '2020',
+                                                            'type'      : 'forecast',
+                                                            'values'    : [24.9, null]
+                                                        },
+                                                        {
+                                                            'year'      : '2021',
+                                                            'type'      : 'forecast',
+                                                            'values'    : [26.02, null]
+                                                        }
+                                                    ]
+                                                });
+                                            });
+                                        </script>
                                     </div>
-                                    <div class="opendata-item">
-                                        <div class="opendata-item-inner">
-                                            <div class="opendata-item-chart"><img src="files/opendata-chart-3.png" alt="" /></div>
-                                            <div class="opendata-item-title">Количество поданных и&nbsp;профинансированных заявок РНФ</div>
-                                        </div>
+                                </div>
+
+                                <div class="main-opendata-chart">
+                                    <div class="main-opendata-chart-title">Количество поданных и профинансированных заявок РНФ</div>
+                                    <div class="opendata-chart">
+                                        <div class="opendata-chart-container" data-id="uniqID-mainchart-3"></div>
+                                        <script>
+                                            window.addEventListener('load', function() {
+                                                createChartOrgMain('uniqID-mainchart-3', {
+                                                    'legend' : [
+                                                        {
+                                                            'type'  : 'left',
+                                                            'color' : '#f7b7d3',
+                                                            'title' : 'Количество поданных заявок РНФ, тыс. ед.'
+                                                        },
+
+                                                        {
+                                                            'type'  : 'left',
+                                                            'color' : '#9fcff3',
+                                                            'title' : 'Количество профинансированных проектов РНФ, тыс. ед.'
+                                                        },
+
+                                                        {
+                                                            'type'  : 'right',
+                                                            'color' : '#297c90',
+                                                            'title' : 'Средняя стоимость проекта РНФ, млн руб.'
+                                                        }
+                                                    ],
+                                                    'scaleLeftStep' : 5,
+                                                    'scaleLeftTitle' : 'Количество проектов, тыс.',
+                                                    'data' : [
+                                                        {
+                                                            'year'      : '2014',
+                                                            'values'    : [15.9, 1.12, 10.2]
+                                                        },
+                                                        {
+                                                            'year'      : '2015',
+                                                            'values'    : [3.5, 1.53, 10.1]
+                                                        },
+                                                        {
+                                                            'year'      : '2016',
+                                                            'values'    : [9.7, 2.4, 6.3]
+                                                        },
+                                                        {
+                                                            'year'      : '2017',
+                                                            'values'    : [10.5, 2.94, 6]
+                                                        },
+                                                        {
+                                                            'year'      : '2018',
+                                                            'values'    : [7, 5, 5]
+                                                        }
+                                                    ]
+                                                });
+                                            });
+                                        </script>
                                     </div>
-                                    <div class="opendata-item">
-                                        <div class="opendata-item-inner">
-                                            <div class="opendata-item-chart"><img src="files/opendata-chart-4.png" alt="" /></div>
-                                            <div class="opendata-item-title">Количество поданных и&nbsp;профинансированных заявок РФФИ</div>
-                                        </div>
-                                    </div>
-                                    <div class="opendata-item">
-                                        <div class="opendata-item-inner">
-                                            <div class="opendata-item-chart"><img src="files/opendata-chart-5.png" alt="" /></div>
-                                            <div class="opendata-item-title">Финансирование некоторых фондов, млн руб.</div>
-                                        </div>
-                                    </div>
-                                    <div class="opendata-item">
-                                        <div class="opendata-item-inner">
-                                            <div class="opendata-item-chart"><img src="files/opendata-chart-6.png" alt="" /></div>
-                                            <div class="opendata-item-title">Красноярский краевой фонд поддержки научной и научно-технической деятельности</div>
-                                        </div>
+                                </div>
+
+                                <div class="main-opendata-chart">
+                                    <div class="main-opendata-chart-title">Финансирование некоторых фондов, млн руб.</div>
+                                    <div class="opendata-chart">
+                                        <div class="opendata-chart-container" data-id="uniqID-mainchart-4"></div>
+                                        <script>
+                                            window.addEventListener('load', function() {
+                                                createChartFundsMain('uniqID-mainchart-4', {
+                                                    'legend' : [
+                                                        {
+                                                            'color' : '#f7b7d3',
+                                                            'title' : '2018'
+                                                        },
+
+                                                        {
+                                                            'color' : '#adf4bd',
+                                                            'title' : '2017'
+                                                        },
+
+                                                        {
+                                                            'color' : '#9fcff3',
+                                                            'title' : '2016'
+                                                        }
+                                                    ],
+                                                    'data' : [
+                                                        {
+                                                            'title'     : 'Фонд "Энергия без границ"',
+                                                            'values'    : [7.99, 159.9, 238]
+                                                        },
+                                                        {
+                                                            'title'     : 'Красноярский краевой фонд науки',
+                                                            'values'    : [91.8, 89.1, 94.2]
+                                                        },
+                                                        {
+                                                            'title'     : 'Рыбаков фонд',
+                                                            'values'    : [295, 586.2, 300]
+                                                        },
+                                                        {
+                                                            'title'     : 'Благотворительны фонд Система (в т.ч. Лифт в будущее)',
+                                                            'values'    : [219.7, 408.8, 609.2]
+                                                        },
+                                                        {
+                                                            'title'     : 'Благотворительны фонд "Острова"',
+                                                            'values'    : [0.318, 0.195, 0.815]
+                                                        }
+                                                    ]
+                                                });
+                                            });
+                                        </script>
                                     </div>
                                 </div>
 

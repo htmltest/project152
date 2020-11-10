@@ -562,6 +562,7 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .main-opendata .tabs-menu-item:first-child {margin:0}
 
 .main-opendata-chart {background:#fff; padding:30px 30px 70px 30px; margin:20px 0 0 0}
+.main-opendata-chart+.main-opendata-chart {margin:46px 0 0 0}
 .main-opendata-chart-title {font-weight:bold; font-size:20px; line-height:24px; color:#242424}
 
 .opendata-list {margin:0 -10px; font-size:0; line-height:0; letter-spacing:-1px}
@@ -933,7 +934,7 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .opendata-filter {margin:0 0 26px 0}
 .wrapper .opendata-filter form {margin:0 0 -10px -10px; padding:0}
 .opendata-filter form::after {content:""; display:block; clear:both}
-.opendata-filter-item {float:left; margin:0 0 10px 10px; min-width:200px}
+.opendata-filter-item {float:left; margin:0 0 10px 10px; min-width:200px; max-width:700px}
 .opendata-filter-item .form-select {margin:0}
 
 @media screen and (max-width:1119px) {
@@ -1029,6 +1030,32 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
     .up-link {width:54px; height:54px; right:20px; margin-right:0; background-image:url(../images/up-link-mobile.svg); background-position:center}
 }
 
+.opendata-chart-info {margin:0 0 64px 0}
+.opendata-chart-info::after {content:""; display:block; clear:both}
+.opendata-chart-info-container {float:left; background:#fff; border:1px solid #e5e5e5; box-shadow:4px 4px 30px rgba(142, 142, 142, 0.15); padding:14px 25px 14px 14px}
+.opendata-chart-info-content {display:table}
+.opendata-chart-info-logo {display:table-cell; vertical-align:middle; width:44px; line-height:0}
+.opendata-chart-info-logo img {display:block; width:44px; max-width:none}
+.opendata-chart-info-text {display:table-cell; vertical-align:middle; max-width:457px; padding:0 0 0 13px; font-size:14px; line-height:18px}
+.opendata-chart-info-links {display:table-cell; vertical-align:middle; padding:0 0 0 22px}
+.opendata-chart-info-links a {float:left; padding:0 11px; margin:0 0 0 7px; position:relative; font-weight:normal; font-size:12px; line-height:30px; height:30px; text-decoration:none; color:#3e3e3e; background:#ecf3f4}
+.opendata-chart-info-links a:hover {background-color:#c0d1d5}
+.opendata-chart-info-links a img {display:inline-block; vertical-align:middle; margin:-2px 8px 0 0}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-info {margin:0 0 98px 0}
+    .opendata-chart-info-container {float:none; padding:20px}
+    .opendata-chart-info-container::after {content:""; display:block; clear:both}
+    .opendata-chart-info-content {display:block}
+    .opendata-chart-info-logo {float:left; display:block; width:66px; padding:0}
+    .opendata-chart-info-logo img {width:100%}
+    .opendata-chart-info-text {display:block; max-width:none; margin:0 0 0 86px; padding:4px 0 0 0; font-size:18px; line-height:22px; color:#343434; font-weight:normal}
+    .opendata-chart-info-links {float:left; display:block; width:100%; margin:24px 0 0 0}
+    .opendata-chart-info-links a {padding:0 10px; margin:0 0 0 32px; font-weight:500; font-size:16px; line-height:35px; height:35px}
+    .opendata-chart-info-links a:first-child {margin:0}
+    .opendata-chart-info-links img {width:18px; height:18px}
+}
+
 .opendata-chart-header::after {content:""; display:block; clear:both}
 
 .opendata-chart-menu {float:left; font-size:20px; line-height:30px; position:relative; font-weight:normal; border-bottom:2px solid #dadada; max-width:620px}
@@ -1052,7 +1079,7 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-download {float:right; margin:-4px 0 0 0}
 .opendata-chart-download a {display:inline-block; padding:0 15px 0 40px; position:relative; font-size:14px; line-height:37px; height:37px; text-decoration:none; color:#4e4e4e; background:#ecf3f4 url(../images/opendata-chart-download.svg) no-repeat 15px center}
 .opendata-chart-download a:hover {background-color:#c0d1d5}
-.opendata-chart-download a span {font-weight:normal; color:#3e3e3e}
+.opendata-chart-download a span {font-weight:normal; color:#3e3e3e; margin-right:6px}
 
 @media screen and (max-width:1119px) {
     .opendata-chart-download {float:none; margin:30px 0 0 0}
@@ -1099,8 +1126,8 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-legend-item-color {position:absolute; left:-30px; top:3px; width:20px; height:20px}
 .opendata-chart-legend-item-title {position:relative}
 .opendata-chart-legend-item-title-short {max-height:48px; position:relative; overflow:hidden}
-.opendata-chart-legend-item-title-full {display:none; position:absolute; left:-30px; padding-left:30px; top:0; right:0; background:#fff}
-.opendata-chart-legend-item:hover .opendata-chart-legend-item-title-full {display:block}
+.opendata-chart-legend-item-title-full {visibility:hidden; position:absolute; left:-30px; padding-left:30px; top:0; right:0; background:#fff}
+.opendata-chart-legend-item:hover .opendata-chart-legend-item-title-full {visibility:visible}
 .opendata-chart-legend-item-title-full::after {content:""; display:block; position:absolute; left:-30px; bottom:-121px; right:0; height:121px; background:linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%)}
 
 @media screen and (max-width:1119px) {
@@ -1153,7 +1180,7 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
     .opendata-chart-map-legend-item span {bottom:-30px; font-size:14px; line-height:21px}
 }
 
-.opendata-chart-map-region-hint {position:absolute; margin:11px 0 0 -34px; pointer-events:none}
+.opendata-chart-map-region-hint {position:absolute; margin:11px 0 0 -34px; pointer-events:none; z-index:99}
 .opendata-chart-map-region-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative; max-width:440px}
 .opendata-chart-map-region-hint-container::before {content:""; display:block; position:absolute; left:21px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
 .opendata-chart-map-region-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
@@ -1230,7 +1257,7 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-finance-legend-item-color {position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%}
 .opendata-chart-finance-graph-item {height:70px; border-top:1px solid #e8e8e8}
 
-.opendata-chart-finance-hint {position:absolute; margin:30px 0 0 -44px; pointer-events:none}
+.opendata-chart-finance-hint {position:absolute; margin:30px 0 0 -44px; pointer-events:none; z-index:99}
 .opendata-chart-finance-hint.right {transform:translateX(-100%); margin:30px 0 0 44px}
 .opendata-chart-finance-hint-container {padding:23px 20px 35px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative}
 .opendata-chart-finance-hint-container::before {content:""; display:block; position:absolute; left:42px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
@@ -1271,7 +1298,7 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-org-legend-item-color {position:absolute; left:-30px; top:0; width:20px; height:20px}
 .opendata-chart-org-legend-item.right .opendata-chart-org-legend-item-color {top:9px; height:4px}
 
-.opendata-chart-org-hint {position:absolute; margin:20px 0 0 -31px; pointer-events:none}
+.opendata-chart-org-hint {position:absolute; margin:20px 0 0 -31px; pointer-events:none; z-index:99}
 .opendata-chart-org-hint.right {transform:translateX(-100%); margin:20px 0 0 31px}
 .opendata-chart-org-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative}
 .opendata-chart-org-hint-container::before {content:""; display:block; position:absolute; left:22px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
@@ -1330,15 +1357,15 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
     .opendata-chart-forecast-graph-item-bar-item {cursor:pointer}
 }
 
-.opendata-chart-forecast-legend {float:right; width:370px; padding:10px 0 0 0}
+.opendata-chart-forecast-legend {float:right; width:370px; padding:10px 0 0 0; font-size:14px; line-height:21px}
 .opendata-chart-forecast-legend-item {margin:18px 0 0 30px; position:relative; cursor:default}
 .opendata-chart-forecast-legend-item:hover {z-index:1}
 .opendata-chart-forecast-legend-item:first-child {margin-top:0}
-.opendata-chart-forecast-legend-item-color {position:absolute; left:-30px; top:3px; width:20px; height:20px}
+.opendata-chart-forecast-legend-item-color {position:absolute; left:-30px; top:0; width:20px; height:20px}
 .opendata-chart-forecast-legend-item-title {position:relative}
 .opendata-chart-forecast-legend-item-title-short {max-height:48px; position:relative; overflow:hidden}
-.opendata-chart-forecast-legend-item-title-full {display:none; position:absolute; left:-30px; padding-left:30px; top:0; right:0; background:#fff}
-.opendata-chart-forecast-legend-item:hover .opendata-chart-forecast-legend-item-title-full {display:block}
+.opendata-chart-forecast-legend-item-title-full {visibility:hidden; position:absolute; left:-30px; padding-left:30px; top:0; right:0; background:#fff}
+.opendata-chart-forecast-legend-item:hover .opendata-chart-forecast-legend-item-title-full {visibility:visible}
 .opendata-chart-forecast-legend-item-title-full::after {content:""; display:block; position:absolute; left:-30px; bottom:-121px; right:0; height:121px; background:linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%)}
 .opendata-chart-forecast-legend-notice {margin:44px 0 0 0; font-size:14px; line-height:21px; color:#646464}
 .opendata-chart-forecast-legend-notice span {font-weight:bold; color:#d82626}
@@ -1352,3 +1379,57 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
     .opendata-chart-forecast-legend-item:hover .opendata-chart-forecast-legend-item-title-full {display:none}
     .opendata-chart-forecast-legend-notice {margin:30px 0 0 0; font-size:16px; line-height:24px}
 }
+
+.opendata-chart-org-main-content::after {content:""; display:block; clear:both}
+.opendata-chart-org-main-graph {float:left; width:640px; position:relative}
+.opendata-chart-org-main-graph-scale-left {position:absolute; left:0; top:0; width:63px; white-space:nowrap}
+.opendata-chart-org-main-graph-scale-left-item {position:absolute; right:0; font-size:14px; line-height:21px; margin-bottom:-12px}
+.opendata-chart-org-main-graph-scale-left-title {position:absolute; left:0; top:50%; margin-top:-12px; white-space:nowrap; font-weight:normal; transform:translateX(-50%) rotate(-90deg)}
+.opendata-chart-org-main-graph-wrapper {position:relative; margin:0 0 0 80px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; overflow:auto}
+.opendata-chart-org-main-graph-container {display:inline-block; vertical-align:top; position:relative}
+.opendata-chart-org-main-graph-item {height:70px; border-top:1px solid #e8e8e8}
+.opendata-chart-org-main-graph-item-bar {position:absolute; bottom:0; top:0; width:40px; margin:0 0 0 33.5px; z-index:2; cursor:pointer}
+.opendata-chart-org-main-graph-item-bar-item {position:absolute; left:0; right:0; bottom:0}
+.opendata-chart-org-main-graph-item-bar-item span {position:absolute; left:50%; top:-24px; white-space:nowrap; transform:translateX(-50%); font-size:12px; line-height:18px; letter-spacing:0; color:#000}
+.opendata-chart-org-main-graph-item-bar-item:nth-child(2) span {left:100%; transform:none; margin-left:-5px; top:-19px}
+.opendata-chart-org-main-graph-item-point-line {position:absolute; height:2px; border-top-width:2px; border-top-style:solid; transform-origin:left center; margin-top:-8px; z-index:2; pointer-events:none}
+.opendata-chart-org-main-graph-item-point {position:absolute; width:15px; height:15px; border-width:2px; border-style:solid; background:#fff; border-radius:50%; margin:0 0 -10px 55px; cursor:pointer; z-index:2; transition:all 0.2s}
+.opendata-chart-org-main-graph-item-point span {position:absolute; left:50%; top:-21px; white-space:nowrap; font-size:12px; line-height:18px; letter-spacing:0}
+.opendata-chart-org-main-graph-scale-x {border-top:2px solid #1e4854; padding:14px 0 0 0}
+.opendata-chart-org-main-graph-scale-x-item {display:inline-block; vertical-align:middle; font-size:14px; line-height:21px; letter-spacing:0; text-align:center; width:110px; position:relative; font-weight:normal}
+.opendata-chart-org-main-graph-scale-x-item::before {content:""; display:block; position:absolute; left:50%; bottom:100%; margin-bottom:16px; width:1px; background:#e8e8e8; height:9999px}
+.opendata-chart-org-main-graph-scale-x-title {margin:20px 0 0 80px; text-align:center; font-weight:normal}
+.opendata-chart-org-main-legend {float:right; width:400px; padding:10px 0 0 0}
+.opendata-chart-org-main-legend-item {margin:18px 0 0 30px; position:relative; font-size:14px; line-height:21px}
+.opendata-chart-org-main-legend-item:first-child {margin-top:0}
+.opendata-chart-org-main-legend-item-color {position:absolute; left:-30px; top:0; width:20px; height:20px}
+.opendata-chart-org-main-legend-item.right .opendata-chart-org-main-legend-item-color {top:9px; height:4px}
+
+.opendata-chart-org-main-hint {position:absolute; margin:20px 0 0 -31px; pointer-events:none; z-index:99}
+.opendata-chart-org-main-hint.right {transform:translateX(-100%); margin:20px 0 0 31px}
+.opendata-chart-org-main-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative}
+.opendata-chart-org-main-hint-container::before {content:""; display:block; position:absolute; left:22px; top:-6px; width:25px; height:25px; background:#fff; transform:rotate(45deg)}
+.opendata-chart-org-main-hint.right .opendata-chart-org-main-hint-container::before {left:auto; right:21px}
+.opendata-chart-org-main-hint-title {font-weight:500; font-size:16px; line-height:19px; color:#121212}
+.opendata-chart-org-main-hint-values {display:table; margin:6px 0 0 0; font-size:14px; line-height:21px}
+.opendata-chart-org-main-hint-value {display:table-row}
+.opendata-chart-org-main-hint-value-color {padding:5px 0 0 0; display:table-cell; vertical-align:middle}
+.opendata-chart-org-main-hint-value-color-inner {width:16px; height:16px}
+.opendata-chart-org-main-hint-value-color-inner.right {height:4px}
+.opendata-chart-org-main-hint-value-title {padding:5px 0 0 10px; display:table-cell; vertical-align:top}
+.opendata-chart-org-main-hint-value-text {padding:5px 0 0 24px; font-weight:normal; display:table-cell; vertical-align:top}
+
+.opendata-chart-funds-main-content::after {content:""; display:block; clear:both}
+.opendata-chart-funds-main-graph {float:left; width:530px; position:relative; padding:67px 0 0 0}
+.opendata-chart-funds-main-graph-container {display:table; border-collapse:collapse}
+.opendata-chart-funds-main-graph-item {display:table-row}
+.opendata-chart-funds-main-graph-item-title {display:table-cell; vertical-align:middle; text-align:right; width:270px; padding:20px 20px 0 0; border-right:2px solid #000; font-size:14px; line-height:21px; letter-spacing:0; color:#000}
+.opendata-chart-funds-main-graph-item:first-child .opendata-chart-funds-main-graph-item-title {padding-top:0}
+.opendata-chart-funds-main-graph-item-bars {display:table-cell; vertical-align:middle; padding:20px 0 0 0; width:260px}
+.opendata-chart-funds-main-graph-item:first-child .opendata-chart-funds-main-graph-item-bars {padding-top:0}
+.opendata-chart-funds-main-graph-item-bar-item {height:23px; position:relative}
+.opendata-chart-funds-main-graph-item-bar-item span {position:absolute; left:100%; top:0; margin-left:8px; font-size:12px; line-height:23px; color:#000; white-space:nowrap}
+.opendata-chart-funds-main-legend {float:right; width:400px; padding:53px 0 0 0}
+.opendata-chart-funds-main-legend-item {margin:18px 0 0 30px; position:relative; font-size:14px; line-height:21px}
+.opendata-chart-funds-main-legend-item:first-child {margin-top:0}
+.opendata-chart-funds-main-legend-item-color {position:absolute; left:-30px; top:0; width:20px; height:20px}
