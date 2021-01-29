@@ -966,10 +966,21 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .wrapper .opendata-table td:first-child {min-width:300px}
 .wrapper .opendata-table thead+tbody tr:nth-child(even) td {background:none}
 .wrapper .opendata-table thead+tbody tr:nth-child(odd) td {background:rgba(165, 165, 165, 0.08)}
+.wrapper .opendata-table td em {display:none}
 
 @media screen and (max-width:1119px) {
-    .wrapper .opendata-table table {width:768px; border-bottom:none}
+    .wrapper .opendata-table table {display:block; width:auto; border-bottom:none}
     .opendata-table .table-scroll {margin-top:0}
+    .wrapper .opendata-table thead {display:none}
+    .wrapper .opendata-table tbody {display:block}
+    .wrapper .opendata-table tr {display:block; margin:0 -20px; padding:20px 20px 38px 20px}
+    .wrapper .opendata-table tbody tr:nth-child(odd) {background:rgba(165, 165, 165, 0.08)}
+    .wrapper .opendata-table thead+tbody tr:nth-child(odd) td {background:none}
+    .wrapper .opendata-table td {display:block; font-size:20px; line-height:30px; padding:0; margin:24px 0 0 0; border:none}
+    .wrapper .opendata-table td:first-child {margin:0}
+    .wrapper .opendata-table tbody tr:first-child td {border:none}
+    .wrapper .opendata-table td:first-child {min-width:0}
+    .wrapper .opendata-table td em {display:block; font-style:normal; font-size:15px; line-height:23px; margin:0 0 6px 0; font-weight:600; color:#81a2b0}
 }
 
 footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
@@ -1237,6 +1248,22 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-bubble-graph-year:first-child {width:0}
 .opendata-chart-bubble-graph-year::before {content:""; display:block; position:absolute; left:100%; bottom:100%; margin-bottom:20px; height:9999px; width:1px; background:#d6d6d6; opacity:0.4}
 .opendata-chart-bubble-graph-year span {position:absolute; left:100%; top:0; transform:translateX(-50%)}
+.opendata-chart-bubble-graph-item-mobile-title {display:none}
+.opendata-chart-bubble-graph-years-mobile {display:none}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-bubble-legend {display:none}
+    .opendata-chart-bubble-graph {float:none; max-width:none !important}
+    .opendata-chart-bubble-graph.shadowLeft::before {display:none}
+    .opendata-chart-bubble-graph.shadowRight::after {display:none}
+    .opendata-chart-bubble-graph-years-fixed.visible {display:none}
+    .opendata-chart-bubble-graph-container {display:block}
+    .opendata-chart-bubble-graph-item-mobile-title {display:block; font-size:16px; line-height:24px; font-weight:300; letter-spacing:0; color:#000; padding:40px 0 26px 19px; margin:0 -40px; background:#fff; position:relative; white-space:normal; z-index:1}
+    .opendata-chart-bubble-graph-item-mobile-title span {display:block; position:absolute; left:0; top:47px; bottom:32px; width:4px}
+    .opendata-chart-bubble-graph-item-inner {height:auto !important}
+    .opendata-chart-bubble-graph-years-mobile {display:block; border-top:2px solid #1e4854; padding:18px 55px 0 55px; margin:15px -40px 0 -40px; position:relative; background:#fff; z-index:1}
+    .opendata-chart-bubble-graph-years-mobile .opendata-chart-bubble-graph-year::before {display:none}
+}
 
 .opendata-chart-finance-content {margin:40px 0 0 0}
 .opendata-chart-finance-graph {position:relative}
@@ -1256,6 +1283,12 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-finance-legend-item {display:inline-block; vertical-align:top; margin:20px 0 0 30px; padding:0 0 0 28px; position:relative; font-size:14px; line-height:21px; letter-spacing:0}
 .opendata-chart-finance-legend-item-color {position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%}
 .opendata-chart-finance-graph-item {height:70px; border-top:1px solid #e8e8e8}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-finance-legend {margin:60px 0 0 0}
+    .opendata-chart-finance-legend-item {display:block; margin:9px 0 0 0; padding:0 0 0 30px; font-size:16px; line-height:24px}
+    .opendata-chart-finance-legend-item-color {top:2px}
+}
 
 .opendata-chart-finance-hint {position:absolute; margin:30px 0 0 -44px; pointer-events:none; z-index:99}
 .opendata-chart-finance-hint.right {transform:translateX(-100%); margin:30px 0 0 44px}
@@ -1297,6 +1330,14 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-org-legend-item:first-child {margin-top:0}
 .opendata-chart-org-legend-item-color {position:absolute; left:-30px; top:0; width:20px; height:20px}
 .opendata-chart-org-legend-item.right .opendata-chart-org-legend-item-color {top:9px; height:4px}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-org-graph {float:none; width:auto}
+    .opendata-chart-org-legend {float:none; width:auto; padding:0; margin:40px 0 0 0}
+    .opendata-chart-org-legend-item {margin:9px 0 0 30px; font-size:16px; line-height:24px}
+    .opendata-chart-org-legend-item:first-child {margin-top:0}
+    .opendata-chart-org-legend-item-color {top:2px}
+}
 
 .opendata-chart-org-hint {position:absolute; margin:20px 0 0 -31px; pointer-events:none; z-index:99}
 .opendata-chart-org-hint.right {transform:translateX(-100%); margin:20px 0 0 31px}
@@ -1405,6 +1446,23 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-org-main-legend-item-color {position:absolute; left:-30px; top:0; width:20px; height:20px}
 .opendata-chart-org-main-legend-item.right .opendata-chart-org-main-legend-item-color {top:9px; height:4px}
 
+@media screen and (max-width:1119px) {
+    .opendata-chart-org-main-graph {float:none; width:auto}
+    .opendata-chart-org-main-graph-scale-left {width:40px}
+    .opendata-chart-org-main-graph-scale-left-title {display:none}
+    .opendata-chart-org-main-graph-wrapper {margin:0 0 0 45px}
+    .opendata-chart-org-main-graph-item-bar {width:30px; margin:0 0 0 35px}
+    .opendata-chart-org-main-graph-item-bar-item+.opendata-chart-org-main-graph-item-bar-item {margin-left:10px; margin-right:-10px}
+    .opendata-chart-org-main-graph-item-bar-item span {display:none}
+    .opendata-chart-org-main-graph-item-point-line {border-top-width:3px; height:3px}
+    .opendata-chart-org-main-graph-item-point {width:20px; height:20px; margin:0 0 -13px 55px; border-width:3px}
+    .opendata-chart-org-main-graph-item-point span {display:none}
+    .opendata-chart-org-main-legend {float:none; width:auto; padding:0; margin:40px 0 0 0}
+    .opendata-chart-org-main-legend-item {margin:9px 0 0 30px; font-size:16px; line-height:24px}
+    .opendata-chart-org-main-legend-item:first-child {margin-top:0}
+    .opendata-chart-org-main-legend-item-color {top:2px}
+}
+
 .opendata-chart-org-main-hint {position:absolute; margin:20px 0 0 -31px; pointer-events:none; z-index:99}
 .opendata-chart-org-main-hint.right {transform:translateX(-100%); margin:20px 0 0 31px}
 .opendata-chart-org-main-hint-container {padding:23px 20px; box-shadow:0px 4px 40px rgba(0, 0, 0, 0.1); background:#fff; position:relative}
@@ -1433,3 +1491,13 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-chart-funds-main-legend-item {margin:18px 0 0 30px; position:relative; font-size:14px; line-height:21px}
 .opendata-chart-funds-main-legend-item:first-child {margin-top:0}
 .opendata-chart-funds-main-legend-item-color {position:absolute; left:-30px; top:0; width:20px; height:20px}
+
+@media screen and (max-width:1119px) {
+    .opendata-chart-funds-main-graph {float:none; padding:0}
+    .opendata-chart-funds-main-graph-item-title {width:180px; font-size:16px; line-height:24px; border-right:none}
+    .opendata-chart-funds-main-graph-item-bars {width:180px}
+    .opendata-chart-funds-main-graph-item-bar-item span {font-size:13px; font-weight:normal}
+    .opendata-chart-funds-main-legend {float:none; width:auto; padding:0; margin:60px 0 0 0}
+    .opendata-chart-funds-main-legend-item {margin:9px 0 0 30px; font-size:16px; line-height:24px}
+    .opendata-chart-funds-main-legend-item-color {top:2px}
+}

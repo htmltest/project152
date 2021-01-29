@@ -511,14 +511,15 @@ $(window).on('load resize', function() {
         }
     });
 
-    $(this).mCustomScrollbar('destroy');
     $('.table-scroll').each(function() {
-        $(this).mCustomScrollbar({
-            axis: 'x',
-            scrollButtons: {
-                enable: true
-            }
-        });
+        if ($(this).parents().filter('.opendata-table').length == 0) {
+            $(this).mCustomScrollbar({
+                axis: 'x',
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        }
     });
 
     $('.main-regions-map-inner').each(function() {
@@ -1069,13 +1070,13 @@ function makeChartBar(curBlock, data) {
                         summAll += data.data[j].values[i];
                     }
                 }
-                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
+                newHTML +=              '<td><em>' + data.summTitle + '</em>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
             }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] !== null) {
-                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
                 } else {
-                    newHTML +=          '<td>—</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>—</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1088,15 +1089,17 @@ function makeChartBar(curBlock, data) {
 
         curBlock.html(newHTML);
 
-        curBlock.find('.table-scroll').each(function() {
-            $(this).mCustomScrollbar({
-                axis: 'x',
-                scrollInertia: 0,
-                scrollButtons: {
-                    enable: true
-                }
+        if ($(window).width() > 1119) {
+            curBlock.find('.table-scroll').each(function() {
+                $(this).mCustomScrollbar({
+                    axis: 'x',
+                    scrollInertia: 0,
+                    scrollButtons: {
+                        enable: true
+                    }
+                });
             });
-        });
+        }
     }
 }
 
@@ -1327,13 +1330,13 @@ function makeChartLine(curBlock, data) {
                         summAll += data.data[j].values[i];
                     }
                 }
-                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
+                newHTML +=              '<td><em>' + data.summTitle + '</em>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
             }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
-                    newHTML +=          '<td>—</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>—</td>';
                 } else {
-                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1345,15 +1348,17 @@ function makeChartLine(curBlock, data) {
                     '</div>';
         curBlock.html(newHTML);
 
-        curBlock.find('.table-scroll').each(function() {
-            $(this).mCustomScrollbar({
-                axis: 'x',
-                scrollInertia: 0,
-                scrollButtons: {
-                    enable: true
-                }
+        if ($(window).width() > 1119) {
+            curBlock.find('.table-scroll').each(function() {
+                $(this).mCustomScrollbar({
+                    axis: 'x',
+                    scrollInertia: 0,
+                    scrollButtons: {
+                        enable: true
+                    }
+                });
             });
-        });
+        }
 
     }
 }
@@ -1522,21 +1527,21 @@ function makeChartMap(curBlock, data) {
                     }
                 }
                 if (!isHas) {
-                    newHTML +=          '<td>—</td>';
+                    newHTML +=          '<td><em>' + data.summTitle + '</em>—</td>';
                 } else {
-                    newHTML +=          '<td>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
+                    newHTML +=          '<td><em>' + data.summTitle + '</em>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
                 }
             }
             for (var j = 0; j < data.data.length; j++) {
                 var isHas = false;
                 for (var k = 0; k < data.data[j].values.length; k++) {
                     if (data.data[j].values[k][0] == opendataRegions[i].id) {
-                        newHTML +=      '<td>' + numberWithSpaces(data.data[j].values[k][1]) + '</td>';
+                        newHTML +=      '<td><em>' + data.data[j].year + '</em>' + numberWithSpaces(data.data[j].values[k][1]) + '</td>';
                         isHas = true;
                     }
                 }
                 if (!isHas) {
-                    newHTML +=          '<td>—</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>—</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1548,15 +1553,17 @@ function makeChartMap(curBlock, data) {
                     '</div>';
         curBlock.html(newHTML);
 
-        curBlock.find('.table-scroll').each(function() {
-            $(this).mCustomScrollbar({
-                axis: 'x',
-                scrollInertia: 0,
-                scrollButtons: {
-                    enable: true
-                }
+        if ($(window).width() > 1119) {
+            curBlock.find('.table-scroll').each(function() {
+                $(this).mCustomScrollbar({
+                    axis: 'x',
+                    scrollInertia: 0,
+                    scrollButtons: {
+                        enable: true
+                    }
+                });
             });
-        });
+        }
 
     }
 }
@@ -1627,7 +1634,13 @@ function makeChartBubble(curBlock, data) {
         var curGraph = curBlock.find('.opendata-chart-bubble-graph-container');
         var graphHTML = '';
         for (var i = 0; i < data.legend.length; i++) {
+            graphHTML +=        '<div class="opendata-chart-bubble-graph-item-mobile-title"><span style="background-color:' + data.legend[i].color + '"></span>' + data.legend[i].title + '</div>';
             graphHTML +=        '<div class="opendata-chart-bubble-graph-item"><div class="opendata-chart-bubble-graph-item-inner" style="height:' + (curBlock.find('.opendata-chart-bubble-legend-item').eq(i).outerHeight()) + 'px"></div></div>';
+            graphHTML +=        '<div class="opendata-chart-bubble-graph-years-mobile">';
+            for (var j = 0; j < data.data.length; j++) {
+                graphHTML +=        '<div class="opendata-chart-bubble-graph-year"><span>' + data.data[j].year + '</span></div>';
+            }
+            graphHTML +=        '</div>';
         }
 
         graphHTML +=            '<div class="opendata-chart-bubble-graph-years">';
@@ -1648,9 +1661,13 @@ function makeChartBubble(curBlock, data) {
         var itemWidth = 80;
         for (var i = 0; i < data.legend.length; i++) {
             var curID = data.legend[i].id;
+            var mobileDiff = -1;
             for (var j = 0; j < data.data.length; j++) {
                 var curBubble = '';
                 if (data.data[j].values[curID] !== null) {
+                    if (mobileDiff == -1) {
+                        mobileDiff = j;
+                    }
                     var curBubbleSize = Number(data.data[j].values[curID]) / curMax * 100;
 
                     var curBubblePrev = '';
@@ -1664,41 +1681,47 @@ function makeChartBubble(curBlock, data) {
                 }
                 $('.opendata-chart-bubble-graph-item').eq(i).find('.opendata-chart-bubble-graph-item-inner').append('<div class="opendata-chart-bubble-graph-item-bubble">' + curBubble + '</div>');
             }
+            if ($(window).width() < 1120) {
+                $('.opendata-chart-bubble-graph-item').eq(i).css({'left': -mobileDiff * itemWidth});
+                $('.opendata-chart-bubble-graph-years-mobile').eq(i).find('.opendata-chart-bubble-graph-year').css({'left': -mobileDiff * itemWidth});
+            }
         }
 
         curBlock.find('.opendata-chart-bubble-graph').css({'max-width': 'calc(100% - ' + (curBlock.find('.opendata-chart-bubble-legend').width() + 50) + 'px)'});
 
-        curBlock.find('.opendata-chart-bubble-graph').each(function() {
-            var curScrollBlock = $(this);
-            $(this).mCustomScrollbar({
-                axis: 'x',
-                scrollButtons: {
-                    enable: true
-                },
-                callbacks: {
-                    onInit: function() {
-                        curScrollBlock.addClass('shadowRight');
+        if ($(window).width() > 1119) {
+            curBlock.find('.opendata-chart-bubble-graph').each(function() {
+                var curScrollBlock = $(this);
+                $(this).mCustomScrollbar({
+                    axis: 'x',
+                    scrollButtons: {
+                        enable: true
                     },
-
-                    whileScrolling: function() {
-                        if (this.mcs.leftPct == 100) {
-                            curScrollBlock.removeClass('shadowRight');
-                        } else {
+                    callbacks: {
+                        onInit: function() {
                             curScrollBlock.addClass('shadowRight');
-                        }
+                        },
 
-                        if (this.mcs.leftPct == 0) {
-                            curScrollBlock.removeClass('shadowLeft');
-                        } else {
-                            curScrollBlock.addClass('shadowLeft');
+                        whileScrolling: function() {
+                            if (this.mcs.leftPct == 100) {
+                                curScrollBlock.removeClass('shadowRight');
+                            } else {
+                                curScrollBlock.addClass('shadowRight');
+                            }
 
+                            if (this.mcs.leftPct == 0) {
+                                curScrollBlock.removeClass('shadowLeft');
+                            } else {
+                                curScrollBlock.addClass('shadowLeft');
+
+                            }
+                            curBlock.find('.opendata-chart-bubble-graph-years-fixed').css({'width': curBlock.find('.opendata-chart-bubble-graph').width(), 'left': curBlock.find('.opendata-chart-bubble-graph').offset().left});
+                            curBlock.find('.opendata-chart-bubble-graph-years-fixed-inner').css({'left': curBlock.find('.mCSB_container').css('left')});
                         }
-                        curBlock.find('.opendata-chart-bubble-graph-years-fixed').css({'width': curBlock.find('.opendata-chart-bubble-graph').width(), 'left': curBlock.find('.opendata-chart-bubble-graph').offset().left});
-                        curBlock.find('.opendata-chart-bubble-graph-years-fixed-inner').css({'left': curBlock.find('.mCSB_container').css('left')});
                     }
-                }
+                });
             });
-        });
+        }
 
     } else {
 
@@ -1729,13 +1752,13 @@ function makeChartBubble(curBlock, data) {
                         summAll += data.data[j].values[curID];
                     }
                 }
-                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
+                newHTML +=              '<td><em>' + data.summTitle + '</em>' + numberWithSpaces(summAll.toFixed(data.summFixed)) + '</td>';
             }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[curID] == null) {
-                    newHTML +=          '<td>—</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>—</td>';
                 } else {
-                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[curID]) + '</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>' + numberWithSpaces(data.data[j].values[curID]) + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1747,15 +1770,17 @@ function makeChartBubble(curBlock, data) {
                     '</div>';
         curBlock.html(newHTML);
 
-        curBlock.find('.table-scroll').each(function() {
-            $(this).mCustomScrollbar({
-                axis: 'x',
-                scrollInertia: 0,
-                scrollButtons: {
-                    enable: true
-                }
+        if ($(window).width() > 1119) {
+            curBlock.find('.table-scroll').each(function() {
+                $(this).mCustomScrollbar({
+                    axis: 'x',
+                    scrollInertia: 0,
+                    scrollButtons: {
+                        enable: true
+                    }
+                });
             });
-        });
+        }
 
     }
 }
@@ -1942,13 +1967,13 @@ function makeChartFinance(curBlock, data) {
                         summAll += data.data[j].values[i];
                     }
                 }
-                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(3)) + '</td>';
+                newHTML +=              '<td><em>' + data.summTitle + '</em>' + numberWithSpaces(summAll.toFixed(3)) + '</td>';
             }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
-                    newHTML +=          '<td>—</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>—</td>';
                 } else {
-                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -1960,15 +1985,17 @@ function makeChartFinance(curBlock, data) {
                     '</div>';
         curBlock.html(newHTML);
 
-        curBlock.find('.table-scroll').each(function() {
-            $(this).mCustomScrollbar({
-                axis: 'x',
-                scrollInertia: 0,
-                scrollButtons: {
-                    enable: true
-                }
+        if ($(window).width() > 1119) {
+            curBlock.find('.table-scroll').each(function() {
+                $(this).mCustomScrollbar({
+                    axis: 'x',
+                    scrollInertia: 0,
+                    scrollButtons: {
+                        enable: true
+                    }
+                });
             });
-        });
+        }
 
     }
 }
@@ -2255,13 +2282,13 @@ function makeChartOrg(curBlock, data) {
                         summAll += data.data[j].values[i];
                     }
                 }
-                newHTML +=              '<td>' + numberWithSpaces(summAll.toFixed(3)) + '</td>';
+                newHTML +=              '<td><em>' + data.summTitle + '</em>' + numberWithSpaces(summAll.toFixed(3)) + '</td>';
             }
             for (var j = 0; j < data.data.length; j++) {
                 if (data.data[j].values[i] == null) {
-                    newHTML +=          '<td>—</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>—</td>';
                 } else {
-                    newHTML +=          '<td>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
+                    newHTML +=          '<td><em>' + data.data[j].year + '</em>' + numberWithSpaces(data.data[j].values[i]) + '</td>';
                 }
             }
             newHTML +=              '</tr>';
@@ -2273,15 +2300,17 @@ function makeChartOrg(curBlock, data) {
                     '</div>';
         curBlock.html(newHTML);
 
-        curBlock.find('.table-scroll').each(function() {
-            $(this).mCustomScrollbar({
-                axis: 'x',
-                scrollInertia: 0,
-                scrollButtons: {
-                    enable: true
-                }
+        if ($(window).width() > 1119) {
+            curBlock.find('.table-scroll').each(function() {
+                $(this).mCustomScrollbar({
+                    axis: 'x',
+                    scrollInertia: 0,
+                    scrollButtons: {
+                        enable: true
+                    }
+                });
             });
-        });
+        }
 
     }
 }
@@ -2707,6 +2736,9 @@ function makeChartOrgMain(curBlock, data) {
     }
 
     var itemWidth = 110;
+    if ($(window).width() < 1120) {
+        itemWidth = 65;
+    }
     curGraph.css({'width': data.data.length * itemWidth + 'px'});
 
     for (var i = 0; i < data.data.length; i++) {
