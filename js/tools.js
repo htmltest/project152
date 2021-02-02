@@ -651,6 +651,33 @@ $(document).ready(function() {
         $('.opendata-chart-map-region-hint').remove();
     });
 
+    $('body').on('click', '.opendata-chart-org-main-hint-close', function(e) {
+        $('.opendata-chart-org-main-hint').remove();
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.opendata-chart-org-main-hint-bg', function() {
+        $('.opendata-chart-org-main-hint').remove();
+    });
+
+    $('body').on('click', '.opendata-chart-finance-hint-close', function(e) {
+        $('.opendata-chart-finance-hint').remove();
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.opendata-chart-finance-hint-bg', function() {
+        $('.opendata-chart-finance-hint').remove();
+    });
+
+    $('body').on('click', '.opendata-chart-org-hint-close', function(e) {
+        $('.opendata-chart-org-hint').remove();
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.opendata-chart-org-hint-bg', function() {
+        $('.opendata-chart-org-hint').remove();
+    });
+
     $('body').on('mousemove', '.opendata-chart-map-inner g', function(e) {
         if ($(window).width() > 1119) {
             var curLeft = e.pageX;
@@ -927,7 +954,19 @@ $(document).ready(function() {
         }
         curTable.find('tbody').html(newHTML);
 
+        curBlock = curTable.parents().filter('.opendata-table');
+        curBlock.find('.opendata-table-header-fixed-inner').html('');
+        curBlock.find('thead th').each(function() {
+            curBlock.find('.opendata-table-header-fixed-inner').append('<div class="opendata-table-header-fixed-item" style="width:' + $(this).outerWidth() + 'px">' + $(this).html() + '</div>');
+        });
+
         e.preventDefault();
+    });
+
+    $('body').on('click', '.opendata-table-header-fixed-item a', function(e) {
+        var curTable = $(this).parents().filter('.opendata-table');
+        var curIndex = curTable.find('.opendata-table-header-fixed-item a').index($(this));
+        curTable.find('thead .sort').eq(curIndex).trigger('click');
     });
 
     $('body').on('mouseover', '.opendata-chart-legend-item-title', function(e) {
@@ -1088,6 +1127,10 @@ function makeChartBar(curBlock, data) {
                     '</div>';
 
         curBlock.html(newHTML);
+        curBlock.find('.opendata-table').append('<div class="opendata-table-header-fixed"><div class="opendata-table-header-fixed-inner"></div></div>');
+        curBlock.find('.opendata-table thead th').each(function() {
+            curBlock.find('.opendata-table-header-fixed-inner').append('<div class="opendata-table-header-fixed-item" style="width:' + $(this).outerWidth() + 'px">' + $(this).html() + '</div>');
+        });
 
         if ($(window).width() > 1119) {
             curBlock.find('.table-scroll').each(function() {
@@ -1096,10 +1139,17 @@ function makeChartBar(curBlock, data) {
                     scrollInertia: 0,
                     scrollButtons: {
                         enable: true
+                    },
+                    callbacks: {
+                        whileScrolling: function() {
+                            curBlock.find('.opendata-table-header-fixed-inner').css({'left': this.mcs.left});
+                        }
                     }
                 });
             });
         }
+
+        $(window).trigger('resize');
     }
 }
 
@@ -1347,6 +1397,10 @@ function makeChartLine(curBlock, data) {
                         '</div>' +
                     '</div>';
         curBlock.html(newHTML);
+        curBlock.find('.opendata-table').append('<div class="opendata-table-header-fixed"><div class="opendata-table-header-fixed-inner"></div></div>');
+        curBlock.find('.opendata-table thead th').each(function() {
+            curBlock.find('.opendata-table-header-fixed-inner').append('<div class="opendata-table-header-fixed-item" style="width:' + $(this).outerWidth() + 'px">' + $(this).find('a').html() + '</div>');
+        });
 
         if ($(window).width() > 1119) {
             curBlock.find('.table-scroll').each(function() {
@@ -1355,10 +1409,17 @@ function makeChartLine(curBlock, data) {
                     scrollInertia: 0,
                     scrollButtons: {
                         enable: true
+                    },
+                    callbacks: {
+                        whileScrolling: function() {
+                            curBlock.find('.opendata-table-header-fixed-inner').css({'left': this.mcs.left});
+                        }
                     }
                 });
             });
         }
+
+        $(window).trigger('resize');
 
     }
 }
@@ -1552,6 +1613,10 @@ function makeChartMap(curBlock, data) {
                         '</div>' +
                     '</div>';
         curBlock.html(newHTML);
+        curBlock.find('.opendata-table').append('<div class="opendata-table-header-fixed"><div class="opendata-table-header-fixed-inner"></div></div>');
+        curBlock.find('.opendata-table thead th').each(function() {
+            curBlock.find('.opendata-table-header-fixed-inner').append('<div class="opendata-table-header-fixed-item" style="width:' + $(this).outerWidth() + 'px">' + $(this).find('a').html() + '</div>');
+        });
 
         if ($(window).width() > 1119) {
             curBlock.find('.table-scroll').each(function() {
@@ -1560,10 +1625,17 @@ function makeChartMap(curBlock, data) {
                     scrollInertia: 0,
                     scrollButtons: {
                         enable: true
+                    },
+                    callbacks: {
+                        whileScrolling: function() {
+                            curBlock.find('.opendata-table-header-fixed-inner').css({'left': this.mcs.left});
+                        }
                     }
                 });
             });
         }
+
+        $(window).trigger('resize');
 
     }
 }
@@ -1635,12 +1707,18 @@ function makeChartBubble(curBlock, data) {
         var graphHTML = '';
         for (var i = 0; i < data.legend.length; i++) {
             graphHTML +=        '<div class="opendata-chart-bubble-graph-item-mobile-title"><span style="background-color:' + data.legend[i].color + '"></span>' + data.legend[i].title + '</div>';
+            if ($(window).width() < 1120) {
+                graphHTML +=        '<div class="opendata-chart-bubble-graph-item-mobile"><div class="opendata-chart-bubble-graph-item-mobile-inner">';
+            }
             graphHTML +=        '<div class="opendata-chart-bubble-graph-item"><div class="opendata-chart-bubble-graph-item-inner" style="height:' + (curBlock.find('.opendata-chart-bubble-legend-item').eq(i).outerHeight()) + 'px"></div></div>';
             graphHTML +=        '<div class="opendata-chart-bubble-graph-years-mobile">';
             for (var j = 0; j < data.data.length; j++) {
                 graphHTML +=        '<div class="opendata-chart-bubble-graph-year"><span>' + data.data[j].year + '</span></div>';
             }
             graphHTML +=        '</div>';
+            if ($(window).width() < 1120) {
+                graphHTML +=        '</div></div>';
+            }
         }
 
         graphHTML +=            '<div class="opendata-chart-bubble-graph-years">';
@@ -1661,13 +1739,15 @@ function makeChartBubble(curBlock, data) {
         var itemWidth = 80;
         for (var i = 0; i < data.legend.length; i++) {
             var curID = data.legend[i].id;
-            var mobileDiff = -1;
+            var mobileStart = -1;
+            var mobileStop = -1;
             for (var j = 0; j < data.data.length; j++) {
                 var curBubble = '';
                 if (data.data[j].values[curID] !== null) {
-                    if (mobileDiff == -1) {
-                        mobileDiff = j;
+                    if (mobileStart == -1) {
+                        mobileStart = j;
                     }
+                    mobileStop = j
                     var curBubbleSize = Number(data.data[j].values[curID]) / curMax * 100;
 
                     var curBubblePrev = '';
@@ -1679,11 +1759,25 @@ function makeChartBubble(curBlock, data) {
                                 '<div class="opendata-chart-bubble-graph-item-bubble-bg" style="background-color:' + data.legend[i].color + '; width:' + curBubbleSize + '%; height:' + curBubbleSize + '%"></div>' +
                                 '<div class="opendata-chart-bubble-graph-item-bubble-value">' + numberWithSpaces(data.data[j].values[curID]) + '</div>';
                 }
-                $('.opendata-chart-bubble-graph-item').eq(i).find('.opendata-chart-bubble-graph-item-inner').append('<div class="opendata-chart-bubble-graph-item-bubble">' + curBubble + '</div>');
+                curBlock.find('.opendata-chart-bubble-graph-item').eq(i).find('.opendata-chart-bubble-graph-item-inner').append('<div class="opendata-chart-bubble-graph-item-bubble">' + curBubble + '</div>');
             }
             if ($(window).width() < 1120) {
-                $('.opendata-chart-bubble-graph-item').eq(i).css({'left': -mobileDiff * itemWidth});
-                $('.opendata-chart-bubble-graph-years-mobile').eq(i).find('.opendata-chart-bubble-graph-year').css({'left': -mobileDiff * itemWidth});
+                curBlock.find('.opendata-chart-bubble-graph-item-mobile').each(function() {
+                    var curYears = $(this);
+                    $(this).mCustomScrollbar({
+                        axis: 'x',
+                        scrollButtons: {
+                            enable: true
+                        }
+                    });
+                });
+/*                var mobileDiff = 0;
+                var mobileCount = Math.floor(curBlock.width() / itemWidth) - 1;
+                if (mobileStop > mobileCount) {
+                    mobileDiff = mobileStop - mobileCount;
+                    curBlock.find('.opendata-chart-bubble-graph-item').eq(i).css({'left': -mobileDiff * itemWidth});
+                    curBlock.find('.opendata-chart-bubble-graph-years-mobile').eq(i).find('.opendata-chart-bubble-graph-year').css({'left': -mobileDiff * itemWidth});
+                }*/
             }
         }
 
@@ -1769,6 +1863,10 @@ function makeChartBubble(curBlock, data) {
                         '</div>' +
                     '</div>';
         curBlock.html(newHTML);
+        curBlock.find('.opendata-table').append('<div class="opendata-table-header-fixed"><div class="opendata-table-header-fixed-inner"></div></div>');
+        curBlock.find('.opendata-table thead th').each(function() {
+            curBlock.find('.opendata-table-header-fixed-inner').append('<div class="opendata-table-header-fixed-item" style="width:' + $(this).outerWidth() + 'px">' + $(this).find('a').html() + '</div>');
+        });
 
         if ($(window).width() > 1119) {
             curBlock.find('.table-scroll').each(function() {
@@ -1777,10 +1875,17 @@ function makeChartBubble(curBlock, data) {
                     scrollInertia: 0,
                     scrollButtons: {
                         enable: true
+                    },
+                    callbacks: {
+                        whileScrolling: function() {
+                            curBlock.find('.opendata-table-header-fixed-inner').css({'left': this.mcs.left});
+                        }
                     }
                 });
             });
         }
+
+        $(window).trigger('resize');
 
     }
 }
@@ -1839,6 +1944,9 @@ function makeChartFinance(curBlock, data) {
 
         var curGraph = curBlock.find('.opendata-chart-finance-graph-container');
         var itemWidth = 63;
+        if ($(window).width() < 1120) {
+            itemWidth = 55;
+        }
         curGraph.css({'width': data.data.length * itemWidth + 'px'});
         if (curGraph.width() < curBlock.find('.opendata-chart-finance-graph-wrapper').width()) {
             itemWidth = curBlock.find('.opendata-chart-finance-graph-wrapper').width() / data.data.length;
@@ -1932,6 +2040,37 @@ function makeChartFinance(curBlock, data) {
             }
         });
 
+        curBlock.find('.opendata-chart-finance-graph-item-point').on('click', function(e) {
+            if ($(window).width() < 1120) {
+                var curID = Number($(this).attr('data-id'));
+                curBlock.find('.opendata-chart-finance-graph-item-point').addClass('other');
+                curBlock.find('.opendata-chart-finance-graph-item-point[data-id="' + curID + '"]').removeClass('other');
+                $('.opendata-chart-finance-hint').remove();
+                var hintHTML =  '<div class="opendata-chart-finance-hint">' +
+                                    '<div class="opendata-chart-finance-hint-bg"></div>' +
+                                    '<div class="opendata-chart-finance-hint-container">' +
+                                        '<div class="opendata-chart-finance-hint-title">' + data.legend[curID].title + '</div>' +
+                                        '<div class="opendata-chart-finance-hint-values">';
+                for (var i = 0; i < data.data.length; i++) {
+                    if (data.data[i].values[curID] !== null) {
+                        hintHTML +=         '<div class="opendata-chart-finance-hint-value">' +
+                                                '<div class="opendata-chart-finance-hint-value-title">' + data.data[i].year + '</div>' +
+                                                '<div class="opendata-chart-finance-hint-value-text">' + numberWithSpaces(Number(data.data[i].values[curID]).toFixed(3)) + '</div>' +
+                                            '</div>';
+                        if ((i + 1) % 10 == 0) {
+                            hintHTML += '</div>' +
+                                        '<div class="opendata-chart-finance-hint-values">';
+                        }
+                    }
+                }
+                hintHTML +=             '</div>' +
+                                        '<a href="#" class="opendata-chart-finance-hint-close"></a>' +
+                                    '</div>' +
+                                '</div>';
+                $('body').append(hintHTML);
+            }
+        });
+
         curBlock.find('.opendata-chart-finance-graph-item-point').on('mouseleave', function(e) {
             if ($(window).width() > 1119) {
                 $('.opendata-chart-finance-hint').remove();
@@ -1984,6 +2123,10 @@ function makeChartFinance(curBlock, data) {
                         '</div>' +
                     '</div>';
         curBlock.html(newHTML);
+        curBlock.find('.opendata-table').append('<div class="opendata-table-header-fixed"><div class="opendata-table-header-fixed-inner"></div></div>');
+        curBlock.find('.opendata-table thead th').each(function() {
+            curBlock.find('.opendata-table-header-fixed-inner').append('<div class="opendata-table-header-fixed-item" style="width:' + $(this).outerWidth() + 'px">' + $(this).find('a').html() + '</div>');
+        });
 
         if ($(window).width() > 1119) {
             curBlock.find('.table-scroll').each(function() {
@@ -1992,10 +2135,17 @@ function makeChartFinance(curBlock, data) {
                     scrollInertia: 0,
                     scrollButtons: {
                         enable: true
+                    },
+                    callbacks: {
+                        whileScrolling: function() {
+                            curBlock.find('.opendata-table-header-fixed-inner').css({'left': this.mcs.left});
+                        }
                     }
                 });
             });
         }
+
+        $(window).trigger('resize');
 
     }
 }
@@ -2248,6 +2398,30 @@ function makeChartOrg(curBlock, data) {
             }
         });
 
+        curBlock.find('.opendata-chart-org-graph-item-point, .opendata-chart-org-graph-item-bar').on('click', function(e) {
+            if ($(window).width() < 1120) {
+                var curYear = Number($(this).attr('data-year'));
+                $('.opendata-chart-org-hint').remove();
+                var hintHTML =  '<div class="opendata-chart-org-hint">' +
+                                    '<div class="opendata-chart-org-hint-bg"></div>' +
+                                    '<div class="opendata-chart-org-hint-container">' +
+                                        '<div class="opendata-chart-org-hint-title">' + data.data[curYear].year + ' г</div>' +
+                                        '<div class="opendata-chart-org-hint-values">';
+                for (var i = 0; i < data.legend.length; i++) {
+                    hintHTML +=     '<div class="opendata-chart-org-hint-value">' +
+                                        '<div class="opendata-chart-org-hint-value-color"><div class="opendata-chart-org-hint-value-color-inner ' + data.legend[i].type + '" style="background-color:' + data.legend[i].color + '"></div></div>' +
+                                        '<div class="opendata-chart-org-hint-value-title">' + data.legend[i].title + '</div>' +
+                                        '<div class="opendata-chart-org-hint-value-text">' + numberWithSpaces(data.data[curYear].values[i]) + '</div>' +
+                                    '</div>';
+                }
+                hintHTML +=             '</div>' +
+                                        '<a href="#" class="opendata-chart-org-hint-close"></a>' +
+                                    '</div>' +
+                                '</div>';
+                $('body').append(hintHTML);
+            }
+        });
+
         curBlock.find('.opendata-chart-org-graph-item-point, .opendata-chart-org-graph-item-bar').on('mouseleave', function(e) {
             if ($(window).width() > 1119) {
                 $('.opendata-chart-org-hint').remove();
@@ -2299,6 +2473,10 @@ function makeChartOrg(curBlock, data) {
                         '</div>' +
                     '</div>';
         curBlock.html(newHTML);
+        curBlock.find('.opendata-table').append('<div class="opendata-table-header-fixed"><div class="opendata-table-header-fixed-inner"></div></div>');
+        curBlock.find('.opendata-table thead th').each(function() {
+            curBlock.find('.opendata-table-header-fixed-inner').append('<div class="opendata-table-header-fixed-item" style="width:' + $(this).outerWidth() + 'px">' + $(this).find('a').html() + '</div>');
+        });
 
         if ($(window).width() > 1119) {
             curBlock.find('.table-scroll').each(function() {
@@ -2307,10 +2485,17 @@ function makeChartOrg(curBlock, data) {
                     scrollInertia: 0,
                     scrollButtons: {
                         enable: true
+                    },
+                    callbacks: {
+                        whileScrolling: function() {
+                            curBlock.find('.opendata-table-header-fixed-inner').css({'left': this.mcs.left});
+                        }
                     }
                 });
             });
         }
+
+        $(window).trigger('resize');
 
     }
 }
@@ -2403,80 +2588,233 @@ $(document).ready(function() {
 
     $('body').on('mouseenter', '.opendata-chart-forecast-graph-item-year', function(e) {
         if ($(window).width() > 1119) {
+            var curItemBar = $(this).parent().find('.opendata-chart-forecast-graph-item-bar');
             $('.opendata-chart-map-region-hint').remove();
             var windowHTML = '<div class="opendata-chart-map-region-hint">' +
                                  '<div class="opendata-chart-map-region-hint-container">' +
                                     '<div class="opendata-chart-map-region-hint-title">' + $(this).parent().find('.opendata-chart-forecast-graph-item-bar').find('.opendata-chart-forecast-graph-item-bar-item').eq(0).attr('data-name') + '</div>' +
                                     '<div class="opendata-chart-map-region-hint-values">';
+            var curSumm = 0;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                curSumm += Number($(this).attr('data-value'));
+            });
+            var summPercent = 0;
             $(this).parent().find('.opendata-chart-forecast-graph-item-bar').find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                } else {
+                    summPercent += newPercent;
+                }
                 windowHTML +=           '<div class="opendata-chart-map-region-hint-value">' +
                                             '<div class="opendata-chart-map-region-hint-value-legend">' +
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
                                             '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')).replace('.', ',') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-percent">' + newPercent + '%</div>' +
                                         '</div>';
             });
 
             windowHTML +=           '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-pie">' +
+                                        '<canvas></canvas>' +
+                                    '</div>' +
                                 '</div>' +
                              '</div>';
             $('body').append(windowHTML);
             var curLeft = e.pageX;
             var curTop = e.pageY;
             $('.opendata-chart-map-region-hint').css({'left': curLeft, 'top': curTop});
+
+            var pieWidth = 126;
+            var pieHeight = 126;
+
+            var canvas = $('.opendata-chart-map-region-hint-pie canvas')[0];
+            var context = canvas.getContext('2d');
+
+			canvas.width = pieWidth;
+            canvas.height = pieHeight;
+
+            var summPercent = 0;
+            var currentAngle = -0.5 * Math.PI;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                }
+                var sliceAngle = newPercent / 100 * 2 * Math.PI;
+                context.beginPath();
+                context.fillStyle = $(this).css('background-color');
+                context.strokeStyle = $(this).css('background-color');
+                context.moveTo(pieWidth / 2, pieHeight / 2);
+                context.arc(pieWidth / 2, pieHeight / 2, pieWidth / 2, currentAngle, currentAngle + sliceAngle);
+                context.lineTo(pieWidth / 2, pieHeight / 2);
+                context.fill();
+                if (newPercent > 9) {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                } else {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend opendata-chart-map-region-hint-pie-legend-out" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                }
+                currentAngle += sliceAngle;
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) != curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    summPercent += newPercent;
+                }
+            });
         }
     });
 
     $('body').on('click', '.opendata-chart-forecast-graph-item-bar', function(e) {
         if ($(window).width() < 1120) {
             $('.opendata-chart-map-region-hint').remove();
+            var curItemBar = $(this);
             var windowHTML = '<div class="opendata-chart-map-region-hint">' +
                                  '<div class="opendata-chart-map-region-hint-bg"></div>' +
                                  '<div class="opendata-chart-map-region-hint-container">' +
                                     '<div class="opendata-chart-map-region-hint-title">' + $(this).find('.opendata-chart-forecast-graph-item-bar-item').eq(0).attr('data-name') + '</div>' +
                                     '<div class="opendata-chart-map-region-hint-values">';
+            var curSumm = 0;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                curSumm += Number($(this).attr('data-value'));
+            });
+            var summPercent = 0;
             $(this).find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                } else {
+                    summPercent += newPercent;
+                }
                 windowHTML +=           '<div class="opendata-chart-map-region-hint-value">' +
                                             '<div class="opendata-chart-map-region-hint-value-legend">' +
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
                                             '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')).replace('.', ',') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-percent">' + newPercent + '%</div>' +
                                         '</div>';
             });
 
             windowHTML +=           '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-pie">' +
+                                        '<canvas></canvas>' +
+                                    '</div>' +
                                     '<a href="#" class="opendata-chart-map-region-hint-close"></a>' +
                                  '</div>' +
                              '</div>';
             $('body').append(windowHTML);
+
+            var pieWidth = 126;
+            var pieHeight = 126;
+
+            var canvas = $('.opendata-chart-map-region-hint-pie canvas')[0];
+            var context = canvas.getContext('2d');
+
+			canvas.width = pieWidth;
+            canvas.height = pieHeight;
+
+            var summPercent = 0;
+            var currentAngle = -0.5 * Math.PI;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                }
+                var sliceAngle = newPercent / 100 * 2 * Math.PI;
+                context.beginPath();
+                context.fillStyle = $(this).css('background-color');
+                context.strokeStyle = $(this).css('background-color');
+                context.moveTo(pieWidth / 2, pieHeight / 2);
+                context.arc(pieWidth / 2, pieHeight / 2, pieWidth / 2, currentAngle, currentAngle + sliceAngle);
+                context.lineTo(pieWidth / 2, pieHeight / 2);
+                context.fill();
+                if (newPercent > 9) {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                } else {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend opendata-chart-map-region-hint-pie-legend-out" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                }
+                currentAngle += sliceAngle;
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) != curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    summPercent += newPercent;
+                }
+            });
         }
     });
 
     $('body').on('click', '.opendata-chart-forecast-graph-item-year', function(e) {
         if ($(window).width() < 1120) {
+            var curItemBar = $(this).parent().find('.opendata-chart-forecast-graph-item-bar');
             $('.opendata-chart-map-region-hint').remove();
             var windowHTML = '<div class="opendata-chart-map-region-hint">' +
                                  '<div class="opendata-chart-map-region-hint-bg"></div>' +
                                  '<div class="opendata-chart-map-region-hint-container">' +
                                     '<div class="opendata-chart-map-region-hint-title">' + $(this).parent().find('.opendata-chart-forecast-graph-item-bar').find('.opendata-chart-forecast-graph-item-bar-item').eq(0).attr('data-name') + '</div>' +
                                     '<div class="opendata-chart-map-region-hint-values">';
+            var curSumm = 0;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                curSumm += Number($(this).attr('data-value'));
+            });
+            var summPercent = 0;
             $(this).parent().find('.opendata-chart-forecast-graph-item-bar').find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                } else {
+                    summPercent += newPercent;
+                }
                 windowHTML +=           '<div class="opendata-chart-map-region-hint-value">' +
                                             '<div class="opendata-chart-map-region-hint-value-legend">' +
                                                 '<div class="opendata-chart-map-region-hint-value-legend-inner" style="background:' + $(this).css('background-color') + '"></div>' +
                                             '</div>'+
                                             '<div class="opendata-chart-map-region-hint-value-title">' + $(this).attr('data-title') + ':</div>' +
                                             '<div class="opendata-chart-map-region-hint-value-text">' + numberWithSpaces($(this).attr('data-value')).replace('.', ',') + '</div>' +
+                                            '<div class="opendata-chart-map-region-hint-value-percent">' + newPercent + '%</div>' +
                                         '</div>';
             });
 
             windowHTML +=           '</div>' +
+                                    '<div class="opendata-chart-map-region-hint-pie">' +
+                                        '<canvas></canvas>' +
+                                    '</div>' +
                                     '<a href="#" class="opendata-chart-map-region-hint-close"></a>' +
                                  '</div>' +
                              '</div>';
             $('body').append(windowHTML);
+
+            var pieWidth = 126;
+            var pieHeight = 126;
+
+            var canvas = $('.opendata-chart-map-region-hint-pie canvas')[0];
+            var context = canvas.getContext('2d');
+
+			canvas.width = pieWidth;
+            canvas.height = pieHeight;
+
+            var summPercent = 0;
+            var currentAngle = -0.5 * Math.PI;
+            curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').each(function() {
+                var newPercent = Math.round(Number($(this).attr('data-value')) / curSumm * 100);
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) == curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    newPercent = 100 - summPercent;
+                }
+                var sliceAngle = newPercent / 100 * 2 * Math.PI;
+                context.beginPath();
+                context.fillStyle = $(this).css('background-color');
+                context.strokeStyle = $(this).css('background-color');
+                context.moveTo(pieWidth / 2, pieHeight / 2);
+                context.arc(pieWidth / 2, pieHeight / 2, pieWidth / 2, currentAngle, currentAngle + sliceAngle);
+                context.lineTo(pieWidth / 2, pieHeight / 2);
+                context.fill();
+                if (newPercent > 9) {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                } else {
+                    $('.opendata-chart-map-region-hint-pie').append('<div class="opendata-chart-map-region-hint-pie-legend opendata-chart-map-region-hint-pie-legend-out" style="transform:rotate(' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)"><span style="transform:translate(-50%, 0) rotate(-' + ((summPercent + newPercent / 2) / 100 * 360) + 'deg)">' + newPercent + '%</span></div>');
+                }
+                currentAngle += sliceAngle;
+                if (curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').index($(this)) != curItemBar.find('.opendata-chart-forecast-graph-item-bar-item').length - 1) {
+                    summPercent += newPercent;
+                }
+            });
         }
     });
 
@@ -2644,6 +2982,20 @@ $(window).on('load resize scroll', function() {
         }
     });
 
+    $('.table-scroll .mCSB_scrollTools').each(function() {
+        var curTools = $(this);
+        var curBlock = curTools.parent();
+        if ($(window).scrollTop() + $(window).height() > curBlock.offset().top) {
+            var curBottom = ($(window).scrollTop() + $(window).height()) - (curBlock.offset().top + curBlock.height() - 39);
+            if (curBottom < 39) {
+                curBottom = 39;
+            }
+            curTools.css({'position': 'fixed', 'z-index': 2, 'left': curBlock.offset().left, 'bottom': curBottom, 'right': 'auto', 'width': curBlock.width()});
+        } else {
+            curTools.css({'position': 'absolute', 'left': 0, 'bottom': 0, 'right': '0', 'width': 'auto'});
+        }
+    });
+
     $('.opendata-chart-bubble-content .opendata-chart-bubble-graph-years-fixed').each(function() {
         var curYears = $(this);
         var curBlock = curYears.parent();
@@ -2652,6 +3004,16 @@ $(window).on('load resize scroll', function() {
             curYears.css({'width': curBlock.find('.opendata-chart-bubble-graph').width(), 'left': curBlock.find('.opendata-chart-bubble-graph').offset().left});
         } else {
             curYears.removeClass('visible');
+        }
+    });
+
+    $('.opendata-table').each(function(e) {
+        var windowScroll = $(window).scrollTop();
+        var curTable = $(this);
+        if (windowScroll >= curTable.find('th').eq(0).offset().top && windowScroll < curTable.offset().top + curTable.outerHeight()) {
+            curTable.find('.opendata-table-header-fixed').addClass('visible');
+        } else {
+            curTable.find('.opendata-table-header-fixed').removeClass('visible');
         }
     });
 });
@@ -2823,6 +3185,30 @@ function makeChartOrgMain(curBlock, data) {
             if ($('.opendata-chart-org-main-hint').offset().left + $('.opendata-chart-org-main-hint').outerWidth() > $(window).width()) {
                 $('.opendata-chart-org-main-hint').addClass('right');
             }
+        }
+    });
+
+    curBlock.find('.opendata-chart-org-main-graph-item-point, .opendata-chart-org-main-graph-item-bar').on('click', function(e) {
+        if ($(window).width() < 1120) {
+            var curYear = Number($(this).attr('data-year'));
+            $('.opendata-chart-org-main-hint').remove();
+            var hintHTML =  '<div class="opendata-chart-org-main-hint">' +
+                                '<div class="opendata-chart-org-main-hint-bg"></div>' +
+                                '<div class="opendata-chart-org-main-hint-container">' +
+                                    '<div class="opendata-chart-org-main-hint-title">' + data.data[curYear].year + ' г</div>' +
+                                    '<div class="opendata-chart-org-main-hint-values">';
+            for (var i = 0; i < data.legend.length; i++) {
+                hintHTML +=     '<div class="opendata-chart-org-main-hint-value">' +
+                                    '<div class="opendata-chart-org-main-hint-value-color"><div class="opendata-chart-org-main-hint-value-color-inner ' + data.legend[i].type + '" style="background-color:' + data.legend[i].color + '"></div></div>' +
+                                    '<div class="opendata-chart-org-main-hint-value-title">' + data.legend[i].title + '</div>' +
+                                    '<div class="opendata-chart-org-main-hint-value-text">' + numberWithSpaces(data.data[curYear].values[i]) + '</div>' +
+                                '</div>';
+            }
+            hintHTML +=             '</div>' +
+                                    '<a href="#" class="opendata-chart-org-main-hint-close"></a>' +
+                                '</div>' +
+                            '</div>';
+            $('body').append(hintHTML);
         }
     });
 
