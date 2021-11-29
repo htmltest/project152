@@ -275,9 +275,13 @@ label.error {display:block; font-size:13px; line-height:19px; color:#df0e0e; mar
 .wrapper {width:100%; min-width:480px; min-height:100%; position:relative; overflow:hidden}
 .wrapper-inner {padding:0 0 289px 0}
 
+.header-fixed .wrapper-inner {padding-top:240px}
+
 @media screen and (max-width:1119px) {
     .wrapper {min-height:0}
     .wrapper-inner {padding:0 0 100px 0}
+
+    .header-fixed .wrapper-inner {padding-top:220px}
 }
 
 .gallery {margin:34px 0 32px 0; max-width:772px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; position:relative; overflow:hidden}
@@ -379,7 +383,7 @@ label.error {display:block; font-size:13px; line-height:19px; color:#df0e0e; mar
 }
 
 .top {height:40px; font-weight:normal; font-size:14px; line-height:40px; background:#1e4854}
-.top a {color:rgba(255, 255, 255, 0.77); text-decoration:none}
+.top a {color:rgba(255, 255, 255, 0.77); text-decoration:none; transition:color 0.2s}
 .top a:hover {color:rgba(255, 255, 255, 1)}
 .top-menu {float:left}
 .top-menu ul {margin:0; padding:0; list-style:none}
@@ -393,6 +397,16 @@ label.error {display:block; font-size:13px; line-height:19px; color:#df0e0e; mar
 .top-user a::before {content:""; display:block; position:absolute; left:0; top:50%; margin-top:-7.5px; width:13px; height:15px; background:url(../images/top-user.svg) no-repeat; opacity:0.77; transition:all 0.2s}
 .top-user a:hover::before {opacity:1}
 
+.header-fixed .wrapper-inner > .top {position:fixed; left:0; top:0; right:0; z-index:99; background:#fff; height:60px; border-bottom:1px solid #ebeaea; box-shadow:4px 4px 20px rgba(0, 0, 0, 0.07); overflow:hidden}
+.header-fixed .wrapper-inner > .top .container {height:0}
+.header-fixed .wrapper-inner > .top .container::after {display:none}
+.header-fixed .top-menu {display:none}
+.header-fixed .wrapper-inner > .top a {color:#2c6573}
+.header-fixed .wrapper-inner > .top a:hover {color:#2c6573; text-decoration:underline}
+.header-fixed .top-user {margin-top:10px}
+.header-fixed .top-user a {font-size:0; line-height:0; letter-spacing:-1px; padding:0 0 0 20px; width:20px; height:40px}
+.header-fixed .top-user a::before {background-image:url(../images/top-user-fixed.svg); background-size:100%; opacity:1; width:20px; height:23px; margin-top:-11.5px; transition:none}
+
 @media screen and (max-width:1119px) {
     .top {height:66px}
     .top-menu {display:none}
@@ -403,6 +417,12 @@ label.error {display:block; font-size:13px; line-height:19px; color:#df0e0e; mar
 
     .mobile-menu-open,
     .mobile-menu-open body {overflow:hidden; position:fixed; left:0; top:0; right:0; bottom:0}
+
+    .header-fixed .wrapper-inner > .top {height:66px}
+    .header-fixed .mobile-menu-link {background:url(../images/mobile-menu-link-fixed.svg) no-repeat}
+    .header-fixed .top-user {margin:19px 46px 0 0}
+    .header-fixed .top-user.top-user a {padding:0; width:24px; height:27px}
+    .header-fixed .top-user.top-user a::before {width:24px; height:27px; background-size:100%; margin-left:0; margin-top:0}
 }
 
 .mobile-menu {display:none}
@@ -443,6 +463,17 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .nav ul li.active a {background:#448695}
 .nav ul li a::before {content:""; display:block; position:absolute; left:13px; bottom:4px; right:13px; height:2px; background:#5da1b1; transition:all 0.2s; transform:scale(0, 1); transform-origin:left center}
 .nav ul li a:hover::before {transform:scale(1, 1)}
+
+.header-fixed header {position:fixed; left:0; top:0; right:0; z-index:99; height:0; background:none}
+.header-fixed .header-content {float:left}
+.header-fixed header .container {height:0}
+.header-fixed header .container::after {display:none}
+.header-fixed .header-content::after {display:none}
+.header-fixed .logo {width:45px; height:43px; margin:8px 0 0 0; background:url(../images/logo-fixed.png) no-repeat}
+.header-fixed .title {font-size:15px; line-height:18px; color:#2c6573; width:300px; font-weight:normal; margin:12px 0 0 17px}
+.header-fixed .nav {margin:15px 0 0 30px; float:left}
+.header-fixed .nav ul li a {color:#2c6573}
+.header-fixed .nav ul li.active a {color:#fff}
 
 @media screen and (max-width:1119px) {
     header {height:154px; background:#255664 url(../images/header-mobile.png) no-repeat right top}
@@ -688,12 +719,20 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
     .main-regions-group-active .main-regions-item-value {font-size:22px; line-height:33px; top:16px; font-weight:normal}
 }
 
-.navigator-filter {margin:33px 0 0 0; background:#fff; padding:33px 40px 55px 40px; border-radius:3px}
-.navigator-filter form {margin:0; padding:0}
+.navigator-filter {margin:33px 0 0 0; background:#fff; padding:33px 40px 55px 40px; border-radius:3px; position:relative}
+.navigator-filter-title {font-weight:500; font-size:26px; line-height:31px; color:#2c6573; cursor:pointer; position:relative; margin:-33px -40px -55px -40px; padding:33px 40px}
+.navigator-filter.open .navigator-filter-title {margin-bottom:20px}
+.navigator-filter-title::after {content:""; display:block; width:41px; height:41px; position:absolute; right:40px; top:28px; background:url(../images/opendata-block-title.svg) no-repeat; transition:all 0.2s}
+.navigator-filter.open .navigator-filter-title::after {transform:rotate(-180deg)}
+.navigator-filter form {margin:0; padding:0; position:absolute; left:-9999px; top:-9999px; width:100%; opacity:0; transition:opacity 0.5s}
+.navigator-filter.open form {position:relative; left:auto; top:auto; opacity:1}
 .navigator-filter .form-ctrl {border-top:1px solid #b7cace}
 
 @media screen and (max-width:1119px) {
     .navigator-filter {margin:30px -20px 0 -20px; padding:24px 20px 56px 20px; border-radius:0}
+    .navigator-filter-title {margin:-24px -20px -56px -20px; padding:24px 20px}
+    .navigator-filter.open .navigator-filter-title {margin-bottom:20px}
+    .navigator-filter-title::after {right:20px; top:19px}
     .navigator-filter .form-ctrl {border-top:1px solid #b5c8cd; margin:40px 0 0 0; padding:40px 0 0 0}
 }
 
@@ -849,12 +888,10 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .card-row-value > *:last-child > li:last-child {margin-bottom:0}
 
 @media screen and (max-width:1119px) {
-    .card-row {margin:0 -20px; padding:7px 20px 13px 20px}
+    .card-row {margin:0 -20px; padding:19px 20px 23px 20px}
     .card-row-big {padding:19px 20px 23px 20px}
-    .card-row-title {width:50%; padding:0 30px 0 0; color:#000}
-    .card-row-big .card-row-title {float:none; width:auto; padding:0}
-    .card-row-value {margin:0 0 0 50%; color:#3e3e3e; font-weight:normal}
-    .card-row-big .card-row-value {margin:13px 0 0 0}
+    .card-row-title {float:none; width:auto; padding:0; color:#000}
+    .card-row-value {margin:13px 0 0 0; color:#3e3e3e; font-weight:normal}
 }
 
 .back-link {margin:30px 0 0 0}
