@@ -988,6 +988,7 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
     .opendata-results:first-child {margin-top:0}
 }
 
+.opendata-table {position:relative}
 .wrapper .opendata-table table {margin:0}
 .opendata-table+.doc-link {margin-top:28px}
 .wrapper .opendata-table th {width:25%; text-align:left; font-size:13px; color:#81a2b0; line-height:20px; font-weight:600; padding-bottom:12px}
@@ -1005,7 +1006,14 @@ header {height:200px; background:#23515f url(../images/header.png) no-repeat rig
 .wrapper .opendata-table thead+tbody tr:nth-child(odd) td {background:rgba(165, 165, 165, 0.08)}
 .wrapper .opendata-table td em {display:none}
 
-.opendata-table-header-fixed {display:none; position:fixed; left:50%; top:0; width:1040px; margin-left:-520px; z-index:99; background:#fff; overflow:hidden; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; border-bottom:2px solid #c8c8c8}
+.opendata-table .mCSB_scrollTools.mCSB_scrollTools_horizontal {margin-left:480px}
+.opendata-table .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_dragger .mCSB_dragger_bar::before {content:""; display:block; position:absolute; left:0; bottom:-10px; right:0; top:-10px; background:url(../images/blank.gif)}
+.opendata-table .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_draggerRail::before {content:""; display:block; position:absolute; left:0; bottom:-10px; right:0; top:-10px; background:url(../images/blank.gif)}
+
+.table-scroll-fixed {display:block; position:absolute; left:0; top:0; background:#fff}
+.table-scroll-fixed.visible::after {content:""; display:block; position:absolute; right:-8px; top:0; bottom:0; width:8px; background:linear-gradient(90deg, rgb(179, 179, 179) 0%, rgba(255, 255, 255, 0) 100%); opacity:0.25}
+
+.opendata-table-header-fixed {display:none; position:fixed; left:50%; top:60px; width:1040px; margin-left:-520px; z-index:99; background:#fff; overflow:hidden; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; border-bottom:2px solid #c8c8c8}
 .opendata-table-header-fixed.visible {display:block}
 .opendata-table-header-fixed-inner {position:relative; display:inline-block; vertical-align:top}
 .opendata-table-header-fixed-item {display:inline-block; font-size:13px; line-height:20px; color:#81a2b0; font-weight:600; padding:12px 0 12px 30px; letter-spacing:0; white-space:normal}
@@ -1607,3 +1615,11 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
     .opendata-chart-funds-main-legend-item {margin:9px 0 0 30px; font-size:16px; line-height:24px}
     .opendata-chart-funds-main-legend-item-color {top:2px}
 }
+
+.opendata-table-more {background:url(../images/loading.gif) no-repeat -999px -999px}
+.opendata-table-more.loading a {position:relative; pointer-events:none; overflow:hidden}
+.opendata-table-more.loading a::after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:rgba(255, 255, 255, 0.8) url(../images/loading.gif) no-repeat center top; background-size:42px 42px}
+
+.opendata-table-more a span:nth-child(2) {display:none}
+.opendata-table-more.open a span:nth-child(1) {display:none}
+.opendata-table-more.open a span:nth-child(2) {display:inline}
