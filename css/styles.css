@@ -1623,3 +1623,14 @@ footer {height:236px; position:relative; margin:-236px 0 0 0; background:#fff}
 .opendata-table-more a span:nth-child(2) {display:none}
 .opendata-table-more.open a span:nth-child(1) {display:none}
 .opendata-table-more.open a span:nth-child(2) {display:inline}
+
+.cookies-message {position:fixed; z-index:990; left:50%; bottom:20px; width:662px; margin:0 0 0 -331px; padding:12px 100px 12px 20px; background:rgba(30, 72, 84, 0.7); backdrop-filter:blur(5px); border-radius:4px}
+.cookies-message-text {font-size:14px; line-height:21px; color:#FFFFFF; font-weight:normal}
+.cookies-message-close {position:absolute; right:20px; top:12px; width:20px; height:20px; border-radius:50%; transition:background 0.2s}
+.cookies-message-close:hover {background:#FFFFFF}
+.cookies-message-close svg {display:block; width:20px; height:20px; fill:#FFFFFF; transition:fill 0.2s}
+.cookies-message-close:hover svg {fill:#2C6573}
+
+@media screen and (max-width:1119px) {
+    .cookies-message {width:440px; margin:0 0 0 -220px; padding-right:60px}
+}

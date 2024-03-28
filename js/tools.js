@@ -3462,3 +3462,12 @@ function createTable(curBlock, tableData, maxRows, sortDefaultCol, sortDefaultDi
         });
     }
 }
+
+$(document).ready(function() {
+
+    $('.cookies-message-close').click(function(e) {
+        $('.cookies-message').fadeOut(500);
+        e.preventDefault();
+    });
+
+});
